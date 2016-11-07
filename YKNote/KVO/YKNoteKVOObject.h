@@ -14,6 +14,8 @@
 
 @property (nonatomic, assign) NSInteger age;
 
+@property (nonatomic, assign) CGFloat salary;
+
 @property (nonatomic, strong) NSMutableArray *friends;
 
 //@property (nonatomic, strong, readonly) NSMutableArray *friends;

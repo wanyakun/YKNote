@@ -1,0 +1,25 @@
+//
+//  YKNote.pch
+//  YKNote
+//
+//  Created by wanyakun on 2016/11/7.
+//  Copyright © 2016年 com.ucaiyuan. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
+
+#import "UIView+LayoutMethods.h"
+
+
+#endif
+

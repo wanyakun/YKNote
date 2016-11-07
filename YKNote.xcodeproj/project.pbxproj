@@ -1,0 +1,531 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		57B1AE721DCAE5960030E062 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AE711DCAE5960030E062 /* main.m */; };
+		57B1AE751DCAE5960030E062 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AE741DCAE5960030E062 /* AppDelegate.m */; };
+		57B1AE781DCAE5960030E062 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AE771DCAE5960030E062 /* ViewController.m */; };
+		57B1AE7B1DCAE5960030E062 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57B1AE791DCAE5960030E062 /* Main.storyboard */; };
+		57B1AE7D1DCAE5960030E062 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57B1AE7C1DCAE5960030E062 /* Assets.xcassets */; };
+		57B1AE801DCAE5960030E062 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57B1AE7E1DCAE5960030E062 /* LaunchScreen.storyboard */; };
+		57B1AE8B1DCAE5970030E062 /* YKNoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AE8A1DCAE5970030E062 /* YKNoteTests.m */; };
+		57B1AEA51DCAE5C80030E062 /* YKNoteBlockDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AE961DCAE5C80030E062 /* YKNoteBlockDemo.m */; };
+		57B1AEA61DCAE5C80030E062 /* YKNoteBlockNoteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AE981DCAE5C80030E062 /* YKNoteBlockNoteObject.m */; };
+		57B1AEA81DCAE5C80030E062 /* YKNoteIntercepter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AE9E1DCAE5C80030E062 /* YKNoteIntercepter.m */; };
+		57B1AEA91DCAE5C80030E062 /* YKNoteIntercepterDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AEA01DCAE5C80030E062 /* YKNoteIntercepterDemoViewController.m */; };
+		57B1AEAD1DCB02E90030E062 /* NSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AEAC1DCB02E90030E062 /* NSObject+Swizzle.m */; };
+		57B1AEB01DCB0E580030E062 /* YKNoteKVOObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AEAF1DCB0E580030E062 /* YKNoteKVOObject.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		57B1AE871DCAE5970030E062 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 57B1AE651DCAE5960030E062 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 57B1AE6C1DCAE5960030E062;
+			remoteInfo = YKNote;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		57B1AE6D1DCAE5960030E062 /* YKNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YKNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		57B1AE711DCAE5960030E062 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		57B1AE731DCAE5960030E062 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		57B1AE741DCAE5960030E062 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		57B1AE761DCAE5960030E062 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		57B1AE771DCAE5960030E062 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		57B1AE7A1DCAE5960030E062 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		57B1AE7C1DCAE5960030E062 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		57B1AE7F1DCAE5960030E062 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		57B1AE811DCAE5970030E062 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57B1AE861DCAE5970030E062 /* YKNoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YKNoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		57B1AE8A1DCAE5970030E062 /* YKNoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YKNoteTests.m; sourceTree = "<group>"; };
+		57B1AE8C1DCAE5970030E062 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57B1AE961DCAE5C80030E062 /* YKNoteBlockDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteBlockDemo.m; sourceTree = "<group>"; };
+		57B1AE971DCAE5C80030E062 /* YKNoteBlockNoteObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteBlockNoteObject.h; sourceTree = "<group>"; };
+		57B1AE981DCAE5C80030E062 /* YKNoteBlockNoteObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteBlockNoteObject.m; sourceTree = "<group>"; };
+		57B1AE9D1DCAE5C80030E062 /* YKNoteIntercepter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteIntercepter.h; sourceTree = "<group>"; };
+		57B1AE9E1DCAE5C80030E062 /* YKNoteIntercepter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteIntercepter.m; sourceTree = "<group>"; };
+		57B1AE9F1DCAE5C80030E062 /* YKNoteIntercepterDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteIntercepterDemoViewController.h; sourceTree = "<group>"; };
+		57B1AEA01DCAE5C80030E062 /* YKNoteIntercepterDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteIntercepterDemoViewController.m; sourceTree = "<group>"; };
+		57B1AEAB1DCB02E90030E062 /* NSObject+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Swizzle.h"; sourceTree = "<group>"; };
+		57B1AEAC1DCB02E90030E062 /* NSObject+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Swizzle.m"; sourceTree = "<group>"; };
+		57B1AEAE1DCB0E580030E062 /* YKNoteKVOObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteKVOObject.h; sourceTree = "<group>"; };
+		57B1AEAF1DCB0E580030E062 /* YKNoteKVOObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteKVOObject.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		57B1AE6A1DCAE5960030E062 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		57B1AE831DCAE5970030E062 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		57B1AE641DCAE5960030E062 = {
+			isa = PBXGroup;
+			children = (
+				57B1AE6F1DCAE5960030E062 /* YKNote */,
+				57B1AE891DCAE5970030E062 /* YKNoteTests */,
+				57B1AE6E1DCAE5960030E062 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		57B1AE6E1DCAE5960030E062 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				57B1AE6D1DCAE5960030E062 /* YKNote.app */,
+				57B1AE861DCAE5970030E062 /* YKNoteTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		57B1AE6F1DCAE5960030E062 /* YKNote */ = {
+			isa = PBXGroup;
+			children = (
+				57B1AE951DCAE5C80030E062 /* Block */,
+				57B1AEAA1DCAE6C00030E062 /* DataStructure */,
+				57B1AE991DCAE5C80030E062 /* GCD */,
+				57B1AE9A1DCAE5C80030E062 /* Intercepter */,
+				57B1AEA11DCAE5C80030E062 /* KVO */,
+				57B1AEA21DCAE5C80030E062 /* NSOperation */,
+				57B1AEA31DCAE5C80030E062 /* RunLoop */,
+				57B1AEA41DCAE5C80030E062 /* Runtime */,
+				57B1AE731DCAE5960030E062 /* AppDelegate.h */,
+				57B1AE741DCAE5960030E062 /* AppDelegate.m */,
+				57B1AE761DCAE5960030E062 /* ViewController.h */,
+				57B1AE771DCAE5960030E062 /* ViewController.m */,
+				57B1AE811DCAE5970030E062 /* Info.plist */,
+				57B1AE7C1DCAE5960030E062 /* Assets.xcassets */,
+				57B1AE7E1DCAE5960030E062 /* LaunchScreen.storyboard */,
+				57B1AE791DCAE5960030E062 /* Main.storyboard */,
+				57B1AE701DCAE5960030E062 /* Supporting Files */,
+			);
+			path = YKNote;
+			sourceTree = "<group>";
+		};
+		57B1AE701DCAE5960030E062 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				57B1AE711DCAE5960030E062 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		57B1AE891DCAE5970030E062 /* YKNoteTests */ = {
+			isa = PBXGroup;
+			children = (
+				57B1AE8A1DCAE5970030E062 /* YKNoteTests.m */,
+				57B1AE8C1DCAE5970030E062 /* Info.plist */,
+			);
+			path = YKNoteTests;
+			sourceTree = "<group>";
+		};
+		57B1AE951DCAE5C80030E062 /* Block */ = {
+			isa = PBXGroup;
+			children = (
+				57B1AE961DCAE5C80030E062 /* YKNoteBlockDemo.m */,
+				57B1AE971DCAE5C80030E062 /* YKNoteBlockNoteObject.h */,
+				57B1AE981DCAE5C80030E062 /* YKNoteBlockNoteObject.m */,
+			);
+			path = Block;
+			sourceTree = "<group>";
+		};
+		57B1AE991DCAE5C80030E062 /* GCD */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GCD;
+			sourceTree = "<group>";
+		};
+		57B1AE9A1DCAE5C80030E062 /* Intercepter */ = {
+			isa = PBXGroup;
+			children = (
+				57B1AE9D1DCAE5C80030E062 /* YKNoteIntercepter.h */,
+				57B1AE9E1DCAE5C80030E062 /* YKNoteIntercepter.m */,
+				57B1AE9F1DCAE5C80030E062 /* YKNoteIntercepterDemoViewController.h */,
+				57B1AEA01DCAE5C80030E062 /* YKNoteIntercepterDemoViewController.m */,
+			);
+			path = Intercepter;
+			sourceTree = "<group>";
+		};
+		57B1AEA11DCAE5C80030E062 /* KVO */ = {
+			isa = PBXGroup;
+			children = (
+				57B1AEAE1DCB0E580030E062 /* YKNoteKVOObject.h */,
+				57B1AEAF1DCB0E580030E062 /* YKNoteKVOObject.m */,
+			);
+			path = KVO;
+			sourceTree = "<group>";
+		};
+		57B1AEA21DCAE5C80030E062 /* NSOperation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NSOperation;
+			sourceTree = "<group>";
+		};
+		57B1AEA31DCAE5C80030E062 /* RunLoop */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RunLoop;
+			sourceTree = "<group>";
+		};
+		57B1AEA41DCAE5C80030E062 /* Runtime */ = {
+			isa = PBXGroup;
+			children = (
+				57B1AEAB1DCB02E90030E062 /* NSObject+Swizzle.h */,
+				57B1AEAC1DCB02E90030E062 /* NSObject+Swizzle.m */,
+			);
+			path = Runtime;
+			sourceTree = "<group>";
+		};
+		57B1AEAA1DCAE6C00030E062 /* DataStructure */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataStructure;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		57B1AE6C1DCAE5960030E062 /* YKNote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 57B1AE8F1DCAE5970030E062 /* Build configuration list for PBXNativeTarget "YKNote" */;
+			buildPhases = (
+				57B1AE691DCAE5960030E062 /* Sources */,
+				57B1AE6A1DCAE5960030E062 /* Frameworks */,
+				57B1AE6B1DCAE5960030E062 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YKNote;
+			productName = YKNote;
+			productReference = 57B1AE6D1DCAE5960030E062 /* YKNote.app */;
+			productType = "com.apple.product-type.application";
+		};
+		57B1AE851DCAE5970030E062 /* YKNoteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 57B1AE921DCAE5970030E062 /* Build configuration list for PBXNativeTarget "YKNoteTests" */;
+			buildPhases = (
+				57B1AE821DCAE5970030E062 /* Sources */,
+				57B1AE831DCAE5970030E062 /* Frameworks */,
+				57B1AE841DCAE5970030E062 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				57B1AE881DCAE5970030E062 /* PBXTargetDependency */,
+			);
+			name = YKNoteTests;
+			productName = YKNoteTests;
+			productReference = 57B1AE861DCAE5970030E062 /* YKNoteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		57B1AE651DCAE5960030E062 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = com.ucaiyuan;
+				TargetAttributes = {
+					57B1AE6C1DCAE5960030E062 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = TC7ZKNQ9JS;
+						ProvisioningStyle = Automatic;
+					};
+					57B1AE851DCAE5970030E062 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = TC7ZKNQ9JS;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 57B1AE6C1DCAE5960030E062;
+					};
+				};
+			};
+			buildConfigurationList = 57B1AE681DCAE5960030E062 /* Build configuration list for PBXProject "YKNote" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 57B1AE641DCAE5960030E062;
+			productRefGroup = 57B1AE6E1DCAE5960030E062 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				57B1AE6C1DCAE5960030E062 /* YKNote */,
+				57B1AE851DCAE5970030E062 /* YKNoteTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		57B1AE6B1DCAE5960030E062 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57B1AE801DCAE5960030E062 /* LaunchScreen.storyboard in Resources */,
+				57B1AE7D1DCAE5960030E062 /* Assets.xcassets in Resources */,
+				57B1AE7B1DCAE5960030E062 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		57B1AE841DCAE5970030E062 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		57B1AE691DCAE5960030E062 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57B1AEAD1DCB02E90030E062 /* NSObject+Swizzle.m in Sources */,
+				57B1AEA61DCAE5C80030E062 /* YKNoteBlockNoteObject.m in Sources */,
+				57B1AE781DCAE5960030E062 /* ViewController.m in Sources */,
+				57B1AEA91DCAE5C80030E062 /* YKNoteIntercepterDemoViewController.m in Sources */,
+				57B1AE751DCAE5960030E062 /* AppDelegate.m in Sources */,
+				57B1AEA51DCAE5C80030E062 /* YKNoteBlockDemo.m in Sources */,
+				57B1AEB01DCB0E580030E062 /* YKNoteKVOObject.m in Sources */,
+				57B1AE721DCAE5960030E062 /* main.m in Sources */,
+				57B1AEA81DCAE5C80030E062 /* YKNoteIntercepter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		57B1AE821DCAE5970030E062 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57B1AE8B1DCAE5970030E062 /* YKNoteTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		57B1AE881DCAE5970030E062 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 57B1AE6C1DCAE5960030E062 /* YKNote */;
+			targetProxy = 57B1AE871DCAE5970030E062 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		57B1AE791DCAE5960030E062 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				57B1AE7A1DCAE5960030E062 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		57B1AE7E1DCAE5960030E062 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				57B1AE7F1DCAE5960030E062 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		57B1AE8D1DCAE5970030E062 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		57B1AE8E1DCAE5970030E062 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		57B1AE901DCAE5970030E062 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TC7ZKNQ9JS;
+				INFOPLIST_FILE = YKNote/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucaiyuan.YKNote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		57B1AE911DCAE5970030E062 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TC7ZKNQ9JS;
+				INFOPLIST_FILE = YKNote/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucaiyuan.YKNote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		57B1AE931DCAE5970030E062 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = TC7ZKNQ9JS;
+				INFOPLIST_FILE = YKNoteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucaiyuan.YKNoteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YKNote.app/YKNote";
+			};
+			name = Debug;
+		};
+		57B1AE941DCAE5970030E062 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = TC7ZKNQ9JS;
+				INFOPLIST_FILE = YKNoteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucaiyuan.YKNoteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YKNote.app/YKNote";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		57B1AE681DCAE5960030E062 /* Build configuration list for PBXProject "YKNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				57B1AE8D1DCAE5970030E062 /* Debug */,
+				57B1AE8E1DCAE5970030E062 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		57B1AE8F1DCAE5970030E062 /* Build configuration list for PBXNativeTarget "YKNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				57B1AE901DCAE5970030E062 /* Debug */,
+				57B1AE911DCAE5970030E062 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		57B1AE921DCAE5970030E062 /* Build configuration list for PBXNativeTarget "YKNoteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				57B1AE931DCAE5970030E062 /* Debug */,
+				57B1AE941DCAE5970030E062 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 57B1AE651DCAE5960030E062 /* Project object */;
+}

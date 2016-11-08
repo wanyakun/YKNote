@@ -18,10 +18,6 @@
 
 @property (nonatomic, strong) NSMutableArray *friends;
 
-//@property (nonatomic, strong, readonly) NSMutableArray *friends;
-//
-//- (void)addFriends:(YKNoteKVOObject *)objects;
-//
-//- (void)removeFriends:(YKNoteKVOObject *)objects;
+@property (nonatomic, strong) YKNoteKVOObject *subObject;
 
 @end

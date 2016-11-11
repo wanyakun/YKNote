@@ -30,25 +30,25 @@ Apple官方文档描述：
 
 使用KVO分三步：
 
-- 注册观察者: 
+-   注册观察者: 
 
-  ```objc
-  - (void)addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(nullable void *)context;
-  ```
+    ```objc
+    - (void)addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(nullable void *)context;
+    ```
 
-- 观察者中实现
+-   观察者中实现
 
-  ```objc
-  - (void)observeValueForKeyPath:(nullable NSString *)keyPath ofObject:(nullable id)object change:(nullable NSDictionary<NSKeyValueChangeKey, id> *)change context:(nullable void *)context;
-  ```
+    ```objc
+    - (void)observeValueForKeyPath:(nullable NSString *)keyPath ofObject:(nullable id)object change:(nullable NSDictionary<NSKeyValueChangeKey, id> *)change context:(nullable void *)context;
+    ```
 
-- 移除观察者
+-   移除观察者
 
+    ```objc
+    - (void)removeObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath context:(nullable void *)context NS_AVAILABLE(10_7, 5_0);
+      - (void)removeObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath;
+    ```
 
-```objc
-  - (void)removeObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath context:(nullable void *)context NS_AVAILABLE(10_7, 5_0);
-  - (void)removeObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath;
-```
 
 从以上三步可以看出，使用KVO，不需要对被观察者对象做任何修改。
 
@@ -77,6 +77,7 @@ Apple官方文档描述：
 
    @end
    ```
+
 
 2. 创建一个Controller，添加监听，并打印
 
@@ -278,140 +279,141 @@ Apple官方文档描述：
 3. 输出的内容
 
    ```
-   ========before add observer objective detail========
-   yKNoteKVOObject:<YKNoteKVOObject: 0x60800024edf0>
-   	class YKNoteKVOObject
-   	objcClass YKNoteKVOObject
-   	implementmethod 
-   		setFriends:,
-   		setSalary:,
-   		setAge:,
-   		age,
-   		salary,
-   		friends,
-   		subObject,
-   		setSubObject:,
-   		.cxx_destruct,
-   		name,
-   		setName:,
-   		init
-   yKNoteKVOObject2:<YKNoteKVOObject: 0x60800024eee0>
-   	class YKNoteKVOObject
-   	objcClass YKNoteKVOObject
-   	implementmethod 
-   		setFriends:,
-   		setSalary:,
-   		setAge:,
-   		age,
-   		salary,
-   		friends,
-   		subObject,
-   		setSubObject:,
-   		.cxx_destruct,
-   		name,
-   		setName:,
-   		init
-   yKNoteKVOObject3:<YKNoteKVOObject: 0x60800005bc30>
-   	class YKNoteKVOObject
-   	objcClass YKNoteKVOObject
-   	implementmethod 
-   		setFriends:,
-   		setSalary:,
-   		setAge:,
-   		age,
-   		salary,
-   		friends,
-   		subObject,
-   		setSubObject:,
-   		.cxx_destruct,
-   		name,
-   		setName:,
-   		init
-   yKNoteKVOObject4:<YKNoteKVOObject: 0x60800024e0d0>
-   	class YKNoteKVOObject
-   	objcClass YKNoteKVOObject
-   	implementmethod 
-   		setFriends:,
-   		setSalary:,
-   		setAge:,
-   		age,
-   		salary,
-   		friends,
-   		subObject,
-   		setSubObject:,
-   		.cxx_destruct,
-   		name,
-   		setName:,
-   		init
-   ========after add observer objective detail========
-   yKNoteKVOObject:<YKNoteKVOObject: 0x60800024edf0>
-   	class YKNoteKVOObject
-   	objcClass NSKVONotifying_YKNoteKVOObject
-   	implementmethod 
-   		setFriends:,
-   		setAge:,
-   		setName:,
-   		class,
-   		dealloc,
-   		_isKVOA
-   yKNoteKVOObject2:<YKNoteKVOObject: 0x60800024eee0>
-   	class YKNoteKVOObject
-   	objcClass NSKVONotifying_YKNoteKVOObject
-   	implementmethod 
-   		setFriends:,
-   		setAge:,
-   		setName:,
-   		class,
-   		dealloc,
-   		_isKVOA
-   yKNoteKVOObject3:<YKNoteKVOObject: 0x60800005bc30>
-   	class YKNoteKVOObject
-   	objcClass NSKVONotifying_YKNoteKVOObject
-   	implementmethod 
-   		setFriends:,
-   		setAge:,
-   		setName:,
-   		class,
-   		dealloc,
-   		_isKVOA
-   yKNoteKVOObject4:<YKNoteKVOObject: 0x60800024e0d0>
-   	class YKNoteKVOObject
-   	objcClass YKNoteKVOObject
-   	implementmethod 
-   		setFriends:,
-   		setSalary:,
-   		setAge:,
-   		age,
-   		salary,
-   		friends,
-   		subObject,
-   		setSubObject:,
-   		.cxx_destruct,
-   		name,
-   		setName:,
-   		init
-   ============cls supeCls============
-   yKNoteKVOObject isa:NSKVONotifying_YKNoteKVOObject
-   yKNoteKVOObject isa's super class:YKNoteKVOObject
-   ============Object IMP============
-   objcIMP yKNoteKVOObject setName:0x1004c145d, setAge:0x1004c7c16
-   objcIMP yKNoteKVOObject2 setName:0x1004c145d, setAge:0x1004c7c16
-   objcIMP yKNoteKVOObject3 setName:0x1004c145d, setAge:0x1004c7c16
-   objcIMP yKNoteKVOObject4 setName:0x1003af810, setAge:0x1003af870
-   ============Runtime IMP============
-   runtimeMethodImpl yKNoteKVOObject setName:0x1004c145d, setAge:0x1004c7c16
-   runtimeMethodImpl yKNoteKVOObject2 setName:0x1004c145d, setAge:0x1004c7c16
-   runtimeMethodImpl yKNoteKVOObject3 setName:0x1004c145d, setAge:0x1004c7c16
-   runtimeMethodImpl yKNoteKVOObject4 setName:0x1003af810, setAge:0x1003af870
-   ============Observer change============
-   The value of name change to : YKNoteKVOObject Change property
-   The value of name change to : YKNoteKVOObject setValue:forKey:
-   The value of name change to : YKNoteKVOObject setValue:forKeyPath:
-   The value of friends change to : (
-       wanyakun
-   )
-   The value of salary change to : 1000
+      ========before add observer objective detail========
+      yKNoteKVOObject:<YKNoteKVOObject: 0x60800024edf0>
+      	class YKNoteKVOObject
+      	objcClass YKNoteKVOObject
+      	implementmethod 
+      		setFriends:,
+      		setSalary:,
+      		setAge:,
+      		age,
+      		salary,
+      		friends,
+      		subObject,
+      		setSubObject:,
+      		.cxx_destruct,
+      		name,
+      		setName:,
+      		init
+      yKNoteKVOObject2:<YKNoteKVOObject: 0x60800024eee0>
+      	class YKNoteKVOObject
+      	objcClass YKNoteKVOObject
+      	implementmethod 
+      		setFriends:,
+      		setSalary:,
+      		setAge:,
+      		age,
+      		salary,
+      		friends,
+      		subObject,
+      		setSubObject:,
+      		.cxx_destruct,
+      		name,
+      		setName:,
+      		init
+      yKNoteKVOObject3:<YKNoteKVOObject: 0x60800005bc30>
+      	class YKNoteKVOObject
+      	objcClass YKNoteKVOObject
+      	implementmethod 
+      		setFriends:,
+      		setSalary:,
+      		setAge:,
+      		age,
+      		salary,
+      		friends,
+      		subObject,
+      		setSubObject:,
+      		.cxx_destruct,
+      		name,
+      		setName:,
+      		init
+      yKNoteKVOObject4:<YKNoteKVOObject: 0x60800024e0d0>
+      	class YKNoteKVOObject
+      	objcClass YKNoteKVOObject
+      	implementmethod 
+      		setFriends:,
+      		setSalary:,
+      		setAge:,
+      		age,
+      		salary,
+      		friends,
+      		subObject,
+      		setSubObject:,
+      		.cxx_destruct,
+      		name,
+      		setName:,
+      		init
+      ========after add observer objective detail========
+      yKNoteKVOObject:<YKNoteKVOObject: 0x60800024edf0>
+      	class YKNoteKVOObject
+      	objcClass NSKVONotifying_YKNoteKVOObject
+      	implementmethod 
+      		setFriends:,
+      		setAge:,
+      		setName:,
+      		class,
+      		dealloc,
+      		_isKVOA
+      yKNoteKVOObject2:<YKNoteKVOObject: 0x60800024eee0>
+      	class YKNoteKVOObject
+      	objcClass NSKVONotifying_YKNoteKVOObject
+      	implementmethod 
+      		setFriends:,
+      		setAge:,
+      		setName:,
+      		class,
+      		dealloc,
+      		_isKVOA
+      yKNoteKVOObject3:<YKNoteKVOObject: 0x60800005bc30>
+      	class YKNoteKVOObject
+      	objcClass NSKVONotifying_YKNoteKVOObject
+      	implementmethod 
+      		setFriends:,
+      		setAge:,
+      		setName:,
+      		class,
+      		dealloc,
+      		_isKVOA
+      yKNoteKVOObject4:<YKNoteKVOObject: 0x60800024e0d0>
+      	class YKNoteKVOObject
+      	objcClass YKNoteKVOObject
+      	implementmethod 
+      		setFriends:,
+      		setSalary:,
+      		setAge:,
+      		age,
+      		salary,
+      		friends,
+      		subObject,
+      		setSubObject:,
+      		.cxx_destruct,
+      		name,
+      		setName:,
+      		init
+      ============cls supeCls============
+      yKNoteKVOObject isa:NSKVONotifying_YKNoteKVOObject
+      yKNoteKVOObject isa's super class:YKNoteKVOObject
+      ============Object IMP============
+      objcIMP yKNoteKVOObject setName:0x1004c145d, setAge:0x1004c7c16
+      objcIMP yKNoteKVOObject2 setName:0x1004c145d, setAge:0x1004c7c16
+      objcIMP yKNoteKVOObject3 setName:0x1004c145d, setAge:0x1004c7c16
+      objcIMP yKNoteKVOObject4 setName:0x1003af810, setAge:0x1003af870
+      ============Runtime IMP============
+      runtimeMethodImpl yKNoteKVOObject setName:0x1004c145d, setAge:0x1004c7c16
+      runtimeMethodImpl yKNoteKVOObject2 setName:0x1004c145d, setAge:0x1004c7c16
+      runtimeMethodImpl yKNoteKVOObject3 setName:0x1004c145d, setAge:0x1004c7c16
+      runtimeMethodImpl yKNoteKVOObject4 setName:0x1003af810, setAge:0x1003af870
+      ============Observer change============
+      The value of name change to : YKNoteKVOObject Change property
+      The value of name change to : YKNoteKVOObject setValue:forKey:
+      The value of name change to : YKNoteKVOObject setValue:forKeyPath:
+      The value of friends change to : (
+          wanyakun
+      )
+      The value of salary change to : 1000
    ```
+
 
    从输出能容可以得出：
 
@@ -427,8 +429,8 @@ Apple官方文档描述：
    > }
    > ```
 
-   - 添加observer之前，所有对象的class和objcClass均为YKNoteKVOObject。
-   - 添加observer之后，添加了observer的对象的class为YKNoteKVOObject， objecClass为NSKVONotifying_YKNoteKVOObject
+- 添加observer之前，所有对象的class和objcClass均为YKNoteKVOObject。
+- 添加observer之后，添加了observer的对象的class为YKNoteKVOObject， objecClass为NSKVONotifying_YKNoteKVOObject
    - 添加observer之后，对象的isa指针已经被替换为NSKVONotifying_YKNoteKVOObject，为YKNoteKVOObject子类，即动态生成子类（在原类添加前缀NSKVONotifying_），并使用子类替换对象的isa指针。
    - 子类NSKVONotifying_YKNoteKVOObject重载了被添加了observer的属性的set方法。
 

@@ -9,6 +9,7 @@
 ### 二、常见方法
 
 ```objc
+
 //获取方法
 - (nullable id)valueForKey:(NSString *)key;
 
@@ -89,310 +90,270 @@
 
 ### 四、实例
 
-1. 创建个对象YKNoteKVCObject
-
-   ```objc
-   //
-   //  YKNoteKVCObject.h
-   //  YKNote
-   //
-   //  Created by wanyakun on 2016/11/10.
-   //  Copyright © 2016年 com.ucaiyuan. All rights reserved.
-   //
-
-   #import <Foundation/Foundation.h>
-
-   @interface YKNoteKVCObject : NSObject {
-       NSInteger _intVar;
-       NSString *_strVar;
-   }
-
-   @property (nonatomic, assign) NSInteger intProperty;
-   @property (nonatomic, copy) NSString *strProperty;
-
-   @end
-
-   //
-   //  YKNoteKVCObject.m
-   //  YKNote
-   //
-   //  Created by wanyakun on 2016/11/10.
-   //  Copyright © 2016年 com.ucaiyuan. All rights reserved.
-   //
-
-   #import "YKNoteKVCObject.h"
-
-
-   @implementation YKNoteKVCObject
-
-   @synthesize intProperty = _intProperty;
-   @synthesize strProperty = _strProperty;
-
-   #pragma mark - method for orderSet
-   - (NSUInteger)countOfOrderSet {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       return 5;
-   }
-
-   - (NSInteger)indexInOrderSetOfObject:(id)element {
-       return 2;
-   }
-
-   - (id)objectInOrderSetAtIndex:(NSUInteger)index {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       return [NSString stringWithFormat:@"orderSet_%ld", index];
-   }
-
-   #pragma mark - method for array
-   - (NSUInteger)countOfArray {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       return 10;
-   }
-
-   - (id)objectInArrayAtIndex:(NSUInteger)index {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       return [NSString stringWithFormat:@"array_%ld", index];
-   }
-
-   #pragma mark - mehtod for set
-   - (NSUInteger)countOfSet {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       return 15;
-   }
-
-   - (NSEnumerator *)enumeratorOfSet {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       NSEnumerator *enumerator = [[NSEnumerator alloc] init];
-       return enumerator;
-   }
-
-   - (NSString *)memberOfSet:(NSString *)object {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       return [NSString stringWithFormat:@"member of set: %@", object];
-   }
-
-   #pragma mark - method for MutableOrderedSet
-   - (void)insertObject:(NSString *)object inMOrderSetAtIndex:(NSUInteger)index {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-   }
-
-   - (void)removeObjectFromMOrderSetAtIndex:(NSUInteger)index {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-   }
-
-   #pragma mark - method for MutableArray
-   - (void)insertObject:(NSString *)object inMArrayAtIndex:(NSUInteger)index {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-   }
-
-   - (void)removeObjectFromMArrayAtIndex:(NSUInteger)index {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-   }
-
-   #pragma mark - method for mutableSet
-   - (void)addMSetObject:(NSString *)object {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-   }
-
-   - (void)removeMSetObject:(NSString *)object {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-   }
-
-   #pragma mark - private method
-   - (id)valueForUndefinedKey:(NSString *)key {
-       NSLog(@"%s\nValueForUndefinedKey:%@", __PRETTY_FUNCTION__, key);
-       return @"undefinedKeyValue";
-   }
-
-   - (void)setNilValueForKey:(NSString *)key {
-       NSLog(@"%s\nNilValueKey:%@", __PRETTY_FUNCTION__, key);
-   }
-
-   - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-       NSLog(@"%s\nundefineKey:%@", __PRETTY_FUNCTION__, key);
-   }
-
-   + (BOOL)accessInstanceVariablesDirectly {
-       return YES;
-   }
-
-
-   #pragma mark getter setter
-   - (NSInteger)intProperty {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       return _intProperty;
-   }
-
-   - (void)setIntProperty:(NSInteger)intProperty {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       _intProperty = intProperty;
-   }
-
-   - (NSString *)strProperty {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       return _strProperty;
-   }
-
-   - (void)setStrProperty:(NSString *)strProperty {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       _strProperty = [strProperty copy];
-   }
-
-   @end
-   ```
-
-2. 创建Controller调取setValue:ForKey:和valueForKey:key等
-
-   ```objc
-   //
-   //  YKNoteKVCObject.m
-   //  YKNote
-   //
-   //  Created by wanyakun on 2016/11/10.
-   //  Copyright © 2016年 com.ucaiyuan. All rights reserved.
-   //
-
-   #import "YKNoteKVCObject.h"
-
-
-   @implementation YKNoteKVCObject
-
-   @synthesize intProperty = _intProperty;
-   @synthesize strProperty = _strProperty;
-
-   #pragma mark - method for orderSet
-   - (NSUInteger)countOfOrderSet {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       return 5;
-   }
-
-   - (NSInteger)indexInOrderSetOfObject:(id)element {
-       return 2;
-   }
-
-   - (id)objectInOrderSetAtIndex:(NSUInteger)index {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       return [NSString stringWithFormat:@"orderSet_%ld", index];
-   }
-
-   #pragma mark - method for array
-   - (NSUInteger)countOfArray {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       return 10;
-   }
-
-   - (id)objectInArrayAtIndex:(NSUInteger)index {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       return [NSString stringWithFormat:@"array_%ld", index];
-   }
-
-   #pragma mark - mehtod for set
-   - (NSUInteger)countOfSet {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       return 15;
-   }
-
-   - (NSEnumerator *)enumeratorOfSet {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       NSEnumerator *enumerator = [[NSEnumerator alloc] init];
-       return enumerator;
-   }
-
-   - (NSString *)memberOfSet:(NSString *)object {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       return [NSString stringWithFormat:@"member of set: %@", object];
-   }
-
-   #pragma mark - method for MutableOrderedSet
-   - (void)insertObject:(NSString *)object inMOrderSetAtIndex:(NSUInteger)index {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-   }
-
-   - (void)removeObjectFromMOrderSetAtIndex:(NSUInteger)index {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-   }
-
-   #pragma mark - method for MutableArray
-   - (void)insertObject:(NSString *)object inMArrayAtIndex:(NSUInteger)index {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-   }
-
-   - (void)removeObjectFromMArrayAtIndex:(NSUInteger)index {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-   }
-
-   #pragma mark - method for mutableSet
-   - (void)addMSetObject:(NSString *)object {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-   }
-
-   - (void)removeMSetObject:(NSString *)object {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-   }
-
-   #pragma mark - private method
-   - (id)valueForUndefinedKey:(NSString *)key {
-       NSLog(@"%s\nValueForUndefinedKey:%@", __PRETTY_FUNCTION__, key);
-       return @"undefinedKeyValue";
-   }
-
-   - (void)setNilValueForKey:(NSString *)key {
-       NSLog(@"%s\nNilValueKey:%@", __PRETTY_FUNCTION__, key);
-   }
-
-   - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-       NSLog(@"%s\nundefineKey:%@", __PRETTY_FUNCTION__, key);
-   }
-
-   + (BOOL)accessInstanceVariablesDirectly {
-       return YES;
-   }
-
-
-   #pragma mark getter setter
-   - (NSInteger)intProperty {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       return _intProperty;
-   }
-
-   - (void)setIntProperty:(NSInteger)intProperty {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       _intProperty = intProperty;
-   }
-
-   - (NSString *)strProperty {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       return _strProperty;
-   }
-
-   - (void)setStrProperty:(NSString *)strProperty {
-       NSLog(@"%s", __PRETTY_FUNCTION__);
-       _strProperty = [strProperty copy];
-   }
-
-   @end
-   ```
-
-3. 输出日志
-
-   ```
-   -[YKNoteKVCObject setIntProperty:]
-   -[YKNoteKVCObject intProperty]
-   intProperty = 10
-   -[YKNoteKVCObject setStrProperty:]
-   -[YKNoteKVCObject strProperty]
-   strProperty = I am strProperty
-   intVar = 20
-   strVar = I am strVar
-   -[YKNoteKVCObject setValue:forUndefinedKey:]
-   undefineKey:undefinedKey
-   -[YKNoteKVCObject setNilValueForKey:]
-   NilValueKey:intProperty
-   orderSet class:NSKeyValueOrderedSet
-   array class:NSKeyValueArray
-   set class:NSKeyValueSet
-   mutableOrderSet class:NSKeyValueFastMutableOrderedSet2
-   mutableArray class:NSKeyValueFastMutableArray2
-   mutableSet class:NSKeyValueFastMutableSet2
-   ```
+#### 1. 创建YKNoteKVCObject类
+
+```objc
+//
+//  YKNoteKVCObject.h
+//  YKNote
+//
+//  Created by wanyakun on 2016/11/10.
+//  Copyright © 2016年 com.ucaiyuan. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface YKNoteKVCObject : NSObject {
+    NSInteger _intVar;
+    NSString *_strVar;
+}
+
+@property (nonatomic, assign) NSInteger intProperty;
+@property (nonatomic, copy) NSString *strProperty;
+
+@end
+
+//
+//  YKNoteKVCObject.m
+//  YKNote
+//
+//  Created by wanyakun on 2016/11/10.
+//  Copyright © 2016年 com.ucaiyuan. All rights reserved.
+//
+
+#import "YKNoteKVCObject.h"
+
+
+@implementation YKNoteKVCObject
+
+@synthesize intProperty = _intProperty;
+@synthesize strProperty = _strProperty;
+
+#pragma mark - method for orderSet
+- (NSUInteger)countOfOrderSet {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    return 5;
+}
+
+- (NSInteger)indexInOrderSetOfObject:(id)element {
+    return 2;
+}
+
+- (id)objectInOrderSetAtIndex:(NSUInteger)index {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    return [NSString stringWithFormat:@"orderSet_%ld", index];
+}
+
+#pragma mark - method for array
+- (NSUInteger)countOfArray {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    return 10;
+}
+
+- (id)objectInArrayAtIndex:(NSUInteger)index {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    return [NSString stringWithFormat:@"array_%ld", index];
+}
+
+#pragma mark - mehtod for set
+- (NSUInteger)countOfSet {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    return 15;
+}
+
+- (NSEnumerator *)enumeratorOfSet {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSEnumerator *enumerator = [[NSEnumerator alloc] init];
+    return enumerator;
+}
+
+- (NSString *)memberOfSet:(NSString *)object {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    return [NSString stringWithFormat:@"member of set: %@", object];
+}
+
+#pragma mark - method for MutableOrderedSet
+- (void)insertObject:(NSString *)object inMOrderSetAtIndex:(NSUInteger)index {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+- (void)removeObjectFromMOrderSetAtIndex:(NSUInteger)index {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+#pragma mark - method for MutableArray
+- (void)insertObject:(NSString *)object inMArrayAtIndex:(NSUInteger)index {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+- (void)removeObjectFromMArrayAtIndex:(NSUInteger)index {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+#pragma mark - method for mutableSet
+- (void)addMSetObject:(NSString *)object {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+- (void)removeMSetObject:(NSString *)object {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+#pragma mark - private method
+- (id)valueForUndefinedKey:(NSString *)key {
+    NSLog(@"%s\nValueForUndefinedKey:%@", __PRETTY_FUNCTION__, key);
+    return @"undefinedKeyValue";
+}
+
+- (void)setNilValueForKey:(NSString *)key {
+    NSLog(@"%s\nNilValueKey:%@", __PRETTY_FUNCTION__, key);
+}
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    NSLog(@"%s\nundefineKey:%@", __PRETTY_FUNCTION__, key);
+}
+
++ (BOOL)accessInstanceVariablesDirectly {
+    return YES;
+}
+
+
+#pragma mark getter setter
+- (NSInteger)intProperty {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    return _intProperty;
+}
+
+- (void)setIntProperty:(NSInteger)intProperty {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    _intProperty = intProperty;
+}
+
+- (NSString *)strProperty {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    return _strProperty;
+}
+
+- (void)setStrProperty:(NSString *)strProperty {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    _strProperty = [strProperty copy];
+}
+
+@end
+```
+
+#### 2. 创建Controller，用来调用setValue:ForKey:和valueForKey:等
+
+```objc
+//
+//  YKNoteKVCViewController.m
+//  YKNote
+//
+//  Created by wanyakun on 2016/11/11.
+//  Copyright © 2016年 com.ucaiyuan. All rights reserved.
+//
+
+#import "YKNoteKVCViewController.h"
+#import "YKNoteKVCObject.h"
+#import <objc/runtime.h>
+
+@interface YKNoteKVCViewController ()
+
+@property (nonatomic, strong) YKNoteKVCObject *yKNoteKVCObject;
+
+@end
+
+@implementation YKNoteKVCViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.title = @"KVC";
+    self.view.backgroundColor = [UIColor whiteColor];
+    //通过存取器访问
+    [self.yKNoteKVCObject setValue:[NSNumber numberWithInteger:10] forKey:@"intProperty"];
+    NSInteger intProperty = [[self.yKNoteKVCObject valueForKey:@"intProperty"] integerValue];
+    NSLog(@"intProperty = %ld", intProperty);
+    
+    [self.yKNoteKVCObject setValue:@"I am strProperty" forKey:@"strProperty"];
+    NSString *strProperty = [self.yKNoteKVCObject valueForKey:@"strProperty"];
+    NSLog(@"strProperty = %@", strProperty);
+    
+    //通过实例变量访问
+    [self.yKNoteKVCObject setValue:[NSNumber numberWithInteger:20] forKey:@"intVar"];
+    NSInteger intVar = [[self.yKNoteKVCObject valueForKey:@"intVar"] integerValue];
+    NSLog(@"intVar = %ld", intVar);
+
+    [self.yKNoteKVCObject setValue:@"I am strVar" forKey:@"strVar"];
+    NSString *strVar = [self.yKNoteKVCObject valueForKey:@"strVar"];
+    NSLog(@"strVar = %@", strVar);
+
+    //set undefineKey
+    [self.yKNoteKVCObject setValue:@"undefine value" forKey:@"undefinedKey"];
+
+    //为非Object pointer参数类型设置nil
+    [self.yKNoteKVCObject setValue:nil forKey:@"intProperty"];
+
+    //NSOrderSet, NSArray, NSSet代理对象
+    id orderSet = [self.yKNoteKVCObject valueForKey:@"orderSet"];
+    id array = [self.yKNoteKVCObject valueForKey:@"array"];
+    id set = [self.yKNoteKVCObject valueForKey:@"set"];
+    NSLog(@"\norderSet class:%@\narray class:%@\nset class:%@", object_getClass(orderSet), object_getClass(array), object_getClass(set));
+    
+    //NSMutableOrderSet, NSMutableArray, NSMutableSet代理对象
+    id mutableOrderSet = [self.yKNoteKVCObject mutableOrderedSetValueForKey:@"mOrderSet"];
+    id mutableArray = [self.yKNoteKVCObject mutableArrayValueForKey:@"mArray"];
+    id mutableSet = [self.yKNoteKVCObject mutableSetValueForKey:@"mSet"];
+    NSLog(@"\nmutableOrderSet class:%@\nmutableArray class:%@\nmutableSet class:%@", object_getClass(mutableOrderSet), object_getClass(mutableArray), object_getClass(mutableSet));
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+#pragma mark - getter
+- (YKNoteKVCObject *)yKNoteKVCObject {
+    if (_yKNoteKVCObject == nil) {
+        _yKNoteKVCObject = [[YKNoteKVCObject alloc] init];
+    }
+    return _yKNoteKVCObject;
+}
+
+@end
+```
+
+#### 3. 输出结果
+
+```objective-c
+-[YKNoteKVCObject setIntProperty:]
+-[YKNoteKVCObject intProperty]
+intProperty = 10
+-[YKNoteKVCObject setStrProperty:]
+-[YKNoteKVCObject strProperty]
+strProperty = I am strProperty
+intVar = 20
+strVar = I am strVar
+-[YKNoteKVCObject setValue:forUndefinedKey:]
+undefineKey:undefinedKey
+-[YKNoteKVCObject setNilValueForKey:]
+NilValueKey:intProperty
+orderSet class:NSKeyValueOrderedSet
+array class:NSKeyValueArray
+set class:NSKeyValueSet
+mutableOrderSet class:NSKeyValueFastMutableOrderedSet2
+mutableArray class:NSKeyValueFastMutableArray2
+mutableSet class:NSKeyValueFastMutableSet2
+```
 

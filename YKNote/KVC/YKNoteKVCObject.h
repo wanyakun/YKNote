@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface YKNoteKVCObject : NSObject
+@interface YKNoteKVCObject : NSObject {
+    NSInteger _intVar;
+    NSString *_strVar;
+}
 
-
+@property (nonatomic, assign) NSInteger intProperty;
+@property (nonatomic, copy) NSString *strProperty;
 
 @end

@@ -27,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"KVO";
+
     [self.view addSubview:self.textView];
     [self.textView fill];
     

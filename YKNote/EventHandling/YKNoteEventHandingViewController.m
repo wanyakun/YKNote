@@ -20,10 +20,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"EventHandling";
+    self.view.backgroundColor = [UIColor whiteColor];
+
     [self.yKNoteEventHandingView setX:50];
     [self.yKNoteEventHandingView setY:100];
-    [self.yKNoteEventHandingView setWidth:150];
-    [self.yKNoteEventHandingView setHeight:150];
+    [self.yKNoteEventHandingView setWidth:200];
+    [self.yKNoteEventHandingView setHeight:200];
     
     [self.view addSubview:self.yKNoteEventHandingView];
     
@@ -34,15 +37,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - overrite
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    NSLog(@"%s", __PRETTY_FUNCTION__);
 }
-*/
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
 
 #pragma mark - getter
 - (YKNoteEventHandingView *)yKNoteEventHandingView {

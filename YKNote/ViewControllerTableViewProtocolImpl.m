@@ -25,6 +25,7 @@
                        @"NSOperation",
                        @"KVC",
                        @"KVO",
+                       @"EventHandling",
                        @"Runtime",
                        @"Runloop",
                        @"DataStructure"];
@@ -33,6 +34,7 @@
                              @"YKNoteOperationViewController",
                              @"YKNoteKVCViewController",
                              @"YKNoteKVOViewController",
+                             @"YKNoteEventHandingViewController",
                              @"YKNoteRuntimeViewController",
                              @"YKNoteRunloopViewController",
                              @"YKNoteDataStructureViewController"];

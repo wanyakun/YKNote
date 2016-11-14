@@ -30,6 +30,7 @@
                 NSLog(@"class name is: %@\n", name);
             }
         }
+        free(cls);
     }
     
     return YES;
@@ -60,6 +61,10 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 

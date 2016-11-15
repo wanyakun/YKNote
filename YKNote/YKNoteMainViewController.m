@@ -1,23 +1,22 @@
 //
-//  ViewController.m
+//  YKNoteMainViewController.m
 //  YKNote
 //
-//  Created by wanyakun on 2016/11/3.
+//  Created by wanyakun on 2016/11/15.
 //  Copyright © 2016年 com.ucaiyuan. All rights reserved.
 //
 
-#import "ViewController.h"
-#import "ViewControllerTableViewProtocolImpl.h"
+#import "YKNoteMainViewController.h"
+#import "YKNoteMainViewControllerProtocolImpl.h"
 
-@interface ViewController ()
+@interface YKNoteMainViewController ()
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) ViewControllerTableViewProtocolImpl *tableViewProtocolImpl;
-
+@property (nonatomic, strong) YKNoteMainViewControllerProtocolImpl *tableViewProtocolImpl;
 
 @end
 
-@implementation ViewController
+@implementation YKNoteMainViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -60,9 +59,9 @@
     return _tableView;
 }
 
-- (ViewControllerTableViewProtocolImpl *)tableViewProtocolImpl {
+- (YKNoteMainViewControllerProtocolImpl *)tableViewProtocolImpl {
     if (_tableViewProtocolImpl == nil) {
-        _tableViewProtocolImpl = [[ViewControllerTableViewProtocolImpl alloc] init];
+        _tableViewProtocolImpl = [[YKNoteMainViewControllerProtocolImpl alloc] init];
         _tableViewProtocolImpl.controller = self;
     }
     return _tableViewProtocolImpl;

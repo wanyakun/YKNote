@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YKNoteWindow.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) YKNoteWindow *window;
 
 
 @end

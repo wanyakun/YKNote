@@ -14,4 +14,9 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    [super touchesEnded:touches withEvent:event];
+}
+
 @end

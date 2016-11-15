@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <objc/runtime.h>
+#import "YKNoteMainViewController.h"
 
 @interface AppDelegate ()
 
@@ -32,6 +33,16 @@
         }
         free(cls);
     }
+    
+    //创建MainViewController
+    YKNoteMainViewController *mainViewController = [[YKNoteMainViewController alloc] init];
+    //创建NavigationController
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
+    //创建Window
+    self.window = [[YKNoteWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = navigationController;
+    [self.window makeKeyAndVisible];
     
     return YES;
 }
@@ -63,9 +74,9 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-}
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    NSLog(@"%s", __PRETTY_FUNCTION__);
+//}
 
 
 @end

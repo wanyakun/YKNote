@@ -10,9 +10,21 @@
 
 @implementation YKNoteEventHandingView
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesBegan:touches withEvent:event];
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
     NSLog(@"%s", __PRETTY_FUNCTION__);
+    return [super hitTest:point withEvent:event];
+}
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    BOOL isInside = [super pointInside:point withEvent:event];
+    NSLog(@"is in %@ : %d", [self class], isInside);
+    return isInside;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    [super touchesBegan:touches withEvent:event];
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -32,11 +44,11 @@
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"%s", __PRETTY_FUNCTION__);
+    [super touchesEnded:touches withEvent:event];
 }
 
 - (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"%s", __PRETTY_FUNCTION__);
 }
-
 
 @end

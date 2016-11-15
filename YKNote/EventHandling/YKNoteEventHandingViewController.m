@@ -30,6 +30,16 @@
     
     [self.view addSubview:self.yKNoteEventHandingView];
     
+    [self logNextResponder:self.yKNoteEventHandingView];
+    
+}
+
+- (void)logNextResponder:(UIResponder *)responder {
+    UIResponder *nextResponder = responder.nextResponder;
+    NSLog(@"responder:%s %p and next responder:%s %p\n", object_getClassName(responder), responder, object_getClassName(nextResponder), nextResponder);
+    if (nextResponder) {
+        [self logNextResponder:nextResponder];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,8 +49,8 @@
 
 #pragma mark - overrite
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesBegan:touches withEvent:event];
     NSLog(@"%s", __PRETTY_FUNCTION__);
+    [super touchesBegan:touches withEvent:event];
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -49,6 +59,7 @@
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"%s", __PRETTY_FUNCTION__);
+    [super touchesEnded:touches withEvent:event];
 }
 
 - (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

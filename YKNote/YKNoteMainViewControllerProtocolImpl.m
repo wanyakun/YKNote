@@ -1,22 +1,22 @@
 //
-//  ViewControllerTableViewProtocolImpl.m
+//  YKNoteMainViewControllerProtocolImpl.m
 //  YKNote
 //
-//  Created by wanyakun on 2016/11/7.
+//  Created by wanyakun on 2016/11/15.
 //  Copyright © 2016年 com.ucaiyuan. All rights reserved.
 //
 
-#import "ViewControllerTableViewProtocolImpl.h"
+#import "YKNoteMainViewControllerProtocolImpl.h"
 #import <objc/runtime.h>
 
-@interface ViewControllerTableViewProtocolImpl ()
+@interface YKNoteMainViewControllerProtocolImpl ()
 
 @property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic, strong) NSArray *controllerArray;
 
 @end
 
-@implementation ViewControllerTableViewProtocolImpl
+@implementation YKNoteMainViewControllerProtocolImpl
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -91,6 +91,5 @@
     
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
-
 
 @end

@@ -10,6 +10,13 @@
 
 @implementation YKNoteEventHandingView
 
+- (instancetype)init {
+    if (self = [super init]) {
+        //
+    }
+    return self;
+}
+
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     return [super hitTest:point withEvent:event];

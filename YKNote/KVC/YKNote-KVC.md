@@ -57,15 +57,16 @@
 
    对于集合(NSArray, NSSet, NSOrderSet)像使用普通对象一样，则返回代理对象，需要实现以下方法
 
-   | NSArray                   | NSSet                 | NSOrderSet                |
-   | ------------------------- | --------------------- | ------------------------- |
-   | ` -countOf<Key>`          | ` -countOf<Key>`      | ` -countOf<Key>`          |
-   |                           | ` -enumeratorOf<Key>` | ` -indexIn<Key>OfObject:` |
-   | *One of*                  | ` -memberOf<Key>:`    | *One of*                  |
-   | ` -objectIn<Key>AtIndex:` |                       | ` -objectIn<Key>AtIndex:` |
-   | ` -<key>AtIndexes:`       |                       | ` -<key>AtIndexes:`       |
-   | *Optional (performance)*  |                       | *Optional (performance)*  |
-   | ` -get<Key>:range:`       |                       | ` -get<Key>:range:`       |
+
+| NSArray                   | NSSet                 | NSOrderSet                |
+| ------------------------- | --------------------- | ------------------------- |
+| ` -countOf<Key>`          | ` -countOf<Key>`      | ` -countOf<Key>`          |
+|                           | ` -enumeratorOf<Key>` | ` -indexIn<Key>OfObject:` |
+| *One of*                  | ` -memberOf<Key>:`    | *One of*                  |
+| ` -objectIn<Key>AtIndex:` |                       | ` -objectIn<Key>AtIndex:` |
+| ` -<key>AtIndexes:`       |                       | ` -<key>AtIndexes:`       |
+| *Optional (performance)*  |                       | *Optional (performance)*  |
+| ` -get<Key>:range:`       |                       | ` -get<Key>:range:`       |
 
 2. setValue: forKey: （setValue: forKeyPath:类似）
 
@@ -77,16 +78,17 @@
 
    默认实现存取器方法时和`-valueForKey:key`一样。返回代理对象时需要实现的方法有差别。如下：
 
-   | NSMutableArray / NSMutableOrderedSet     | NSMutableSet                             |
-   | ---------------------------------------- | ---------------------------------------- |
-   | *At least 1 insertion and 1 removal method* | * At least 1 addition and 1 removal method |
-   | ` -insertObject:in<Key>AtIndex:`         | ` -add<Key>Object:`                      |
-   | ` -removeObjectFrom<Key>AtIndex:`        | ` -remove<Key>Object:`                   |
-   | ` -insert<Key>:atIndexes:`               | ` -add<Key>:`                            |
-   | ` -remove<Key>AtIndexes:`                | ` -remove<Key>:`                         |
-   | *Optional (performance) one of*          | * Optional (performance)                 |
-   | ` -replaceObjectIn<Key>AtIndex:withObject:` | ` -intersect<Key>:`                      |
-   | ` -replace<Key>AtIndexes:with<Key>:`     | ` -set<Key>:`                            |
+
+| NSMutableArray / NSMutableOrderedSet     | NSMutableSet                             |
+| ---------------------------------------- | ---------------------------------------- |
+| *At least 1 insertion and 1 removal method* | * At least 1 addition and 1 removal method |
+| ` -insertObject:in<Key>AtIndex:`         | ` -add<Key>Object:`                      |
+| ` -removeObjectFrom<Key>AtIndex:`        | ` -remove<Key>Object:`                   |
+| ` -insert<Key>:atIndexes:`               | ` -add<Key>:`                            |
+| ` -remove<Key>AtIndexes:`                | ` -remove<Key>:`                         |
+| *Optional (performance) one of*          | * Optional (performance)                 |
+| ` -replaceObjectIn<Key>AtIndex:withObject:` | ` -intersect<Key>:`                      |
+| ` -replace<Key>AtIndexes:with<Key>:`     | ` -set<Key>:`                            |
 
 ### 四、实例
 

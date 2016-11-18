@@ -26,6 +26,7 @@
                        @"KVC",
                        @"KVO",
                        @"EventHandling",
+                       @"GestureRecognizer",
                        @"Runtime",
                        @"Runloop",
                        @"DataStructure"];
@@ -35,6 +36,7 @@
                              @"YKNoteKVCViewController",
                              @"YKNoteKVOViewController",
                              @"YKNoteEventHandingViewController",
+                             @"YKNoteGestureRecognizerViewController",
                              @"YKNoteRuntimeViewController",
                              @"YKNoteRunloopViewController",
                              @"YKNoteDataStructureViewController"];

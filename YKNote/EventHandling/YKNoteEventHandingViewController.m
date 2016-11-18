@@ -9,6 +9,7 @@
 #import "YKNoteEventHandingViewController.h"
 #import "YKNoteEventHandingView.h"
 #import "YKNoteEventHandlingButton.h"
+#import "YKNoteTapGestureRecognizer.h"
 
 @interface YKNoteEventHandingViewController ()<UIGestureRecognizerDelegate>
 
@@ -35,7 +36,7 @@
 
     //Button
     [self.ykNoteEventHandlingButton setX:100];
-    [self.ykNoteEventHandlingButton setY:200];
+    [self.ykNoteEventHandlingButton setY:250];
     [self.ykNoteEventHandlingButton setWidth:100];
     [self.ykNoteEventHandlingButton setHeight:100];
     [self.view addSubview:self.ykNoteEventHandlingButton];
@@ -95,8 +96,11 @@
         _yKNoteEventHandingView.backgroundColor = [UIColor redColor];
         
         
-        UITapGestureRecognizer *recognzier = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGestureRecognizer:)];
+        YKNoteTapGestureRecognizer *recognzier = [[YKNoteTapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGestureRecognizer:)];
         recognzier.delegate = self;
+//        recognzier.delaysTouchesBegan = YES;
+//        recognzier.numberOfTapsRequired = 2;
+//        recognzier.delaysTouchesEnded = NO;
         [_yKNoteEventHandingView addGestureRecognizer:recognzier];
     }
     return _yKNoteEventHandingView;

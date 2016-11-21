@@ -6,7 +6,7 @@
 
 
 
-![A gesture recognizer attached to view](http://kunkun.qiniudn.com/gestureRecognizer_2x.png?imageView2/2/w/500)
+![A gesture recognizer attached to view](http://kunkun.qiniudn.com/yknote/eventhandling/gestureRecognizer_2x.png?imageView2/2/w/500)
 
 
 
@@ -50,7 +50,7 @@ UIKit框架提供以下预设的手势识别器，在设计app的时候可以考
 
 一个手势不是离散的就是连续的。离散手势（例如轻敲）发生一次。 连续手势则在一段时间内发生，例如挤压。 对于离散手势，手势识别器向其目标发送单个动作消息。 连续手势的手势识别器则持续向其目标发送动作消息，直到多点触摸序列结束，如下图所示。
 
-![Discrete and continuous gestures](http://kunkun.qiniudn.com/discrete_vs_continuous_2x.png?imageView2/2/w/500)
+![Discrete and continuous gestures](http://kunkun.qiniudn.com/yknote/eventhandling/discrete_vs_continuous_2x.png?imageView2/2/w/500)
 
 
 
@@ -201,7 +201,7 @@ UIKit框架提供以下预设的手势识别器，在设计app的时候可以考
 
 手势识别器以预定义的方式从一个状态转换到另一个状态。 每个状态可以基于它们是否满足特定条件而移动到几个可能的下一个状态中的一个。 精确的状态机取决于姿势识别器是离散还是连续的而变化。所有手势识别器都是从UIGestureRecognizerStatePossible开始。 他们分析他们收到的任何多点触摸序列，在分析期间，他们要么识别手势，要么未能识别。未能识别手势意味着手势识别器转换到UIGestureRecognizerStateFailed状态。
 
-![State machines for gesture recognizers](http://kunkun.qiniudn.com/gr_state_transitions_2x.png?imageView2/2/w/500)
+![State machines for gesture recognizers](http://kunkun.qiniudn.com/yknote/eventhandling/gr_state_transitions_2x.png?imageView2/2/w/500)
 
 当离散手势识别器识别他的手势，手势识别器从Possible状态转换到Recognized（UIGestureRecognizerStateRecognized）状态，识别结束。
 
@@ -312,7 +312,7 @@ requireGestureRecognizerToFail:方法向接收方发送消息，并指定在接�
 
 触摸阶段指示触摸何时开始，其是移动还是静止，以及何时结束（即，当手指不再触摸屏幕时）。如图所示，应用程序在触摸的每个阶段接收事件对象。
 
-![A multitouch sequence and touch phases](http://kunkun.qiniudn.com/event_touch_time_2x.png?imageView2/2/w/600)
+![A multitouch sequence and touch phases](http://kunkun.qiniudn.com/yknote/eventhandling/event_touch_time_2x.png?imageView2/2/w/600)
 
 #### 2. 应用程序在触摸处理方法中接收触摸
 
@@ -329,9 +329,35 @@ requireGestureRecognizerToFail:方法向接收方发送消息，并指定在接�
 
 有时，你希望视图在手势识别器之前接收到触摸。 但是，在你更改触摸到视图的传递路径之前，您需要了解默认行为。 在简单的情况下，当发生触摸时，触摸对象从UIApplication对象传递到UIWindow对象。 然后，在窗口将触摸传递到视图对象本身之前，窗口首先向关联到触摸发生的视图（或该视图的超级视图）的任何手势识别器发送触摸。
 
-![Default delivery path for touch events](http://kunkun.qiniudn.com/path_of_touches_2x.png?imageView2/2/w/600)
+![Default delivery path for touch events](http://kunkun.qiniudn.com/yknote/eventhandling/path_of_touches_2x.png?imageView2/2/w/600)
 
 #### 1. 手势识别器获得第一个机会识别触摸
+
+窗口延迟触摸对象传递到视图，使得手势识别可以首先分析触摸。在延迟期间，如果手势识别器识别触摸手势，则该窗口永远不会将触摸对象传递到视图，并且也取消一些前面发送到视图的识别序列中的触摸对象。
+
+例如，如果你有一个需要两指触控的离散手势识别器，这传送两个独立的触摸对象。随着触摸发生，触摸对象从应用程序对象传递给发生触摸的视图的窗口对象，并遵循以下顺序：
+
+![Sequence of messages for touches](http://kunkun.qiniudn.com/yknote/eventhandling/recognize_touch_2x.png?imageView2/2/w/600)
+
+1. 窗体在Began阶段通过touchesBegan:withEvent:方法发送两个触摸对象到手势识别器。手势识别器还没有识别手势，所以其状态为Possible。窗体也发送这些同样的触摸对象到手势识别器所依附的视图。
+2. 窗体在Moved阶段通过touchesMoved:withEvent:方法发送两个触摸对象到手势识别器。识别器依然不检测手势，并且仍处于Possible状态。然后窗口将这些触摸发送到依附的视图。
+3. 窗口在Ended阶段通过touchesEnded:withEvent:方法发送一个触摸对象到手势识别器。此触摸对象不会为手势产生足够的信息，但窗口会从依附的视图中扣留该触摸对象。
+4. 窗口在Ended阶段发送另一个触摸对象。手势识别器现在识别其手势，因此它将其状态设置为Recognized。在第一个动作消息发送之前，视图调用touchesCancelled:withEvent:方法使先前在Began和Moved阶段发送的触摸对象无效。Ended阶段的触摸被取消。
+
+现在假设在最后一步中的手势识别器决定它正在分析的这个多点触摸序列不是它的手势。 它将其状态设置为UIGestureRecognizerStateFailed。 然后，窗口将Ended阶段中的两个触摸对象通过touchesEnded:withEvent:方法发送消息到附加的视图。
+
+连续手势识别器遵循类似的顺序，除了在触摸对象在到达Ended阶段之前很有可能识别手势。 在识别其手势时，它将其状态设置为UIGestureRecognizerStateBegan（not Recognized）。 窗口将多点触摸序列中的所有后续触摸对象发送到手势识别器，但不发送到附加视图。
+
+#### 2. 影响触摸到视图的传递路径
+
+
+
+
+
+
+
+
+
 
 
 

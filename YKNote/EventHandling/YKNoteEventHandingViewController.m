@@ -16,6 +16,9 @@
 @property (nonatomic, strong) YKNoteEventHandingView *yKNoteEventHandingView;
 @property (nonatomic, strong) YKNoteEventHandlingButton *ykNoteEventHandlingButton;
 
+@property (nonatomic, strong) YKNoteEventHandlingButton *ykNoteBlueButton;
+@property (nonatomic, strong) YKNoteEventHandlingButton *ykNoteYellowButton;
+
 @end
 
 @implementation YKNoteEventHandingViewController
@@ -26,20 +29,19 @@
     self.title = @"EventHandling";
     self.view.backgroundColor = [UIColor whiteColor];
     //View
-    [self.yKNoteEventHandingView setX:50];
-    [self.yKNoteEventHandingView setY:100];
-    [self.yKNoteEventHandingView setWidth:200];
-    [self.yKNoteEventHandingView setHeight:200];
-    
+    [self.yKNoteEventHandingView setFrame:CGRectMake(50, 100, 200, 200)];
     [self.view addSubview:self.yKNoteEventHandingView];
     [self logNextResponder:self.yKNoteEventHandingView];
 
     //Button
-    [self.ykNoteEventHandlingButton setX:100];
-    [self.ykNoteEventHandlingButton setY:250];
-    [self.ykNoteEventHandlingButton setWidth:100];
-    [self.ykNoteEventHandlingButton setHeight:100];
+    [self.ykNoteEventHandlingButton setFrame:CGRectMake(100, 250, 100, 100)];
     [self.view addSubview:self.ykNoteEventHandlingButton];
+    
+    [self.ykNoteBlueButton setFrame:CGRectMake(100, 370, 200, 200)];
+    [self.view addSubview:self.ykNoteBlueButton];
+    
+    [self.ykNoteYellowButton setFrame:CGRectMake(50, 50, 100, 100)];
+    [self.ykNoteBlueButton addSubview:self.ykNoteYellowButton];
 }
 
 - (void)logNextResponder:(UIResponder *)responder {
@@ -55,9 +57,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
 #pragma mark - UIGestureRecognizerDelegate
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%s and View:%s", __PRETTY_FUNCTION__, object_getClassName(gestureRecognizer.view));
+    return YES;
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    NSLog(@"%s and View:%s", __PRETTY_FUNCTION__, object_getClassName(gestureRecognizer.view));
+//    if (gestureRecognizer.view == self.ykNoteEventHandlingButton) {
+//        return NO;
+//    }
     return YES;
 }
 
@@ -82,11 +96,11 @@
 
 #pragma mark - event
 - (void)ykNoteEventHandlingButtonDidTouchUpInside:(UIButton *)button {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%s \n %@", __PRETTY_FUNCTION__, button);
 }
 
 - (void)handleGestureRecognizer:(UIGestureRecognizer *)recognizer {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%s and View:%s", __PRETTY_FUNCTION__, object_getClassName(recognizer.view));
 }
 
 #pragma mark - getter
@@ -98,9 +112,6 @@
         
         YKNoteTapGestureRecognizer *recognzier = [[YKNoteTapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGestureRecognizer:)];
         recognzier.delegate = self;
-//        recognzier.delaysTouchesBegan = YES;
-//        recognzier.numberOfTapsRequired = 2;
-//        recognzier.delaysTouchesEnded = NO;
         [_yKNoteEventHandingView addGestureRecognizer:recognzier];
     }
     return _yKNoteEventHandingView;
@@ -113,6 +124,24 @@
         [_ykNoteEventHandlingButton addTarget:self action:@selector(ykNoteEventHandlingButtonDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _ykNoteEventHandlingButton;
+}
+
+- (YKNoteEventHandlingButton *)ykNoteBlueButton {
+    if (_ykNoteBlueButton == nil) {
+        _ykNoteBlueButton = [[YKNoteEventHandlingButton alloc] init];
+        _ykNoteBlueButton.backgroundColor = [UIColor blueColor];
+        [_ykNoteBlueButton addTarget:self action:@selector(ykNoteEventHandlingButtonDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _ykNoteBlueButton;
+}
+
+- (YKNoteEventHandlingButton *)ykNoteYellowButton {
+    if (_ykNoteYellowButton == nil) {
+        _ykNoteYellowButton = [[YKNoteEventHandlingButton alloc] init];
+        _ykNoteYellowButton.backgroundColor = [UIColor yellowColor];
+        [_ykNoteYellowButton addTarget:self action:@selector(ykNoteEventHandlingButtonDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _ykNoteYellowButton;
 }
 
 @end

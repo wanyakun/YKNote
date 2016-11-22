@@ -1,22 +1,41 @@
 ## iOS事件机制
 
-关于事件机制，首先给出官方链接，英文好的可以去阅读原文，一手资料是最好的。官方文档：https://developer.apple.com/library/content/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/Introduction/Introduction.html
+用户以多种方式操纵他们的iOS设备，例如触摸屏幕或摇动设备。 iOS会解释用户何时以及如何操作硬件并将此信息传递到您的应用程序。 您的应用程序以自然和直观的方式响应操作的次数越多，对用户而言越有吸引力的体验。
 
 ### 一、事件分类
 
-在iOS中事件分为三类：多点触摸事件、运动事件和远程控制事件。而在我们开发过程中最常用的就是多点触摸事件。
+事件是发送到应用程序用于通知用户操作的对象。 在iOS中，事件可以采取多种形式：多点触摸事件，运动事件和用于控制多媒体的事件。 这最后一种类型的事件被称为遥控事件，因为它可以源自外部附件。而在我们开发过程中最常用的就是多点触摸事件。
 
-### 二、事件传递
+![Event in iOS](http://kunkun.qiniudn.com/yknote/eventhandling/events_to_app_2x.png?imageView2/2/w/600)
 
-当一个用户生产的事件发生时，UIKit创建一个事件对象，包含处理事件所需要的信息。然后它将事件对放到当前活跃的应用程序的事件队列中。对于触摸事件，对象是一组被包装成UIEvent的触摸对象。对于运动事件，该对象取决于你所使用的框架和你所感兴趣的运动事件类型。
+### 二、事件传递与响应链
 
-事件将沿着特定的路径进行传递，直到它被传输到一个能够处理它的对象。首先，UIApplication单例对象从队列的顶部获取对象并进行派发。通常它发送事件到到app的key window对象，将事件传递到initial object用于处理，initial object取决于事件类型。
+当您设计应用程式时，可能需要动态响应事件。 例如，触摸可以发生在屏幕上的许多不同对象中，并且您必须决定您想要那个对象响应事件，并且理解该对象如何接收该事件。
 
-- 触摸事件：对于触摸事件，窗口对象首先尝试发送事件到触摸发生的view，这个view被称为hit-test view。找到hit-test view的处理过程被称为hit-testing。参考：https://developer.apple.com/library/content/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/event_delivery_responder_chain/event_delivery_responder_chain.html#//apple_ref/doc/uid/TP40009541-CH4-SW4
-- 运动事件和远程控制事件：对于这些事件，窗口对象发送摇动运动或远程控制事件给第一响应者来处理。第一响应者参考：https://developer.apple.com/library/content/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/event_delivery_responder_chain/event_delivery_responder_chain.html#//apple_ref/doc/uid/TP40009541-CH4-SW1
+当用户生成的事件发生时，UIKit创建一个包含处理事件所需信息的事件对象。 然后它将事件对象放置在活动应用程序的事件队列中。 对于触摸事件，该对象是在UIEvent对象中打包的一组触摸。 对于运动事件，事件对象因您使用的框架和您感兴趣的运动事件类型而异。
 
-#### 1. Hit-Testing
+事件沿着特定路径传递，直到它被传递到可以处理它的对象。 首先，单例UIApplication对象从队列的顶部获取一个事件并分发处理。 通常，它将事件发送到应用程序的key window对象，该对象将事件传递到初始对象(initial object)进行处理。 初始对象取决于事件的类型。
+
+- 触摸事件：对于触摸事件，窗口对象首先尝试将事件传递到发生触摸的视图。 该视图称为命中测试视图（hit-test view）。 找到命中测试视图（hit-test view）的过程称为命中测试（hit-testing），这在[Hit-Testing返回触摸发生的视图](#1-Hit-Testing返回触摸发生的视图)中描述。
+
+- 运动和遥控事件：对于这些事件，窗口对象将摇动或远程控制事件发送到第一响应者以进行处理。 第一响应者在[响应者链由响应者对象组成](#2-响应者链由响应者对象组成)中描述。
+
+这些事件路径的最终目标是找到一个可以处理和响应事件的对象。 因此，UIKit首先将事件发送到最适合处理事件的对象。 对于触摸事件，该对象是命中测试视图（hit-test view），对于其他事件，该对象是第一个响应者。 以下部分更详细地说明命中测试视图（hit-test view）和第一响应者对象是如何确定的。
+
+#### 1. Hit-Testing返回触摸发生的视图
 
 
 
-### 三、事件响应
+#### 2. 响应者链由响应者对象组成
+
+
+
+#### 3. 响应者链遵循特定传递路径
+
+
+
+参考：
+
+https://developer.apple.com/library/content/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/Introduction/Introduction.html
+
+https://developer.apple.com/library/content/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/event_delivery_responder_chain/event_delivery_responder_chain.html

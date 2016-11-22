@@ -112,6 +112,8 @@
         
         YKNoteTapGestureRecognizer *recognzier = [[YKNoteTapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGestureRecognizer:)];
         recognzier.delegate = self;
+        recognzier.numberOfTapsRequired = 2;
+        recognzier.delaysTouchesEnded = YES;
         [_yKNoteEventHandingView addGestureRecognizer:recognzier];
     }
     return _yKNoteEventHandingView;

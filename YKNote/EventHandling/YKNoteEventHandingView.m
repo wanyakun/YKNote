@@ -56,4 +56,8 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
+//- (void)ykNoteEventHandlingGreenButtonDidTouchUpInside:(UIButton *)button {
+//    NSLog(@"%s \n %@", __PRETTY_FUNCTION__, button);
+//}
+
 @end

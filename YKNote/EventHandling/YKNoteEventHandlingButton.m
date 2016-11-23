@@ -25,7 +25,19 @@
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
     NSLog(@"%s", __PRETTY_FUNCTION__);
-    return [super hitTest:point withEvent:event];
+//    if (self.backgroundColor == [UIColor yellowColor]) {
+//        return nil;
+//    }
+    
+    if (self.userInteractionEnabled == NO || self.hidden || self.alpha <= 0.01) {
+        return nil;
+    }
+    
+    CGRect responseRect = CGRectInset(self.bounds, -20, -20);
+    if (CGRectContainsPoint(responseRect, point)) {
+        return [super hitTest:point withEvent:event];
+    }
+    return nil;
 }
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
@@ -81,5 +93,9 @@
 - (void)handleGestureRecognizer:(UIGestureRecognizer *)recognizer {
     NSLog(@"%s and View:%s", __PRETTY_FUNCTION__, object_getClassName(recognizer.view));
 }
+//
+//- (void)ykNoteEventHandlingGreenButtonDidTouchUpInside:(UIButton *)button {
+//    NSLog(@"%s \n %@", __PRETTY_FUNCTION__, button);
+//}
 
 @end

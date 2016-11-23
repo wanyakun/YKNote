@@ -19,20 +19,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    int clsCount = objc_getClassList(NULL, 0);
-    NSLog(@"Application has %d class", clsCount);
-    if (clsCount > 0) {
-        Class *cls = (__unsafe_unretained Class *)malloc(sizeof(Class)*clsCount);
-        clsCount = objc_getClassList(cls, clsCount);
-        for (NSInteger i = 0; i < clsCount; i++) {
-            const char *clsName = class_getName(cls[i]);
-            NSString *name = [NSString stringWithUTF8String:clsName];
-            if ([name hasPrefix:@"YKNote"] && [name hasSuffix:@"ViewController"]) {
-                NSLog(@"class name is: %@\n", name);
-            }
-        }
-        free(cls);
-    }
+//    int clsCount = objc_getClassList(NULL, 0);
+//    NSLog(@"Application has %d class", clsCount);
+//    if (clsCount > 0) {
+//        Class *cls = (__unsafe_unretained Class *)malloc(sizeof(Class)*clsCount);
+//        clsCount = objc_getClassList(cls, clsCount);
+//        for (NSInteger i = 0; i < clsCount; i++) {
+//            const char *clsName = class_getName(cls[i]);
+//            NSString *name = [NSString stringWithUTF8String:clsName];
+//            if ([name hasPrefix:@"YKNote"] && [name hasSuffix:@"ViewController"]) {
+//                NSLog(@"class name is: %@\n", name);
+//            }
+//        }
+//        free(cls);
+//    }
     
     //创建MainViewController
     YKNoteMainViewController *mainViewController = [[YKNoteMainViewController alloc] init];

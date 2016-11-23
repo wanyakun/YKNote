@@ -34,8 +34,8 @@
     [self logNextResponder:self.yKNoteEventHandingView];
 
     //Button
-    [self.ykNoteEventHandlingButton setFrame:CGRectMake(100, 250, 100, 100)];
-    [self.view addSubview:self.ykNoteEventHandlingButton];
+    [self.ykNoteEventHandlingButton setFrame:CGRectMake(60, 60, 100, 100)];
+    [self.yKNoteEventHandingView addSubview:self.ykNoteEventHandlingButton];
     
     [self.ykNoteBlueButton setFrame:CGRectMake(100, 370, 200, 200)];
     [self.view addSubview:self.ykNoteBlueButton];
@@ -103,6 +103,10 @@
     NSLog(@"%s and View:%s", __PRETTY_FUNCTION__, object_getClassName(recognizer.view));
 }
 
+- (void)ykNoteEventHandlingGreenButtonDidTouchUpInside:(UIButton *)button {
+    NSLog(@"%s \n %@", __PRETTY_FUNCTION__, button);
+}
+
 #pragma mark - getter
 - (YKNoteEventHandingView *)yKNoteEventHandingView {
     if (_yKNoteEventHandingView == nil) {
@@ -123,7 +127,7 @@
     if (_ykNoteEventHandlingButton == nil) {
         _ykNoteEventHandlingButton = [[YKNoteEventHandlingButton alloc] init];
         _ykNoteEventHandlingButton.backgroundColor = [UIColor greenColor];
-        [_ykNoteEventHandlingButton addTarget:self action:@selector(ykNoteEventHandlingButtonDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+        [_ykNoteEventHandlingButton addTarget:nil action:@selector(ykNoteEventHandlingGreenButtonDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _ykNoteEventHandlingButton;
 }

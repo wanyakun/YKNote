@@ -28,23 +28,41 @@
 //    if (self.backgroundColor == [UIColor yellowColor]) {
 //        return nil;
 //    }
+//    
+//    if (self.userInteractionEnabled == NO || self.hidden || self.alpha <= 0.01) {
+//        return nil;
+//    }
+//    
+//    CGRect responseRect = CGRectInset(self.bounds, -10, -10);
+//    if (CGRectContainsPoint(responseRect, point)) {
+//        for (UIView *subView in [self.subviews reverseObjectEnumerator]) {
+//            CGPoint convertedPoint = [subView convertPoint:point fromView:self];
+//            UIView *hitTestView = [subView hitTest:convertedPoint withEvent:event];
+//            if (hitTestView) {
+//                return hitTestView;
+//            }
+//        }
+//        return self;
+//    }
+//    return nil;
     
-    if (self.userInteractionEnabled == NO || self.hidden || self.alpha <= 0.01) {
-        return nil;
-    }
+//    UIView *hitTestView = [super hitTest:point withEvent:event];
+//    if (hitTestView == self) {
+//        return nil;
+//    }
+//    return hitTestView;
     
-    CGRect responseRect = CGRectInset(self.bounds, -20, -20);
-    if (CGRectContainsPoint(responseRect, point)) {
-        return [super hitTest:point withEvent:event];
-    }
-    return nil;
+    return [super hitTest:point withEvent:event];
 }
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     NSLog(@"%s", __PRETTY_FUNCTION__);
-    BOOL isInside = [super pointInside:point withEvent:event];
-    NSLog(@"is in %@ : %d", [self class], isInside);
-    return isInside;
+//    BOOL isInside = [super pointInside:point withEvent:event];
+//    NSLog(@"is in %@ : %d", [self class], isInside);
+//    return isInside;
+    
+    CGRect bounds = CGRectInset(self.bounds, -10, -10);
+    return CGRectContainsPoint(bounds, point);
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

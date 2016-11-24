@@ -1,4 +1,4 @@
-## iOS事件机制
+# iOS事件传递与响应者链
 
 用户以多种方式操纵他们的iOS设备，例如触摸屏幕或摇动设备。 iOS会解释用户何时以及如何操作硬件并将此信息传递到您的应用程序。 您的应用程序以自然和直观的方式响应操作的次数越多，对用户而言越有吸引力的体验。
 
@@ -42,7 +42,7 @@ iOS使用命中测试（hit-testing）来查找被触摸的视图。 命中测�
 
 `hitTest:withEvent:`方法为给定的CGPoint和UIEvent返回一个点击测试视图（hit-test view）。`hitTest:withEvent:`方法首先调用`pointInside:withEvent:`方法。 如果传递到`hitTest:withEvent:`方法的点是在视图的边界内，`pointInside:withEvent:`返回YES。然后，在每个返回YES的子视图上递归调用`hitTest:withEvent:`方法 。
 
-如果传递到`hitTest:withEvent:`方法的点不在视图的边界内，第一次调用`pointInside:withEvent:`方法返回 NO ，该点被忽略，`hitTest:withEvent:`返回nil 。 如果子视图返回NO，则视图层级结构的这个整个分支将被忽略，因为如果触摸没有发生在该子视图中，则它也不会出现在该子视图的任何子视图中。这意味着在子视图内而在父视图之外的任何点都不能接受点击事件，因为触摸点必须在父视图和子视图边界内。如果子视图的clipsToBounds属性设置为NO，则可能出现此问题。
+如果传递到`hitTest:withEvent:`方法的点不在视图的边界内，第一次调用`pointInside:withEvent:`方法返回 NO ，该点被忽略，`hitTest:withEvent:`返回nil 。 如果子视图返回NO，则视图层级结构的这个整个分支将被忽略，因为如果触摸没有发生在该子视图中，则它也不会出现在该子视图的任何子视图中。这意味着在子视图内而在父视图之外的任何点都不能接受点击事件，因为触摸点必须在父视图和子视图边界内。如果子视图的clipsToBounds属性设置为NO，则可能出现此问题。见示例[将事件传递给子视图](#4-将事件传递给子视图)
 
 > 注：触摸对象为其生命周期而关联到其命中测试视图（hit-test view），即使触摸稍后移动到视图之外。
 
@@ -67,102 +67,11 @@ iOS使用命中测试（hit-testing）来查找被触摸的视图。 命中测�
 事件不是唯一依赖响应者链的对象，响应者链用于以下所有情况：
 
 - 触摸事件（Touch events）：如果命中测试视图（hit-test view）不能够处理触摸事件，事件以命中测试视图（hit-test view）为起点沿着响应者链向上传递。
-
 - 运动事件（Motion events）：为了使用UIKit处理摇动动作事件，第一响应者必须实现`UIResponder`类的`motionBegan:withEvent:`或`motionEnded:withEvent:`的方法。
-
 - 遥控事件（Remote control event）：为了处理遥控事件，第一响应者必须实现`UIResponder`类的`remoteControlReceivedWithEvent:`方法。
-
-- 动作消息（Action messages）：当用户操作一个控制对象，例如一个按钮（button）或者开关（switch），并且动作方法（action method）的目标（target）是nil，则消息以控制视图为起点沿着响应者链传递。代码示例如下：
-
-  ```objc
-  #import "YKNoteEventHandingView.h"
-
-  @implementation YKNoteEventHandingView
-  //在View中写一个action方法，判断View中的Button的target为nil的时候是否会执行，若执行，则消息沿着响应者链向上传递了
-  - (void)ykNoteEventHandlingGreenButtonDidTouchUpInside:(UIButton *)button {
-      NSLog(@"%s \n %@", __PRETTY_FUNCTION__, button);
-  }
-
-  @end
-    
-  #import "YKNoteEventHandlingButton.h"
-  //在Button中写一个action方法，判断Button的target为nil的时候是否会执行，若执行，则消息沿着响应者链传递了
-  @implementation YKNoteEventHandlingButton
-
-  - (void)ykNoteEventHandlingGreenButtonDidTouchUpInside:(UIButton *)button {
-      NSLog(@"%s \n %@", __PRETTY_FUNCTION__, button);
-  }
-  ```
-
-  ```objc
-  #import "YKNoteEventHandingViewController.h"
-  #import "YKNoteEventHandingView.h"
-  #import "YKNoteEventHandlingButton.h"
-
-  @interface YKNoteEventHandingViewController ()
-
-  @property (nonatomic, strong) YKNoteEventHandingView *yKNoteEventHandingView;
-  @property (nonatomic, strong) YKNoteEventHandlingButton *ykNoteEventHandlingButton;
-
-  @end
-
-  @implementation YKNoteEventHandingViewController
-
-  - (void)viewDidLoad {
-      [super viewDidLoad];
-      // Do any additional setup after loading the view.
-      self.title = @"EventHandling";
-      self.view.backgroundColor = [UIColor whiteColor];
-      //View
-      [self.yKNoteEventHandingView setFrame:CGRectMake(50, 100, 200, 200)];
-      [self.view addSubview:self.yKNoteEventHandingView];
-
-      //Button
-      [self.ykNoteEventHandlingButton setFrame:CGRectMake(60, 60, 100, 100)];
-      [self.yKNoteEventHandingView addSubview:self.ykNoteEventHandlingButton];
-  }
-
-  #pragma mark - event
-  - (void)ykNoteEventHandlingGreenButtonDidTouchUpInside:(UIButton *)button {
-      NSLog(@"%s \n %@", __PRETTY_FUNCTION__, button);
-  }
-
-  #pragma mark - getter
-  - (YKNoteEventHandingView *)yKNoteEventHandingView {
-      if (_yKNoteEventHandingView == nil) {
-          _yKNoteEventHandingView = [[YKNoteEventHandingView alloc] init];
-          _yKNoteEventHandingView.backgroundColor = [UIColor redColor];
-      }
-      return _yKNoteEventHandingView;
-  }
-
-  - (YKNoteEventHandlingButton *)ykNoteEventHandlingButton {
-      if (_ykNoteEventHandlingButton == nil) {
-          _ykNoteEventHandlingButton = [[YKNoteEventHandlingButton alloc] init];
-          _ykNoteEventHandlingButton.backgroundColor = [UIColor greenColor];
-          [_ykNoteEventHandlingButton addTarget:nil action:@selector(ykNoteEventHandlingGreenButtonDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
-      }
-      return _ykNoteEventHandlingButton;
-  }
-  ```
-
-
-  ```objc
-  //Button的target设置为nil的时候，执行了YKNoteEventHandlingButton中的方法，说明target为nil的时候事件沿着响应者链传递了
-  -[YKNoteEventHandlingButton ykNoteEventHandlingGreenButtonDidTouchUpInside:] 
-   <YKNoteEventHandlingButton: 0x100224950; baseClass = UIButton; frame = (60 60; 100 100); opaque = NO; layer = <CALayer: 0x17002a1a0>>
-
-  //注释掉Button中的方法。输出内容如下，说明事件沿着响应者链向上传递了。
-  -[YKNoteEventHandingView ykNoteEventHandlingGreenButtonDidTouchUpInside:] 
-   <YKNoteEventHandlingButton: 0x10030fe40; baseClass = UIButton; frame = (60 60; 100 100); opaque = NO; layer = <CALayer: 0x17003d520>>
-
-  //注释掉Button和View中的方法。输出内容如下，说明事件沿着响应者链向上传递了。
-  -[YKNoteEventHandingViewController ykNoteEventHandlingGreenButtonDidTouchUpInside:] 
-   <YKNoteEventHandlingButton: 0x100402fd0; baseClass = UIButton; frame = (60 60; 100 100); opaque = NO; layer = <CALayer: 0x1740315a0>>
-
-  ```
-
+- 动作消息（Action messages）：当用户操作一个控制对象，例如一个按钮（button）或者开关（switch），并且动作方法（action method）的目标（target）是nil，则消息以控制视图为起点沿着响应者链传递。参阅示例：[将事件传递给父视图](#2-将事件传递给父视图)
 - 编辑菜单消息（Editing-menu messages）：当用户点击编辑菜单中的命令，iOS使用响应者链找到实现了必要方法的对象（如`cut:` ，`copy:`和`paste:` ）。 想了解更多信息，请参阅[显示和管理编辑菜单](https://developer.apple.com/library/content/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/AddingCustomEditMenuItems/AddingCustomEditMenuItems.html#//apple_ref/doc/uid/TP40009542-CH13) 。
+
 
 - 文本编辑（Text editing）：当用户点击text field或text view，该视图自动成为第一个响应者。 默认情况下，虚拟键盘出现，text field或text view成为编辑的焦点。您可以显示自定义输入视图，而不是键盘。 您还可以向任何响应者对象添加自定义输入视图。 想了解更多信息，请参阅[自定义数据输入视图](https://developer.apple.com/library/content/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/InputViews/InputViews.html#//apple_ref/doc/uid/TP40009542-CH12) 。
 
@@ -213,7 +122,7 @@ UIKit自动设置用户点击的text field或text view为第一个响应者; �
 
 #### 1. 扩大视图的点击区域
 
-一个按钮的尺寸是20*20，如果要扩大按钮的点击区域（扩大一倍），有以下处理方法：
+一个按钮的尺寸是20*20，如果要扩大按钮的点击区域（上下左右各扩大10），有以下处理方法：
 
 - 按钮设置image，然后按钮的size设置的比实际大一倍。
 - 在按钮上覆盖一层较大的View或者Button，设置点击事件。
@@ -221,13 +130,176 @@ UIKit自动设置用户点击的text field或text view为第一个响应者; �
 
 我们只举例说明第三种方法：
 
+```objc
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    if (self.userInteractionEnabled == NO || self.hidden || self.alpha <= 0.01) {
+        return nil;
+    }
+    
+    CGRect responseRect = CGRectInset(self.bounds, -10, -10);
+    if (CGRectContainsPoint(responseRect, point)) {
+        for (UIView *subView in [self.subviews reverseObjectEnumerator]) {
+            CGPoint convertedPoint = [subView convertPoint:point fromView:self];
+            UIView *hitTestView = [subView hitTest:convertedPoint withEvent:event];
+            if (hitTestView) {
+                return hitTestView;
+            }
+        }
+        return self;
+    }
+    return nil;
+}
+```
+
+或者
+
+```objc
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
+    NSLog(@"%s", __PRETTY_FUNCTION__);   
+    CGRect bounds = CGRectInset(self.bounds, -10, -10);
+    return CGRectContainsPoint(bounds, point);
+}
+```
+
 
 
 #### 2. 将事件传递给父视图
 
+在controller中有一个YKNoteEventHandingView，其上面再添加一个YKNoteEventHandlingButton，点击Button将事件传递到View。有以下几种做法：
+
+- Button的`- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event`方法返回nil，hit-test view为父视图
+
+
+- 设置Button的target为nil，Button无法处理事件响应，事件沿着响应者链向上传递，传递到父视图。示例如下
+
+```objc
+#import "YKNoteEventHandingView.h"
+
+@implementation YKNoteEventHandingView
+//在View中写一个action方法，判断View中的Button的target为nil的时候是否会执行，若执行，则消息沿着响应者链向上传递了
+- (void)ykNoteEventHandlingGreenButtonDidTouchUpInside:(UIButton *)button {
+    NSLog(@"%s \n %@", __PRETTY_FUNCTION__, button);
+}
+
+@end
+  
+#import "YKNoteEventHandlingButton.h"
+//在Button中写一个action方法，判断Button的target为nil的时候是否会执行，若执行，则消息沿着响应者链传递了
+@implementation YKNoteEventHandlingButton
+
+- (void)ykNoteEventHandlingGreenButtonDidTouchUpInside:(UIButton *)button {
+    NSLog(@"%s \n %@", __PRETTY_FUNCTION__, button);
+}
+```
+
+```objc
+#import "YKNoteEventHandingViewController.h"
+#import "YKNoteEventHandingView.h"
+#import "YKNoteEventHandlingButton.h"
+
+@interface YKNoteEventHandingViewController ()
+
+@property (nonatomic, strong) YKNoteEventHandingView *yKNoteEventHandingView;
+@property (nonatomic, strong) YKNoteEventHandlingButton *ykNoteEventHandlingButton;
+
+@end
+
+@implementation YKNoteEventHandingViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.title = @"EventHandling";
+    self.view.backgroundColor = [UIColor whiteColor];
+    //View
+    [self.yKNoteEventHandingView setFrame:CGRectMake(50, 100, 200, 200)];
+    [self.view addSubview:self.yKNoteEventHandingView];
+
+    //Button
+    [self.ykNoteEventHandlingButton setFrame:CGRectMake(60, 60, 100, 100)];
+    [self.yKNoteEventHandingView addSubview:self.ykNoteEventHandlingButton];
+}
+
+#pragma mark - event
+- (void)ykNoteEventHandlingGreenButtonDidTouchUpInside:(UIButton *)button {
+    NSLog(@"%s \n %@", __PRETTY_FUNCTION__, button);
+}
+
+#pragma mark - getter
+- (YKNoteEventHandingView *)yKNoteEventHandingView {
+    if (_yKNoteEventHandingView == nil) {
+        _yKNoteEventHandingView = [[YKNoteEventHandingView alloc] init];
+        _yKNoteEventHandingView.backgroundColor = [UIColor redColor];
+    }
+    return _yKNoteEventHandingView;
+}
+
+- (YKNoteEventHandlingButton *)ykNoteEventHandlingButton {
+    if (_ykNoteEventHandlingButton == nil) {
+        _ykNoteEventHandlingButton = [[YKNoteEventHandlingButton alloc] init];
+        _ykNoteEventHandlingButton.backgroundColor = [UIColor greenColor];
+        [_ykNoteEventHandlingButton addTarget:nil action:@selector(ykNoteEventHandlingGreenButtonDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _ykNoteEventHandlingButton;
+}
+```
+
+```objc
+  //Button的target设置为nil的时候，执行了YKNoteEventHandlingButton中的方法，说明target为nil的时候事件沿着响应者链传递了
+  -[YKNoteEventHandlingButton ykNoteEventHandlingGreenButtonDidTouchUpInside:] 
+   <YKNoteEventHandlingButton: 0x100224950; baseClass = UIButton; frame = (60 60; 100 100); opaque = NO; layer = <CALayer: 0x17002a1a0>>
+
+  //注释掉Button中的方法。输出内容如下，说明事件沿着响应者链向上传递了。
+  -[YKNoteEventHandingView ykNoteEventHandlingGreenButtonDidTouchUpInside:] 
+   <YKNoteEventHandlingButton: 0x10030fe40; baseClass = UIButton; frame = (60 60; 100 100); opaque = NO; layer = <CALayer: 0x17003d520>>
+
+  //注释掉Button和View中的方法。输出内容如下，说明事件沿着响应者链向上传递了。
+  -[YKNoteEventHandingViewController ykNoteEventHandlingGreenButtonDidTouchUpInside:] 
+   <YKNoteEventHandlingButton: 0x100402fd0; baseClass = UIButton; frame = (60 60; 100 100); opaque = NO; layer = <CALayer: 0x1740315a0>>
+```
+
 
 
 #### 3. 将事件传递给兄弟视图 
+
+假设有下图所示的布局，我们希望点击view C的时候view B响应事件，而点击View D和View E的时候正常响应。这个时候通过重写view C的hittest可以解决这个问题，在C的hittest里面直接返回nil就行了。
+
+![Hit-testing returns the subview that was touched](http://kunkun.qiniudn.com/yknote/eventhandling/hit_testing_2x.png?imageView2/2/w/300)
+
+
+
+```objc
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    UIView *hitTestView = [super hitTest:point withEvent:event];
+    if (hitTestView == self) {
+        return nil;
+    }
+    return hitTestView;    
+}
+```
+
+
+
+#### 4. 将事件传递给子视图
+
+如下图，banner为CollectionView中的一个楼层，CollectionViewCell中有个scrollView，scrollView中为图片，现在将cell的宽度缩小一半（变为蓝色框部分），设置cell和scrollview的clipsToBounds为NO，现在在右侧处滑动，scrollview中的图片显然不会滑动，因为不满足`pointInside:withEvent:`，这时只需要修改cell的`- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event`方法，返回scrollview即可。
+
+![传递事件到子视图](http://kunkun.qiniudn.com/yknote/eventhandling/IMG_5060.jpg?imageView2/2/w/600)
+
+
+
+```objc
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    UIView *hitTestView = [super hitTest:point withEvent:event];
+    if (hitTestView == nil) {
+        hitTestView = self.scrollView;
+    }
+    return hitTestView;
+}
+```
 
 
 

@@ -7,8 +7,9 @@
 - NSOperation
 - [KVC](YKNote/KVC/YKNote-KVC.md)
 - [KVO](YKNote/KVO/YKNote-KVO.md)
-- [EventHanding](YKNote/EventHandling/YKNote-EventDeliveryAndResponderChain.md)
-- [GestureRecognizer](YKNote/EventHandling/YKNote-GestureRecognizers.md)
+- EventHanding
+  - [手势识别器](YKNote/EventHandling/YKNote-GestureRecognizers.md)
+  - [事件传递与响应者链](YKNote/EventHandling/YKNote-EventDeliveryAndResponderChain.md)
 - Runtime
 - Runloop
 - 数据结构（DataStructure）

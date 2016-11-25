@@ -1,4 +1,5 @@
 # YKNote
+
 此项目为学习iOS的读书笔记以及过程中产生的代码，主要涉及一下几方面：
 
 - Block
@@ -6,6 +7,8 @@
 - NSOperation
 - [KVC](YKNote/KVC/YKNote-KVC.md)
 - [KVO](YKNote/KVO/YKNote-KVO.md)
+- [EventHanding](YKNote/EventHandling/YKNote-EventDeliveryAndResponderChain.md)
+- [GestureRecognizer](YKNote/EventHandling/YKNote-GestureRecognizers.md)
 - Runtime
 - Runloop
 - 数据结构（DataStructure）

@@ -170,6 +170,7 @@ UIKit自动设置用户点击的text field或text view为第一个响应者; �
 
 - Button的`- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event`方法返回nil，hit-test view为父视图
 
+- YKNoteEventHandingView的`- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event`方法返回self，阻止事件传递个子视图
 
 - 设置Button的target为nil，Button无法处理事件响应，事件沿着响应者链向上传递，传递到父视图。示例如下
 

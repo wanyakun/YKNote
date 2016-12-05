@@ -396,19 +396,119 @@ typedef NS_ENUM(NSInteger, NSQualityOfService) {
 
 #### 处理错误和异常
 
-因为操作本质上是应用程序中离散的实体，他们有责任处理产生的错误或者异常。在OS X v10.6及以后，
+因为操作本质上是应用程序中离散的实体，他们有责任处理产生的错误或者异常。在OS X v10.6及以后，`NSOperation`类提供的默认`start`方法不捕获异常（在OS X v10.5, `start`方法捕获并处理异常）。您自己的代码应该总是直接捕获并处理异常。还应该检查错误码，并根据需要通知应用程序的相应部分。如果您替换`start`方法，在自定义实现中必须同样捕获任何异常，以防止它们离开底层线程的上下文。
+
+在这些类型的错误情况下，您应当处理以下几种：
+
+- 检查和处理UNIX errno风格的错误代码。参阅usr/include/sys/errno.h
+- 检查方法或者函数返回的明确的错误代码
+- 捕获您自己代码或者其他系统框架抛出的异常
+- 捕获`NSOperation`类自己抛出的异常，在下列情况下抛出异常：
+  - 当操作还没准备好来执行，它的`start`方法被调用
+  - 当操作正在执行或者结束（可能是因为被取消），它的`start`方法再次别调用
+  - 当您试图添加完成块到已经执行或者结束的操作
+  - 当您试图取回已取消的`NSInvocationOperation`对象的返回值
+
+如果您的自定义代码遇到异常或者错误，您应当根据需要采取任何步骤来传递错误到程序的其余部分。`NSOperation`类没有为传递错误结果码或者异常提供明确的方法。因此，如果这些信息对您的应用程序非常重要，您必须提供必须要的代码。
 
 
 
-### 确定操作对象的相应范围
+### 为操作对象确定合适的范围
+
+虽然有可能添加一个任意大数量的操作到到操作队列，这样做往往是不切实际的。像任何对象一样，`NSOperation`类的实例消耗内存，以及和自己执行相关的实际成本。如果每个操作对象只做少量的工作，创建成千上万个操作，您可能会发现调度操作比做实际工作花费更多的时间。如果您的应用程序已经内存受限，您可能会发现内存中只有成千上万的操作，可能进一步降低性能。
+
+高效使用操作的关键是在您需要处理的工作数量和保持电脑忙碌之间找到一个合适的平衡。尽量确保您的操作处理合理数量的工作。例如，如果您的应用程序创建100个操作对象在100个不同值上执行相同的任务，可以考虑创建10个操作对象，每个处理10个值来代替。
+
+您也应该避免一次性向操作队列添加大量操作，或者避免连续向队列添加操作对象的速度比它们能够被处理的速度快。批量创建操作对象，而不是用操作对象充满队列。随着一批执行介绍，使用结束块告诉您的应用程序创建一个新批次。当你有许多工作需要处理，你想要队列保持充满足够多的操作，使计算机保持忙碌，但你千万不要想一次创建如此多的操作，这样您的应用程序会用完内存。
+
+当然，您创建的操作对象的数量，在每个操作对象中执行工作的数量，是可变的并且完全取决于您的应用程序。您应该总是使用工具例如Instrument来帮助您在效率和速度之间找到合适的平衡。您可以使用Instrument和其他性能工具为您的代码收集指标，请参阅[性能概述](https://developer.apple.com/library/content/documentation/Performance/Conceptual/PerformanceOverview/Introduction/Introduction.html#//apple_ref/doc/uid/TP40001410)。
+
+
 
 ### 执行操作
 
+最终，为了处理关联的工作，您的应用程序需要执行操作。在本节中，将介绍几种方式来执行操作，以及怎么在运行时巧妙处理操作。
+
+
+
 #### 添加操作到操作队列
+
+到目前为止，执行操作最简单的方式是使用操作队列，它是`NSOperationQueue`类的实例。您的应用程序负责创建和维护任何它打算使用的操作队列。一个应用程序可以有任意数量的队列，但在给定的时间点，有多少操作可能执行是有实际限制的。操作队列和系统一起工作，并发操作的数量限制到一个适合于可以用核心和系统负载的值。因此，创建更多的队列并不意味着可以执行更多操作。
+
+要创建一个队列，您在应用程序中分配它，就和其他任何对象一样：
+
+```objc
+NSOperationQueue* aQueue = [[NSOperationQueue alloc] init];
+```
+
+要将操作添加到队列，需要使用`addOperation:`方法。在OS X v10.6及以后，您可以使用`addOperations:waitUntilFinished:`方法添加一组操作，或者使用`addOperationWithBlock:`方法直接将块对象添加到队列（没有相关的操作对象）。每个方法对操作进行排队并通知队列应该开始处理他们。在大多情况下，操作被添加到队列后不久就被执行，但因为一些原因操作队列可能延迟执行排队的操作。特别是，如果排队的操作依赖于尚未完成的其他操作，操作可能被延迟。如果操作队列本身被暂停或已经执行到并发操作的最大值，执行也有可能被延迟。下面例子显示了添加操作到队列的基本语法。
+
+```objc
+[aQueue addOperation:anOp]; // Add a single operation
+[aQueue addOperations:anArrayOfOps waitUntilFinished:NO]; // Add multiple operations
+[aQueue addOperationWithBlock:^{
+   /* Do something. */
+}];
+```
+
+> **重要提示：**千万不要修改已经被添加到队列后的操作对象。在队列中等待时，操作可能随时开始执行，因此改变依赖或者它包含的数据可能会有不利影响。如果想要知道操作对象的状态，可以使用`NSOperation`类的方法来确定操作正在运行，等待运行或者已经结束。
+
+虽然`NSOperationQueue`类是为操作并发执行设计的，也可以强制单个队列每次只运行一个操作。`setMaxConcurentOperationCount:`方法可以配置操作队列并发操作的最大值。传递1到这个方法会导致队列每次只执行一个操作。虽然可以每次只执行一个操作，执行顺序仍然基于其他因素，如每个操作的准备就绪状态和分配给它的优先级。因此，一个连续的操作队列不能够和GCD的串行调度队列提供完全一样的行为。如果操作对象的执行顺序对您来说非常重要，您应当在添加对象到队列之前使用依赖关系来建立这个顺序。有关配置依赖关系的信息，请参阅[配置相互依赖关系](#配置相互依赖关系)。
+
+有关使用操作队列的信息，请参阅[NSOperationQueue类参考](https://developer.apple.com/reference/foundation/operationqueue)。有关串行调度队列的详细信息，请参阅[创建串行调度队列](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/OperationQueues/OperationQueues.html#//apple_ref/doc/uid/TP40008091-CH102-SW6)。
+
+
 
 #### 手动执行操作
 
+虽然操作队列是运行操作对象最简单的方法，但也可以不使用队列来执行操作。如果您选择手动执行操作，但是，有些注意事项在代码中应当考虑进去。尤其是，操作必须准备好运行，并且您必须使用它的`start`方法启动它。
+
+操作不被认为能够运行，直到它的`isReady`方法返回YES。`isReady`方法被集成到`NSOperation`类的依赖管理系统中，提供操作对象的依赖关系状态。只有当它的依赖被清除，操作才可以不受约束的开始执行。
+
+当手动执行一个操作，您应当使用`start`方法来开始执行。使用这个方法，而不是`main`或者其他方法，是因为`start`方法在实际运行您自定义代码之前执行多项安全检查。特别是，默认`start`方法生成操作需要正确处理依赖关系的KVO通知。如果操作已经被取消，这个方法也能够正确的避免操作执行，并且，如果您的操作实际上没有准备好运行，则抛出异常。
+
+如果您的应用程序定义并发操作对象，在启动操作之前，您也应当考虑调用操作的`isConcurrent`方法。在这个方法返回NO的情况下，您本地代码可以决定是否在当前线程同步执行操作，或者首先创建一个单独的线程。然而，实现这种检查完全取决于您。
+
+下面代码展示一个手动执行操作前，进行检查的简单例子。如果方法返回NO，您应该安排一个计时器并且稍后重新调用这个方法。稍后您可能会重新安排计时器直到方法返回YES，因为操作被取消，这种情况可能会发生。
+
+```objc
+- (BOOL)performOperation:(NSOperation*)anOp {
+   BOOL ranIt = NO;
+ 
+   if ([anOp isReady] && ![anOp isCancelled]) {
+      if (![anOp isConcurrent])
+         [anOp start];
+      else
+         [NSThread detachNewThreadSelector:@selector(start)
+                   toTarget:anOp withObject:nil];
+      ranIt = YES;
+   } else if ([anOp isCancelled]) {
+      // If it was canceled before it was started,
+      //  move the operation to the finished state.
+      [self willChangeValueForKey:@"isFinished"];
+      [self willChangeValueForKey:@"isExecuting"];
+      executing = NO;
+      finished = YES;
+      [self didChangeValueForKey:@"isExecuting"];
+      [self didChangeValueForKey:@"isFinished"];
+ 
+      // Set ranIt to YES to prevent the operation from
+      // being passed to this method again in the future.
+      ranIt = YES;
+   }
+   return ranIt;
+}
+```
+
+
+
 #### 取消操作
+
+一旦被添加到操作队列，操作对象实际上是被队列所拥有，并且不能够被移除。将操作出队的唯一方法就是取消它。您可以通过调用操作对象的`cancel`方法来取消一个单独的操作对象，或者您可以通过调用队列对象的`cancelAllOperations`方法来取消队列里所有的操作对象。
+
+只有当您确信不再需要他们时，您才能取消操作。发出取消命令将操作对象设置为“canceled”状态，这将阻止它永远执行。因为一个取消的操作也被认为是“finished”，依赖于它的对象接收适当的KVO通知来清除依赖。因此，为了响应一些特殊事件，更常见的是取消队列里的所有操作而不是有选择的取消操作，例如退出应用程序后者用户专门要求的取消。
+
+
 
 #### 等待操作完成
 

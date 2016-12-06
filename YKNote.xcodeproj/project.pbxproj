@@ -16,6 +16,8 @@
 		578D0A901DE69EBB00E65572 /* YKNote-GestureRecognizers.md in Sources */ = {isa = PBXBuildFile; fileRef = 578D0A8E1DE69EBB00E65572 /* YKNote-GestureRecognizers.md */; };
 		578D0A941DEED74B00E65572 /* YKNote-OperationQueues.md in Sources */ = {isa = PBXBuildFile; fileRef = 578D0A931DEED74A00E65572 /* YKNote-OperationQueues.md */; };
 		578D0A971DEED78D00E65572 /* YKNoteOperationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578D0A961DEED78D00E65572 /* YKNoteOperationViewController.m */; };
+		578D0A9A1DF68BF600E65572 /* YKNoteNonConcurrentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 578D0A991DF68BF600E65572 /* YKNoteNonConcurrentOperation.m */; };
+		578D0A9D1DF6A38500E65572 /* YKNoteConcurrentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 578D0A9C1DF6A38500E65572 /* YKNoteConcurrentOperation.m */; };
 		5792E5361DD46E3300A95A7F /* YKNoteKVCObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5792E5351DD46E3300A95A7F /* YKNoteKVCObject.m */; };
 		5792E5391DD55F1600A95A7F /* YKNoteKVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5792E5381DD55F1600A95A7F /* YKNoteKVCViewController.m */; };
 		5792E53F1DD9AD2E00A95A7F /* YKNoteWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5792E53E1DD9AD2E00A95A7F /* YKNoteWindow.m */; };
@@ -66,6 +68,10 @@
 		578D0A931DEED74A00E65572 /* YKNote-OperationQueues.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "YKNote-OperationQueues.md"; sourceTree = "<group>"; };
 		578D0A951DEED78D00E65572 /* YKNoteOperationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteOperationViewController.h; sourceTree = "<group>"; };
 		578D0A961DEED78D00E65572 /* YKNoteOperationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteOperationViewController.m; sourceTree = "<group>"; };
+		578D0A981DF68BF600E65572 /* YKNoteNonConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteNonConcurrentOperation.h; sourceTree = "<group>"; };
+		578D0A991DF68BF600E65572 /* YKNoteNonConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteNonConcurrentOperation.m; sourceTree = "<group>"; };
+		578D0A9B1DF6A38500E65572 /* YKNoteConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteConcurrentOperation.h; sourceTree = "<group>"; };
+		578D0A9C1DF6A38500E65572 /* YKNoteConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteConcurrentOperation.m; sourceTree = "<group>"; };
 		5792E5341DD46E3300A95A7F /* YKNoteKVCObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteKVCObject.h; sourceTree = "<group>"; };
 		5792E5351DD46E3300A95A7F /* YKNoteKVCObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteKVCObject.m; sourceTree = "<group>"; };
 		5792E5371DD55F1600A95A7F /* YKNoteKVCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteKVCViewController.h; sourceTree = "<group>"; };
@@ -285,6 +291,10 @@
 				578D0A931DEED74A00E65572 /* YKNote-OperationQueues.md */,
 				578D0A951DEED78D00E65572 /* YKNoteOperationViewController.h */,
 				578D0A961DEED78D00E65572 /* YKNoteOperationViewController.m */,
+				578D0A981DF68BF600E65572 /* YKNoteNonConcurrentOperation.h */,
+				578D0A991DF68BF600E65572 /* YKNoteNonConcurrentOperation.m */,
+				578D0A9B1DF6A38500E65572 /* YKNoteConcurrentOperation.h */,
+				578D0A9C1DF6A38500E65572 /* YKNoteConcurrentOperation.m */,
 			);
 			path = NSOperation;
 			sourceTree = "<group>";
@@ -422,7 +432,9 @@
 				576A17BE1DD31C2500980C94 /* YKNote-KVC.md in Sources */,
 				5792E5361DD46E3300A95A7F /* YKNoteKVCObject.m in Sources */,
 				5792E54B1DDADBB200A95A7F /* YKNoteMainViewControllerProtocolImpl.m in Sources */,
+				578D0A9D1DF6A38500E65572 /* YKNoteConcurrentOperation.m in Sources */,
 				5792E5481DDADA2E00A95A7F /* YKNoteMainViewController.m in Sources */,
+				578D0A9A1DF68BF600E65572 /* YKNoteNonConcurrentOperation.m in Sources */,
 				578D0A941DEED74B00E65572 /* YKNote-OperationQueues.md in Sources */,
 				579A439F1DD847D900D63F0B /* YKNoteEventHandingView.m in Sources */,
 				57B1AEAD1DCB02E90030E062 /* NSObject+Swizzle.m in Sources */,

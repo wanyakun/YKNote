@@ -41,6 +41,7 @@
 		57B1AEA91DCAE5C80030E062 /* YKNoteIntercepterDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AEA01DCAE5C80030E062 /* YKNoteIntercepterDemoViewController.m */; };
 		57B1AEAD1DCB02E90030E062 /* NSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AEAC1DCB02E90030E062 /* NSObject+Swizzle.m */; };
 		57B1AEB01DCB0E580030E062 /* YKNoteKVOObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AEAF1DCB0E580030E062 /* YKNoteKVOObject.m */; };
+		57F83EAE1DF7DA4F00649443 /* YKNote-DispatchQueues.md in Sources */ = {isa = PBXBuildFile; fileRef = 57F83EAD1DF7DA4F00649443 /* YKNote-DispatchQueues.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		57B1AEAC1DCB02E90030E062 /* NSObject+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Swizzle.m"; sourceTree = "<group>"; };
 		57B1AEAE1DCB0E580030E062 /* YKNoteKVOObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteKVOObject.h; sourceTree = "<group>"; };
 		57B1AEAF1DCB0E580030E062 /* YKNoteKVOObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteKVOObject.m; sourceTree = "<group>"; };
+		57F83EAD1DF7DA4F00649443 /* YKNote-DispatchQueues.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "YKNote-DispatchQueues.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 		57B1AE991DCAE5C80030E062 /* GCD */ = {
 			isa = PBXGroup;
 			children = (
+				57F83EAD1DF7DA4F00649443 /* YKNote-DispatchQueues.md */,
 			);
 			path = GCD;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				57211CFE1DD056BA005730C0 /* YKNote-KVO.md in Sources */,
 				5792E5541DDC228D00A95A7F /* YKNoteEventHandlingButton.m in Sources */,
 				578D0A8F1DE69EBB00E65572 /* YKNote-EventDeliveryAndResponderChain.md in Sources */,
+				57F83EAE1DF7DA4F00649443 /* YKNote-DispatchQueues.md in Sources */,
 				57211CFC1DD04F75005730C0 /* YKNoteKVOViewController.m in Sources */,
 				57B1AEA91DCAE5C80030E062 /* YKNoteIntercepterDemoViewController.m in Sources */,
 				5792E5641DDEEF3C00A95A7F /* YKNoteGestureRecognizerViewController.m in Sources */,

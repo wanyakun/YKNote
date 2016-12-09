@@ -100,27 +100,174 @@ aBlock(789);   // prints: 123 456 789
 dispatch_queue_t aQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 ```
 
+除了获取默认并发队列，您可以通过传入`DISPATCH_QUEUE_PRIORITY_HIGH`和`DISPATCH_QUEUE_PRIORITY_LOW`常量到函数来获取高优先级和低优先级的队列，或者传入`DISPATCH_QUEUE_PRIORITY_BACKGROUND`常量来获取后台队列。正如您所期望的，高优先级并发队列中的任务在默认优先级和低优先级队列中的任务之前执行。类似的，默认队列中的任务在低优先级队列中的任务之前执行。
 
+> **重要提示：**传入`dispatch_get_global_queue`函数的第二个参数是为将来扩展保留的。现在，您应该总是为此参数传0.
+
+虽然调度队列是引用计数对象，但您不需要保留和释放全局并发队列。因为它们对于应用程序来说是全局的，所以忽略这些队列的保留和释放调用。因此，您不需要保存对这些队列的引用。任何时候您需要引用他们中的一个，只需要调用`dispatch_get_global_queue`函数。
 
 
 
 #### 创建串行调度队列
 
-#### 在运行时获取公共队列
+当想要任务按照特定的顺序执行时，串行队列非常有用。串行队列每次只执行一个任务，并且总是从队列首获取任务。您可以使用串行队列代替锁来保护共享资源或者可变数据结构。与锁不同的是，串行队列能够确保任务按照可预见的顺序执行。只要以异步方式提交任务到串行队列，队列就永远不会死锁。
+
+与为您创建的并发队列不同，您必须显式的创建和管理任何您想要使用的串行队列。您可以为您的应用程序创建任意数量的串行队列，但应避免创建大量的串行队列来尽可能多的同时执行任务。如果您想同时执行大量任务，提交他们到全局并发队列。当创建串行队列时，请确定每个队列的用途，例如保护资源或者同步应用程序的某些关键行为。
+
+下面代码显示了创建自定义串行队列所需的步骤。` dispatch_queue_create`函数有两个参数：队列名称和一组队列属性。调试器和性能工具显示队列名称，帮助您跟踪任务如何执行。队列属性是为将来使用预留的，应该总是NULL。
+
+```objc
+ispatch_queue_t queue;
+queue = dispatch_queue_create("com.example.MyQueue", NULL);
+```
+
+除了您创建的自定义队列，系统自动创建串行队列并将其绑定到您应用程序的主线程。有关获取主线程队列的更多信息，请参阅[在运行时获取常见队列](#在运行时获取常见队列)。
+
+
+
+#### 在运行时获取常见队列
+
+GCD提供函数允许您从应用程序中访问几个常见的调度队列：
+
+- 使用`dispatch_get_current_queue`函数调试或者测试当前队列的标示。在块对象内部调用这个函数，返回块被提交到的队列（并且现在可能正在运行）。在块外部调用此函数，将返回应用程序的默认并发队列。
+- 使用`dispatch_get_main_queue`函数获取关联到应用程序主线程的串行调度队列。对于Cocoa应用程序和调用`dispatch_main`函数或在主线程上配置RunLoop（使用`CFRunLoopRef`类型或者`NSRunLoop`对象）的应用程序，此队列自动被创建。
+- 使用`dispatch_get_global_queue`函数获取任意共享的并发队列。更多信息，请参阅[获得全局并发调度队列](#获得全局并发调度队列)。
+
+
 
 #### 调度队列的内存管理
 
+调度队列和其他调度对象是引用计数的数据类型。当创建串行调度队列时，他初始引用计数为1。可以根据需要使用`dispatch_retain`和`dispatch_release`函数来增加和减少引用计数。当队列的引用计数为0时，系统异步的释放（dealloc）队列。
+
+保留（retain）和释放（release）调度对象（如队列）非常重要，以确保它们在被使用时保留在内存中。与Cocoa对象的内存管理一样，基本规则是，如果您打算使用传递给您代码的队列，在使用之前应当保留队列，在不再需要时释放队列。这个基本模式确保只要您使用队列，它就在内存中。
+
+> **重要提示：**您不需要保留或释放任何全局掉队队列，包括并发调度队列或主调度队列。任何保留和释放这些队列的试图都将被忽略。
+
+即使您实现一个垃圾回收的应用程序，您也必须保留和释放您的调度队列和其他调度对象。GCD不支持用于回收内存的垃圾回收模型。
+
+
+
 #### 使用队列存储自定义上下文信息
+
+所有调度对象（包括调度队列）允许您将自定义上下文数据与对象关联。要在对象上设置和获取这些数据，可以使用`dispatch_set_context`和`dispatch_get_context`函数。系统不会以任何方式使用您的自定义数据，并且由您决定在适当的时候分配和释放数据。
+
+对于队列，您可以使用上下文数据存储指向Objective-C对象的指针或者其他数据结构，用来帮助标示队列或者对代码的预期用途。您可以在队列释放之前使用队列的finalizer（终结器/清理器）函数将上下文数据从队列中释放（或者取消关联）。有关如何写finalizer函数来清理队列的上下文数据，请参阅[为队列提供清理功能](#为队列提供清理功能)。
+
+
 
 #### 为队列提供清理功能
 
+创建串行调度队列后，您可以附加一个finalizer函数，当队列释放时执行任意自定义清理。调度队列是引用计数对象，您可以使用`dispatch_set_finalizer_f`函数来指定一个函数，当队列的引用计数为0时执行。可以使用这个函数来清理关联到队列的上下文数据，只要上下文指针不为NULL，这个函数就被调用。
+
+下面代码展示了一个自定义finalizer函数和一个创建队列并设置finalizer的函数。队列使用finalizer函数释放存储在队列上下文指针中的数据。（代码中的`myInitializeDataContextFunction`和`myCleanUpDataContextFunction`函数是自定义函数，提供初始化和清理数据结构内容功能。）传递给finalizer函数的上下文指针包含关联到队列的数据对象。
+
+```objc
+void myFinalizerFunction(void *context)
+{
+    MyDataContext* theData = (MyDataContext*)context;
+ 
+    // Clean up the contents of the structure
+    myCleanUpDataContextFunction(theData);
+ 
+    // Now release the structure itself.
+    free(theData);
+}
+ 
+dispatch_queue_t createMyQueue()
+{
+    MyDataContext*  data = (MyDataContext*) malloc(sizeof(MyDataContext));
+    myInitializeDataContextFunction(data);
+ 
+    // Create the queue and set the context data.
+    dispatch_queue_t serialQueue = dispatch_queue_create("com.example.CriticalTaskQueue", NULL);
+    if (serialQueue)
+    {
+        dispatch_set_context(serialQueue, data);
+        dispatch_set_finalizer_f(serialQueue, &myFinalizerFunction);
+    }
+ 
+    return serialQueue;
+}
+```
+
+
+
 ### 添加任务到队列
 
-#### 将单个任务添加到队列
+为了执行任务，必须将其分配到适当的调度队列。可以同步或者异步调度任务，而且可以逐一或分组的调度它们。一旦进入队列，队列负责尽快执行任务，考虑它们的约束和队列中已经存在的任务。下面介绍一些将任务分配到队列的技术和它们的优点。
+
+
+
+#### 添加单个任务到队列
+
+有两种方式添加任务到队列：异步和同步。如果有可能的话，使用`dispatch_async`和`dispatch_async_f`函数异步执行优先于同步执行。当添加一个块对象或函数到队列，没有办法知道代码什么时候执行。因此，异步添加块或函数允许您调度代码执行并且继续在调用线程中做其他工作。如果从应用程序的主线程调度任务（可能响应一些用户事件），这一点尤其重要。
+
+虽然应该尽可能异步添加任务，但可能仍需要同步添加任务以防止竞争条件或者其他同步错误。在这些情况下，可以使用`dispatch_sync`和`dispatch_sync_f`函数添加任务到队列。这些函数阻塞当前线程执行，直到指定的任务执行结束。
+
+> **重要提示：**永远不要从队列中执行的任务里调用`dispatch_sync`或`dispatch_sync_f`函数 ，且传递给函数同一个队列。这对的串行队列非常重要，它产生了死锁，对于并发队列也应该避免。
+
+下面示例展示如何使用基于块的变量异步和同步调度任务：
+
+```objc
+dispatch_queue_t myCustomQueue;
+myCustomQueue = dispatch_queue_create("com.example.MyCustomQueue", NULL);
+ 
+dispatch_async(myCustomQueue, ^{
+    printf("Do some work here.\n");
+});
+ 
+printf("The first block may or may not have run.\n");
+ 
+dispatch_sync(myCustomQueue, ^{
+    printf("Do some more work here.\n");
+});
+printf("Both blocks have completed.\n");
+```
+
+
 
 #### 任务完成时执行完成块
 
+根据其性质，被调度到队列的任务独立于创建他们的代码运行。然而，当任务完成时，应用程序可能希望被通知该情况，以便它可以合并结果。对于传统异步编程，可能使用回调机制来做，但对于调度队列，可以使用完成块。
+
+完成块是在原始任务结束时调度到队列的另外一段代码。当任务开始时，调用代码通常提供完成块作为参数。任务代码需要做的是，当它结束时，提交指定块或者函数到指定队列。
+
+下面代码展示一个使用块实现求平均值的函数。函数的最后两个参数允许调用者指定队列和当回报结果时用的块。求平均值函数计算其结果后，传递结果到指定的块并调度块到队列。为了防止队列过早的被释放，在最开始保留队列并且在完成块被调度后释放队列是至关重要的。
+
+```objc
+void average_async(int *data, size_t len, dispatch_queue_t queue, void (^block)(int)) {
+   // Retain the queue provided by the user to make
+   // sure it does not disappear before the completion
+   // block can be called.
+   dispatch_retain(queue);
+ 
+   // Do the work on the default concurrent queue and then
+   // call the user-provided block with the results.
+   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+      int avg = average(data, len);
+      dispatch_async(queue, ^{ block(avg);});
+ 
+      // Release the user-provided queue when done
+      dispatch_release(queue);
+   });
+}
+```
+
+
+
 #### 并发执行循环迭代
+
+在循环执行固定数量迭代的地方，并发调度队列可能提高其性能。例如，假设有个for循环，通过每个循环迭代做一些工作：
+
+```objc
+for (i = 0; i < count; i++) {
+   printf("%u\n",i);
+}
+```
+
+如果每个迭代中执行的工作与所有其他迭代中执行的工作不同，且循环完成的顺序不重要。可以使用调用`dispatch_apply`或`dispatch_apply_f`函数来替换循环。
+
+
 
 #### 在主线程中执行任务
 

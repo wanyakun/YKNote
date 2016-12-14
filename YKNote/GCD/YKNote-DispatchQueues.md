@@ -148,7 +148,7 @@ GCD提供函数允许您从应用程序中访问几个常见的调度队列：
 
 保留（retain）和释放（release）调度对象（如队列）非常重要，以确保它们在被使用时保留在内存中。与Cocoa对象的内存管理一样，基本规则是，如果您打算使用传递给您代码的队列，在使用之前应当保留队列，在不再需要时释放队列。这个基本模式确保只要您使用队列，它就在内存中。
 
-> **重要提示：**您不需要保留或释放任何全局掉队队列，包括并发调度队列或主调度队列。任何保留和释放这些队列的试图都将被忽略。
+> **重要提示：**您不需要保留或释放任何全局调度队列，包括并发调度队列或主调度队列。任何保留和释放这些队列的试图都将被忽略。
 
 即使您实现一个垃圾回收的应用程序，您也必须保留和释放您的调度队列和其他调度对象。GCD不支持用于回收内存的垃圾回收模型。
 
@@ -156,7 +156,7 @@ GCD提供函数允许您从应用程序中访问几个常见的调度队列：
 
 #### 使用队列存储自定义上下文信息
 
-所有调度对象（包括调度队列）允许您将自定义上下文数据与对象关联。要在对象上设置和获取这些数据，可以使用`dispatch_set_context`和`dispatch_get_context`函数。系统不会以任何方式使用您的自定义数据，并且由您决定在适当的时候分配和释放数据。
+所有调度对象（包括调度队列）允许您将自定义上下文数据与调度对象关联。要在调度对象上设置和获取这些数据，可以使用`dispatch_set_context`和`dispatch_get_context`函数。系统不会以任何方式使用您的自定义数据，并且由您决定在适当的时候分配和释放数据。
 
 对于队列，您可以使用上下文数据存储指向Objective-C对象的指针或者其他数据结构，用来帮助标示队列或者对代码的预期用途。您可以在队列释放之前使用队列的finalizer（终结器/清理器）函数将上下文数据从队列中释放（或者取消关联）。有关如何写finalizer函数来清理队列的上下文数据，请参阅[为队列提供清理功能](#为队列提供清理功能)。
 
@@ -239,7 +239,7 @@ printf("Both blocks have completed.\n");
 
 完成块是在原始任务结束时调度到队列的另外一段代码。当任务开始时，调用代码通常提供完成块作为参数。任务代码需要做的是，当它结束时，提交指定块或者函数到指定队列。
 
-下面代码展示一个使用块实现求平均值的函数。函数的最后两个参数允许调用者指定队列和当回报结果时用的块。求平均值函数计算其结果后，传递结果到指定的块并调度块到队列。为了防止队列过早的被释放，在最开始保留队列并且在完成块被调度后释放队列是至关重要的。
+下面代码展示一个使用块实现求平均值的函数。函数的最后两个参数允许调用者指定队列和当汇报结果时用的块。求平均值函数计算其结果后，传递结果到指定的块并调度块到队列。为了防止队列过早的被释放，在最开始保留队列并且在完成块被调度后释放队列是至关重要的。
 
 ```objc
 void average_async(int *data, size_t len, dispatch_queue_t queue, void (^block)(int)) {
@@ -290,7 +290,7 @@ dispatch_apply(count, queue, ^(size_t i) {
 });
 ```
 
-您应当确保每次迭代的代码做合理数量的工作。和任何块或函数调度到队列一样，调度代码执行有开销。如果每次循环迭代只执行很少量的工作，调度代码的开销可能超过调度到队列带来的性能优势。如果在测试过程中发现这是真的，您可以使用跨步来增加每次循环迭代执行的工作量。随着跨步，将原来循环的多次迭代组成一个单独的块，减少迭代次数的比例。例如，如果最初执行100次迭代，但决定使用步幅4，现在每个块执行4此循环迭代，迭代此次数是25。有关如何实现跨步，请参阅[完善循环代码](https://developer.apple.com/library/prerelease/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/ThreadMigration/ThreadMigration.html#//apple_ref/doc/uid/TP40008091-CH105-SW2)
+您应当确保每次迭代的代码做合理数量的工作。和任何块或函数调度到队列一样，调度代码执行有开销。如果每次循环迭代只执行很少量的工作，调度代码的开销可能超过调度到队列带来的性能优势。如果在测试过程中发现这是真的，您可以使用跨步来增加每次循环迭代执行的工作量。随着跨步，将原来循环的多次迭代组成一个单独的块，减少迭代次数的比例。例如，如果最初执行100次迭代，但决定使用步幅4，现在每个块执行4次循环迭代，迭代次数是25。有关如何实现跨步，请参阅[完善循环代码](https://developer.apple.com/library/prerelease/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/ThreadMigration/ThreadMigration.html#//apple_ref/doc/uid/TP40008091-CH105-SW2)
 
 
 
@@ -346,7 +346,7 @@ close(fd);
 dispatch_semaphore_signal(fd_sema);
 ```
 
-当创建一个信号量时，指定可用资源数量。这个值将成为信号量计数的初始值。每次等待信号，`dispatch_semaphore_wait`函数将计数变量减1。如果结果值为负数，函数告诉内核阻塞线程。另外一边，`dispatch_semaphore_signal`函数将技术变量增加1，指示资源已经被释放。如果有被阻塞且等待资源的任务，他们其中的一个随后非阻塞并允许工作。
+当创建一个信号量时，指定可用资源数量。这个值将成为信号量计数的初始值。每次等待信号，`dispatch_semaphore_wait`函数将计数变量减1。如果结果值为负数，函数告诉内核阻塞线程。另外一边，`dispatch_semaphore_signal`函数将计数变量增加1，指示资源已经被释放。如果有被阻塞且等待资源的任务，他们其中的一个随后变为非阻塞并允许工作。
 
 
 
@@ -375,6 +375,8 @@ dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
 dispatch_release(group);
 ```
 
+> **注意：**可以使用`dispatch_group_notify`或者`dispatch_group_notify_f`函数来通知关联到组的调度队列执行完毕。也就是说当调度到队列的块都执行完毕的时候，会执行`dispatch_group_notify`或者`dispatch_group_notify_f`函数。
+
 
 
 ### 调度队列和线程安全
@@ -383,7 +385,13 @@ dispatch_release(group);
 
 - 调度队列自身是线程安全的。换句话说，您可以从系统的任何线程提交任务到调度队列，而不用先使用锁或者同步访问队列。
 - 不要从队列中执行的任务里调用`dispatch_sync`函数 ，且传递给函数同一个队列。这么做会导致队列死锁。如果您需要调度到当前队列，异步使用`dispatch_async`函数。
-- 避免在提交给调度队列的任务中使用锁。虽然在任务中使用锁是安全的，当您获取锁时，如果锁不用，可能阻塞整个串行队列。相同的，对于并发队列，等待锁可能阻止其他线程执行。如果您需要同步部分代码，使用串行调度队列代替锁。
+- 避免在提交给调度队列的任务中使用锁。虽然在任务中使用锁是安全的，当您获取锁时，如果锁不可用，可能阻塞整个串行队列。相同的，对于并发队列，等待锁可能阻止其他线程执行。如果您需要同步部分代码，使用串行调度队列代替锁。
 - 虽然您可以获取关于底层线程运行任务的信息，最好避免这么做。有关调度队列和线程兼容性的更多信息，请参阅[POSIX线程的兼容性](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/ThreadMigration/ThreadMigration.html#//apple_ref/doc/uid/TP40008091-CH105-SW18)
 
 有关如何更改现有线程代码到使用调度队列的更多提示，请参阅[线程迁移](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/ThreadMigration/ThreadMigration.html#//apple_ref/doc/uid/TP40008091-CH105-SW1)。
+
+
+
+参考：
+
+[https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/OperationQueues/OperationQueues.html](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/OperationQueues/OperationQueues.html)

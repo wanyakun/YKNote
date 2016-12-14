@@ -1,8 +1,8 @@
 ## 调度队列
 
-大中央调度（GCD）调度队列是执行任务的强大工具。调度队列允许您相对于调度者异步或者同步的执行任意代码块。您能够使用调度队列来执行几乎所有在单独线程上执行的任务。调度队列的优点是它们比线程代码更简单且更高效。
+GCD调度队列是执行任务的强大工具。调度队列允许您相对于调度者异步或者同步的执行任意代码块。您能够使用调度队列来执行几乎所有在单独线程上执行的任务。调度队列的优点是它们比线程代码更简单且更高效。
 
-下面提供了调度队列的简介，以及在应用程序中怎么使用调度队列执行一般的任务。如果您想用使用调度队列替换以及存在的线程代码，请参阅[线程迁移](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/ThreadMigration/ThreadMigration.html#//apple_ref/doc/uid/TP40008091-CH105-SW1)。
+下面提供了调度队列的简介，以及在应用程序中怎么使用调度队列执行一般的任务。如果您想用使用调度队列替换已经存在的线程代码，请参阅[线程迁移](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/ThreadMigration/ThreadMigration.html#//apple_ref/doc/uid/TP40008091-CH105-SW1)。
 
 
 
@@ -20,7 +20,7 @@
 
 
 
-当向应用程序添加并发时，调度队列提供了优于线程的几个优点。最直接的优点是工作队列编程的简单性。使用线程，您必须编写执行的工作以及创建和管理线程的代码。调度队列使您专注于您实际想要执行的工作上，而不用担心线程的创建和管理。相反，系统会为您处理所有的线程创建和管理。优点是，系统能够比任何单个应用更高效的管理线程。系统可以根据可用资源和当前系统的情况动态调整线程数量。另外，系统通常能够比您自己创线程更快的开始运行您的任务。
+当向应用程序添加并发时，调度队列提供了优于线程的几个优点。最直接的优点是工作队列编程的简单性。使用线程，您必须编写执行的工作以及创建和管理线程的代码。调度队列使您专注于您实际想要执行的工作，而不用担心线程的创建和管理。相反，系统会为您处理所有的线程创建和管理。优点是，系统能够比任何单个应用更高效的管理线程。系统可以根据可用资源和当前系统的情况动态调整线程数量。另外，系统通常能够比您自己创线程更快的开始运行您的任务。
 
 虽然您可能认为编写调度队列代码可能是困难的，但是通常编写调度队列比编写线程更简单。编码的关键是设计独立的且可以异步运行的任务。（这实际上对线程和调度队列都是真的。）但是调度队列有可预见性的优点。如果您有两个任务来访问相同的共享资源，但是运行在不同的线程上，每个线程都可以首先修改资源，您可能需要使用锁，以确保这两个任务不能同时修改该资源。使用调度队列，您可以添加两个任务到一个串行队列，以确保在任何给定时间只有一个任务修改资源。这种基于队列的同步比锁更高效，因为锁在有竞争和无竞争的情况下总是需要一个昂贵的内核陷阱，而调度队列主要在应用程序的进程空间中工作，只有在绝对必要时才调用内核。
 
@@ -77,7 +77,7 @@ aBlock(789);   // prints: 123 456 789
 - 调度队列复制添加给它们的块，并且当它们结束执行时释放块。换句话说，在添加它们到队列之前，您不需要显式的复制块。
 - 虽然队列在执行小任务时比原始线程更高效，但仍然有创建块和在队列上执行它们的开销。如果块的工作太少，内联的执行可能比调度到队列成本更低。判断块是否工作太少的方法是使用性能工具收集每个路径的指标，然后进行比较。
 - 不要缓存和底层线程相关的数据，并希望从不同的块访问数据。如果同一队列中的任务需要共享数据，使用调度队列的上下文指针来存储数据。 有关如何访问调度队列的上下文数据，请参阅[使用队列存储自定义上下文信息](#使用队列存储自定义上下文信息) 。
-- 如果队列创建多个Objective-C对象，则可能需要将块代码的一部分包含在@autorelease块中，以处理这些对象的内存管理。 虽然GCD调度队列具有自己的自动释放池，但它们不能保证何时耗尽这些池。 如果您的应用程序受内存限制，创建自己的自动释放池允许您以定期的时间间隔释放自动释放对象的内存。
+- 如果队列创建多个Objective-C对象，则可能需要将块代码的一部分包含在@autorelease块中，以处理这些对象的内存管理。 虽然GCD调度队列具有自己的自动释放池，但它们不能保证何时drain这些池。 如果您的应用程序受内存限制，创建自己的自动释放池允许您以定期的时间间隔释放自动释放对象的内存。
 
 
 有关块的更多信息，包括如何声明和使用它们，请参阅[块编程](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Blocks/Articles/00_Introduction.html#//apple_ref/doc/uid/TP40007502)。有关怎么添加块到调度队列，请参阅[添加任务到队列](#添加任务到队列)。
@@ -315,10 +315,68 @@ GCD提供内置的支持Cocoa内存管理技术，所以，您可以自由的在
 
 ### 使用调度信号量来调节有限资源的使用
 
-如果提交到调度队列的任务访问一些有限的资源，您可能需要使用调度信号来调节同时访问资源的任务数量。调度信号像普通信号一样工作，但有一个例外。当资源可用时，
+如果提交到调度队列的任务访问一些有限的资源，您可能需要使用调度信号来调节同时访问资源的任务数量。调度信号像普通信号一样工作，但有一个例外。当资源可用时，它获取调度信号量消耗的时间比获取传统系统信号量消耗的时间少。这是因为GCD在这种特殊情况下不调用内核。只有当资源不可用且系统需要停驻线程直到向信号量发出信号时才调用内核。
+
+使用信号量语义如下：
+
+1. 当创建信号量时（使用`dispatch_semaphore_create`函数），您可以指定一个正数，表示可用资源的数量。
+2. 在每个任务中，调用`dispatch_semaphore_wait`函数等待信号。
+3. 当等待返回时，获取资源，执行工作。
+4. 当资源使用完毕时，释放资源并调用`dispatch_semaphore_signal`函数向信号量发出信号。
+
+有关这些步骤如何工作，例如，考虑在系统上使用文件描述符，每个应用程序被给予有限数量的文件描述符来使用。如果您有一个处理大量文件的任务，您不想一次打开这么多的文件，这样会耗尽文件描述符。您可以在文件处理代码中使用信号量限制任何时候文件描述符一次使用的数量。可能在您任务中添加的代码基本片段如下：
+
+```objc
+// Create the semaphore, specifying the initial pool size
+dispatch_semaphore_t fd_sema = dispatch_semaphore_create(getdtablesize() / 2);
+ 
+// Wait for a free file descriptor
+dispatch_semaphore_wait(fd_sema, DISPATCH_TIME_FOREVER);
+fd = open("/etc/services", O_RDONLY);
+ 
+// Release the file descriptor when done
+close(fd);
+dispatch_semaphore_signal(fd_sema);
+```
+
+当创建一个信号量时，指定可用资源数量。这个值将成为信号量计数的初始值。每次等待信号，`dispatch_semaphore_wait`函数将计数变量减1。如果结果值为负数，函数告诉内核阻塞线程。另外一边，`dispatch_semaphore_signal`函数将技术变量增加1，指示资源已经被释放。如果有被阻塞且等待资源的任务，他们其中的一个随后非阻塞并允许工作。
 
 
 
 ### 等待排队任务组
 
+调度组是阻塞线程直到一个或者多个任务结束执行的方法。您可以在不能够获取进度直到所有指定任务结束的地方使用这种行为。例如，调度几个任务来计算一些数据，您可能使用一个组来等待这些任务，然后当它们结束时处理结果。使用调度组的另外一种方法是替代线程连接。您可能添加相应的任务到调度组且等待整个组，而不是开启几个子线程然后连接它们。
+
+下面代码显示创建一个组，调度任务给它，并等待结果。使用`dispatch_group_async`函数，而不是使用`dispatch_async`函数调度任务到队列。这个函数关联任务到组，将它们排队执行。为了等待任务组结束，稍后使用`dispatch_group_wait`函数，传递相应的组进去。
+
+```objc
+dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+dispatch_group_t group = dispatch_group_create();
+ 
+// Add a task to the group
+dispatch_group_async(group, queue, ^{
+   // Some asynchronous work
+});
+ 
+// Do some other work while the tasks execute.
+ 
+// When you cannot make any more forward progress,
+// wait on the group to block the current thread.
+dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+ 
+// Release the group when it is no longer needed.
+dispatch_release(group);
+```
+
+
+
 ### 调度队列和线程安全
+
+在调度队列的内容中讨论线程安全可能看起来很奇怪，但线程安全仍然是相关联的话题。任何时候在应用程序中实现并发，有几件事情都应该知道：
+
+- 调度队列自身是线程安全的。换句话说，您可以从系统的任何线程提交任务到调度队列，而不用先使用锁或者同步访问队列。
+- 不要从队列中执行的任务里调用`dispatch_sync`函数 ，且传递给函数同一个队列。这么做会导致队列死锁。如果您需要调度到当前队列，异步使用`dispatch_async`函数。
+- 避免在提交给调度队列的任务中使用锁。虽然在任务中使用锁是安全的，当您获取锁时，如果锁不用，可能阻塞整个串行队列。相同的，对于并发队列，等待锁可能阻止其他线程执行。如果您需要同步部分代码，使用串行调度队列代替锁。
+- 虽然您可以获取关于底层线程运行任务的信息，最好避免这么做。有关调度队列和线程兼容性的更多信息，请参阅[POSIX线程的兼容性](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/ThreadMigration/ThreadMigration.html#//apple_ref/doc/uid/TP40008091-CH105-SW18)
+
+有关如何更改现有线程代码到使用调度队列的更多提示，请参阅[线程迁移](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/ThreadMigration/ThreadMigration.html#//apple_ref/doc/uid/TP40008091-CH105-SW1)。

@@ -12,6 +12,7 @@
 		57211CFE1DD056BA005730C0 /* YKNote-KVO.md in Sources */ = {isa = PBXBuildFile; fileRef = 57211CFD1DD056BA005730C0 /* YKNote-KVO.md */; };
 		57211D021DD06FCF005730C0 /* YKNoteRuntimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 57211D011DD06FCF005730C0 /* YKNoteRuntimeUtils.m */; };
 		576A17BE1DD31C2500980C94 /* YKNote-KVC.md in Sources */ = {isa = PBXBuildFile; fileRef = 576A17BD1DD31C2500980C94 /* YKNote-KVC.md */; };
+		578464CC1E03C9DF00663C11 /* YKNote-DispatchSources.md in Sources */ = {isa = PBXBuildFile; fileRef = 578464CB1E03C9DF00663C11 /* YKNote-DispatchSources.md */; };
 		578D0A8F1DE69EBB00E65572 /* YKNote-EventDeliveryAndResponderChain.md in Sources */ = {isa = PBXBuildFile; fileRef = 578D0A8D1DE69EBB00E65572 /* YKNote-EventDeliveryAndResponderChain.md */; };
 		578D0A901DE69EBB00E65572 /* YKNote-GestureRecognizers.md in Sources */ = {isa = PBXBuildFile; fileRef = 578D0A8E1DE69EBB00E65572 /* YKNote-GestureRecognizers.md */; };
 		578D0A941DEED74B00E65572 /* YKNote-OperationQueues.md in Sources */ = {isa = PBXBuildFile; fileRef = 578D0A931DEED74A00E65572 /* YKNote-OperationQueues.md */; };
@@ -30,6 +31,7 @@
 		5792E5651DDEEF3C00A95A7F /* YKNoteGestureRecognizerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5792E5631DDEEF3C00A95A7F /* YKNoteGestureRecognizerViewController.xib */; };
 		579A439C1DD847B500D63F0B /* YKNoteEventHandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 579A439B1DD847B500D63F0B /* YKNoteEventHandingViewController.m */; };
 		579A439F1DD847D900D63F0B /* YKNoteEventHandingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 579A439E1DD847D900D63F0B /* YKNoteEventHandingView.m */; };
+		57A1CCC21E07D7EF00ACA4C3 /* YKNoteGCDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1CCC11E07D7EF00ACA4C3 /* YKNoteGCDViewController.m */; };
 		57B1AE721DCAE5960030E062 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AE711DCAE5960030E062 /* main.m */; };
 		57B1AE751DCAE5960030E062 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AE741DCAE5960030E062 /* AppDelegate.m */; };
 		57B1AE7D1DCAE5960030E062 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57B1AE7C1DCAE5960030E062 /* Assets.xcassets */; };
@@ -64,6 +66,7 @@
 		57211D001DD06FCF005730C0 /* YKNoteRuntimeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteRuntimeUtils.h; sourceTree = "<group>"; };
 		57211D011DD06FCF005730C0 /* YKNoteRuntimeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteRuntimeUtils.m; sourceTree = "<group>"; };
 		576A17BD1DD31C2500980C94 /* YKNote-KVC.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "YKNote-KVC.md"; sourceTree = "<group>"; };
+		578464CB1E03C9DF00663C11 /* YKNote-DispatchSources.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "YKNote-DispatchSources.md"; sourceTree = "<group>"; };
 		578D0A8D1DE69EBB00E65572 /* YKNote-EventDeliveryAndResponderChain.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "YKNote-EventDeliveryAndResponderChain.md"; sourceTree = "<group>"; };
 		578D0A8E1DE69EBB00E65572 /* YKNote-GestureRecognizers.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "YKNote-GestureRecognizers.md"; sourceTree = "<group>"; };
 		578D0A931DEED74A00E65572 /* YKNote-OperationQueues.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "YKNote-OperationQueues.md"; sourceTree = "<group>"; };
@@ -96,6 +99,8 @@
 		579A439B1DD847B500D63F0B /* YKNoteEventHandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteEventHandingViewController.m; sourceTree = "<group>"; };
 		579A439D1DD847D900D63F0B /* YKNoteEventHandingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteEventHandingView.h; sourceTree = "<group>"; };
 		579A439E1DD847D900D63F0B /* YKNoteEventHandingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteEventHandingView.m; sourceTree = "<group>"; };
+		57A1CCC01E07D7EF00ACA4C3 /* YKNoteGCDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteGCDViewController.h; sourceTree = "<group>"; };
+		57A1CCC11E07D7EF00ACA4C3 /* YKNoteGCDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteGCDViewController.m; sourceTree = "<group>"; };
 		57B1AE6D1DCAE5960030E062 /* YKNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YKNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57B1AE711DCAE5960030E062 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		57B1AE731DCAE5960030E062 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -260,7 +265,10 @@
 		57B1AE991DCAE5C80030E062 /* GCD */ = {
 			isa = PBXGroup;
 			children = (
+				578464CB1E03C9DF00663C11 /* YKNote-DispatchSources.md */,
 				57F83EAD1DF7DA4F00649443 /* YKNote-DispatchQueues.md */,
+				57A1CCC01E07D7EF00ACA4C3 /* YKNoteGCDViewController.h */,
+				57A1CCC11E07D7EF00ACA4C3 /* YKNoteGCDViewController.m */,
 			);
 			path = GCD;
 			sourceTree = "<group>";
@@ -443,6 +451,7 @@
 				57B1AEAD1DCB02E90030E062 /* NSObject+Swizzle.m in Sources */,
 				57211CF51DD02723005730C0 /* UIView+LayoutMethods.m in Sources */,
 				578D0A901DE69EBB00E65572 /* YKNote-GestureRecognizers.md in Sources */,
+				57A1CCC21E07D7EF00ACA4C3 /* YKNoteGCDViewController.m in Sources */,
 				5792E5391DD55F1600A95A7F /* YKNoteKVCViewController.m in Sources */,
 				57B1AEA61DCAE5C80030E062 /* YKNoteBlockNoteObject.m in Sources */,
 				57211D021DD06FCF005730C0 /* YKNoteRuntimeUtils.m in Sources */,
@@ -450,6 +459,7 @@
 				57211CFE1DD056BA005730C0 /* YKNote-KVO.md in Sources */,
 				5792E5541DDC228D00A95A7F /* YKNoteEventHandlingButton.m in Sources */,
 				578D0A8F1DE69EBB00E65572 /* YKNote-EventDeliveryAndResponderChain.md in Sources */,
+				578464CC1E03C9DF00663C11 /* YKNote-DispatchSources.md in Sources */,
 				57F83EAE1DF7DA4F00649443 /* YKNote-DispatchQueues.md in Sources */,
 				57211CFC1DD04F75005730C0 /* YKNoteKVOViewController.m in Sources */,
 				57B1AEA91DCAE5C80030E062 /* YKNoteIntercepterDemoViewController.m in Sources */,

@@ -1,6 +1,6 @@
 ## 调度源
 
-当和底层系统交互时，必须花费大量时间为任务做好准备。调用内核或者其他系统层需要切换上下文，这也是比在进程内部调用昂贵的原因。因此，许多系统库提供异步接口，允许您的代码提交请求到系统，且请求执行时继续做其他工作。GCD通过允许您使用块和调度队列提交请求并将结果返回到您的代码来建立这种行为。
+当和底层系统交互时，必须花费大量时间为任务做好准备。调用内核或者其他系统层需要切换上下文，这也是比在进程内部调用昂贵的原因。因此，许多系统库提供异步接口，允许您的代码提交请求到系统，且请求执行时继续做其他工作。GCD允许您使用块和调度队列提交请求并将结果返回到您的代码来建立这种行为。
 
 
 
@@ -11,14 +11,14 @@
 - Timer（定时器）调度源，生成周期性的通知
 - Signal（信号）调度源，当UNIX信号到达时通知
 - Descriptor（描述符）源，通知一些基于文件和套接字的操作，例如：
-  - 当读取的数据可用时
+  - 当数据可读取时
   - 当可以写入数据时
   - 当文件系统中的文件被删除、移动或者重命名时
   - 当文件元信息改变时
 - Process（进程）调度源，通知进程相关的事件，例如：
   - 当进程退出时
   - 当进程发出fork或者exec类型的调用时
-  - 当信号传递到进程
+  - 当信号传递到进程时
 - Mach port（马赫端口）调度源，通知Mach相关事件
 - Custom（自定义）调度源，自己定义调度源和触发因素
 
@@ -26,7 +26,7 @@
 
 与手动提交到队列的任务不同，调度源为应用程序提供连续的事件源。调度源保留其附加的调度队列，直到明确取消它。当附加时，无论何时发生相关事件，调度源提交关联的任务代码到调度队列。一些事件，例如定时器事件，固定间隔周期性的发生，但是大多数情况仅在特定条件出现时偶尔发生。因为这个原因，调度源保留其关联的调度队列，防止其过早释放，而这时事件仍可能处于等待状态。
 
-为了防止事件在调度队列中积压，调度队列实现了事件合并方案。如果新的事件在前一个事件的事件处理者已经出队和执行之前到达，调度源合并新事件和旧事件的数据。取决于事件类型，合并可能替换旧的事件或者更新其获取的信息。例如，基于信号的调度源只提供最近信号的信息，但也报告从上次事件处理者调用到现在总共传递多少个信号。
+为了防止事件在调度队列中积压，调度队列实现了事件合并方案。如果新的事件在前一个事件的事件处理者已经出队和执行之前到达，调度源合并新事件和旧事件的数据。根据事件类型，合并可能替换旧的事件或者更新其获取的信息。例如，基于信号的调度源只提供最近信号的信息，但也报告从上次事件处理者调用到现在总共传递多少个信号。
 
 
 
@@ -86,7 +86,7 @@ dispatch_resume(source);
 | -------------------------- | ---------------------------------------- |
 | dispatch_source_get_handle | 这个函数返回调度源管理的底层系统数据类型。对于描述符调度源，这个函数返回一个int类型，包含关联到调度源的描述符。对于信号调度源，这个函数返回一个int类型，包含最新事件的信号编号。对于进程调度源，这个函数返回被监视进程的pid_t数据结构。对于Mach端口调度源，这个函数返回mach_port_t数据结构。对于其他调度源，这个函数返回的值未定义。 |
 | dispatch_source_get_data   | 此函数返回与事件相关联的任何待处理数据。对于从文件中读取数据的描述符调度源，这个函数返回可用于读取的字节数。对于向文件中写入数据的描述符调度源，如果空间可用于写入，这个函数返回一个正整数。对于监视文件系统活动的描述符调度源，这个函数返回一个常量，标示事件发生的类型，有关常量的列表，请参阅 `dispatch_source_vnode_flags_t` 枚举类型。对于进程调度源，这个函数返回一个常量，标示事件发生的类型，有关常量的列表，请参阅`dispatch_source_proc_flags_t`枚举类型。对于Mach端口调度源，这个函数返回一个常量，标示事件发生的类型，有关常量的列表，请参阅`dispatch_source_machport_flags_t`枚举类型。对于自定义调度源，此函数返回由现有数据和传递到`dispatch_source_merge_data`函数的新数据所创建的新数据。 |
-| dispatch_source_get_mask   | 这个函数返回用于创建调度源的事件标志。对于线程调度源，这个函数返回调度源接收的事件掩码，有关常量的列表，请参阅`dispatch_source_proc_flags_t`枚举类型。对于有发送权限的Mach端口调度源，这个函数返回所需事件的掩码，对于常量的列表，请参阅`dispatch_source_mach_send_flags_t`枚举类型。对于自定义OR调度源，这个函数返回用于合并数据值的掩码。 |
+| dispatch_source_get_mask   | 这个函数返回用于创建调度源的事件标志。对于线程调度源，这个函数返回调度源接收的事件掩码，有关常量的列表，请参阅`dispatch_source_proc_flags_t`枚举类型。对于有发送权限的Mach端口调度源，这个函数返回所需事件的掩码，有关常量的列表，请参阅`dispatch_source_mach_send_flags_t`枚举类型。对于自定义OR调度源，这个函数返回用于合并数据值的掩码。 |
 
 有关如何为特殊类型的调度源编写和设置事件处理者的例子，请参阅[调度源示例](#调度源示例)
 
@@ -94,7 +94,7 @@ dispatch_resume(source);
 
 #### 设置取消处理者
 
-取消处理者用于在释放前清理调度源。对于大多数类型的调度源，清理处理者是可选的，只有当有一些自定义行为与需要更新的调度源绑定时才需要。对于使用描述符和Mach端口的调度源，必须提供取消处理者来关闭描述符或者释放Mach端口。如果不这么做，可能导致代码中出现细微的bug，因为这些结构被您的代码或者系统其他部分无意中重用。
+取消处理者用于在释放前清理调度源。对于大多数类型的调度源，清理处理者是可选的，只有当有一些自定义行为与需要更新的调度源绑定时才需要。对于使用描述符和Mach端口的调度源，必须提供取消处理者来关闭描述符或者释放Mach端口。如果不这么做，可能导致代码中出现细微的bug，因为这些结构会被您的代码或者系统其他部分无意中重用。
 
 可以在任何时候设置取消处理者，但通常在创建调度源的时候就这么做了。使用`dispatch_source_set_cancel_handler`或`dispatch_source_set_cancel_handler_f`函数设置取消处理者，这取决与是使用块还是函数实现。下面是一个简单的取消处理者例子，用来关闭被调度源打开的描述符。变量`fd`是获取的包含描述符的变量。
 
@@ -112,7 +112,7 @@ dispatch_source_set_cancel_handler(mySource, ^{
 
 创建调度源时虽然指定队列来运行事件处理者和取消处理者，但随时可以使用`dispatch_set_target_queue`函数改变队列。可能这么做来改变调度源事件处理的优先级。
 
-改变调度源的队列是一个异步操作，且调度源尽可能快速的完成改变。如果一个事件处理者已经入队且等待被处理，它在前一个队列上执行。然而，在改变时到达的其他事件会在其他队列上执行。
+改变调度源的队列是一个异步操作，且调度源尽可能快速的完成改变。如果一个事件处理者已经入队且等待被处理，那么它在前一个队列上执行。然而，在改变时到达的其他事件会在其他队列上执行。
 
 
 
@@ -134,7 +134,7 @@ dispatch_source_set_cancel_handler(mySource, ^{
 
 ### 调度源示例
 
-下面章节介绍怎么创建和配置一些更常见的调度源的使用。更多关于配置指定类型调度源的信息，参阅GCD参考。
+下面章节介绍如何创建和配置一些更常见的调度源的使用。更多关于配置指定类型调度源的信息，参阅GCD参考。
 
 
 
@@ -148,7 +148,7 @@ dispatch_source_set_cancel_handler(mySource, ^{
 
 当计算机进入休眠状态时，所有定时器调度源都将被挂起。当计算机唤醒时，这些定时器调度源也自动唤醒。根据定时器的配置，这种性质的暂停可能影响定时器下次启动。如果使用`dispatch_time`函数或者`DISPATCH_TIME_NOW`常量设置定时器调度源，定时器调度源使用默认的系统时钟来决定何时启动。但是，在计算机处于休眠状态时，默认时钟不会提前。相反，当使用`dispatch_walltime`函数设置定时器调度源时，定时器调度源跟踪启动时间的挂钟时间。后一选项通常用于触发间隔相对较大的定时器，因为它防止在事件时间之间有太多误差。
 
-下面代码是一个定时器例子，每30秒启动一次，且具有1秒的余留值。因为计时器间隔比较大，使用`dispatch_walltime`函数创建调度源。定时器第一次启动时间立即发生，随后的事件每30秒到达一次。`MyPeriodicTask`和`MyStoreTimer`符合代表自定义函数，用来实现定时器行为，并在应用程序的数据结构的一些地方保存定时器。
+下面代码是一个定时器例子，每30秒启动一次，且具有1秒的余留值。因为计时器间隔比较大，使用`dispatch_walltime`函数创建调度源。定时器第一次启动立即发生，随后的事件每30秒到达一次。`MyPeriodicTask`和`MyStoreTimer`代表自定义函数，用来实现定时器行为，并在应用程序的数据结构的一些地方保存定时器。
 
 ```objc
 dispatch_source_t CreateDispatchTimer(uint64_t interval,
@@ -232,7 +232,9 @@ dispatch_source_t ProcessContentsOfFile(const char* filename)
     });
  
    // Install the cancellation handler
-   dispatch_source_set_cancel_handler(readSource, ^{close(fd);});
+   dispatch_source_set_cancel_handler(readSource, ^{
+     close(fd);
+   });
  
    // Start reading the file.
    dispatch_resume(readSource);
@@ -240,7 +242,7 @@ dispatch_source_t ProcessContentsOfFile(const char* filename)
 }
 ```
 
-在前面的例子中，自定义`MyProcessFileData`函数决定何时读取足够的文件数据且调度源可以被取消。默认情况下，调度源被配置用来从描述符读取数据，当仍然有数据需要读取时，重复调度事件处理者。如果套接字连接关闭或到达文件的结尾，调度源自动停止调度事件处理者。如果知道不再需要调度源， 可以直接自己取消。
+在前面的例子中，自定义`MyProcessFileData`函数决定何时读取足够的文件数据且调度源可以被取消。默认情况下，调度源被配置用来从描述符读取数据，当仍然有数据需要读取时，重复调度事件处理者。如果套接字连接关闭或到达文件的结尾，调度源自动停止调度事件处理者。如果知道不再需要调度源，可以直接自己取消。
 
 
 
@@ -250,7 +252,7 @@ dispatch_source_t ProcessContentsOfFile(const char* filename)
 
 无论什么时候写入数据，都应该配置描述符使用非阻塞操作。虽然可以使用`dispatch_source_get_data`函数来看看有多少空间可以被写入，但这个函数返回的值只是建议性的，且可以在调用这个函数到实际写入数据之间被修改。如果发生错误，向一个阻塞文件描述符写入数据，可能在事件处理者执行中停止事件处理者，且阻止调度队列调度其他任务。对于串行队列，这可能死锁队列，即使对于并发队列，这也会减少可以开始的新任务个数。
 
-下面代码展示使用调度源向文件写入数据的基本方法。创建新的文件后，这个函数传递结果文件描述符给事件处理者。放入文件的数据由`MyGetData`函数提供，可以使用任何需要的代码来替换，来为文件生成数据。写入数据到文件后，事件处理者取消调度源来阻止再次调用。调度源的拥有者然后负责是否它。
+下面代码展示使用调度源向文件写入数据的基本方法。创建新的文件后，这个函数传递结果文件描述符给事件处理者。放入文件的数据由`MyGetData`函数提供，可以使用任何需要的代码来替换，来为文件生成数据。写入数据到文件后，事件处理者取消调度源来阻止再次调用。调度源的拥有者然后负责释放它。
 
 ```objc
 dispatch_source_t WriteDataToFile(const char* filename)
@@ -283,7 +285,10 @@ dispatch_source_t WriteDataToFile(const char* filename)
         dispatch_source_cancel(writeSource);
     });
  
-    dispatch_source_set_cancel_handler(writeSource, ^{close(fd);});
+    dispatch_source_set_cancel_handler(writeSource, ^{
+      close(fd);
+    });
+  
     dispatch_resume(writeSource);
     return (writeSource);
 }
@@ -345,33 +350,95 @@ dispatch_source_t MonitorNameChangesToFile(const char* filename)
 
 #### 监控信号
 
+UNIX信号允许从其域之外操纵应用程序。应用程序可以接受许多不同类型的信号，从不可恢复的错误（例如非法指令）到关于重要信息的通知（例如当子线程退出）。传统上，应用程序使用`sigaction`函数来设置一个信号处理者函数，信号到达时它尽快的同步执行。如果只是想得到信号到达的通知，并且实际上不想处理信号，可以使用信号调度源异步处理信号。
+
+信号调度源不是使用`sigaction`函数设置同步信号处理者的替换者。同步信号处理者实际上可以捕获信号，且阻止它终止应用程序。信号调度源允许您仅监控信号的到达。此外，不能使用信号调度源来检索所有类型的信号。特别是，不能使用它们监控`SIGILL`, `SIGBUS`和`SIGSEGV`信号。
+
+由于信号调度源在调度队列上异步执行，所以他们不会受到与同步信号处理者相同的限制。例如，可以从信号调度源的事件处理者中调用函数而没有限制。这种增加灵活性的折中，事实上可能会增加信号到达到调度源事件处理者被调用之间的等待时间。
+
+下面代码显示如何配置一个信号调度源来处理`SIGHUP`信号。调度源的事件处理者调用`MyProcessSIGHUP`函数，在应用程序中替换这段代码来处理者信号。
+
+```objc
+void InstallSignalHandler()
+{
+   // Make sure the signal does not terminate the application.
+   signal(SIGHUP, SIG_IGN);
+ 
+   dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+   dispatch_source_t source = dispatch_source_create(DISPATCH_SOURCE_TYPE_SIGNAL, SIGHUP, 0, queue);
+ 
+   if (source)
+   {
+      dispatch_source_set_event_handler(source, ^{
+         MyProcessSIGHUP();
+      });
+ 
+      // Start processing signals
+      dispatch_resume(source);
+   }
+}
+```
+
+如果您正在开发自定义框架的代码，使用信号调度源的一个好处就是您的代码可以监视独立于任何链接到它的应用程序的信号。信号调度源不会干扰其他调度源或应用程序已经设置的任何同步信号处理者。
+
+有关实现同步信号处理者以及信号名称列表的更多信息，请参阅 `signal` 手册页。
+
+
+
 #### 监视进程
+
+进程调度源允许监视特定进程的行为并作出适当的响应。父进程可能使用这个类型的调度源来监视它创建的任何子进程。例如，父进程可能使用它来监视子进程的死亡。同样的，一个子进程可以使用它监视其父进程，并且如果父进程退出，他也退出。
+
+下面代码显示设置一个调度源来监视父进程的终止的步骤。当父进程死亡，调度源设置一些内部状态信息，让子进程知道它应该退出。（您自己的应用程序需要实现`MySetAppExitFlag`函数来为终止设置适当的标识。）因为调度源自动运行，因此拥有自己，也在应用程序预期关闭时取消和释放自己。
+
+```objc
+void MonitorParentProcess()
+{
+   pid_t parentPID = getppid();
+ 
+   dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+   dispatch_source_t source = dispatch_source_create(DISPATCH_SOURCE_TYPE_PROC,
+                                                      parentPID, DISPATCH_PROC_EXIT, queue);
+   if (source)
+   {
+      dispatch_source_set_event_handler(source, ^{
+         MySetAppExitFlag();
+         dispatch_source_cancel(source);
+         dispatch_release(source);
+      });
+      dispatch_resume(source);
+   }
+}
+```
+
+
 
 ### 取消调度源
 
+调度源保持活跃直到使用`dispatch_source_cancel`函数明确取消它们。取消调度源将停止传递新的事件且无法挽回。因此，通常取消调度源，然后立刻释放它（ARC不需要），如下所示：
+
+```objc
+void RemoveDispatchSource(dispatch_source_t mySource)
+{
+   dispatch_source_cancel(mySource);
+   dispatch_release(mySource);
+}
+```
+
+调度源的取消是一个异步操作。虽然调用`dispatch_source_cancel`函数后不再处理新的事件，但已经被调度源处理的事件继续进行处理。在处理完最后的任何事件后，调度源执行取消处理者（如果存在）。
+
+取消处理者是释放内存或清理调度源分配的资源的机会。如果调度源使用描述符或Mach端口，必须提供清理者在取消发生时关闭描述符或销毁端口。其他类型的调度源不需要取消处理者，但如果关联任何内存或者数据到调度源，还是应该提供取消处理者。例如，如果在调度源的上下文指针中存储数据，应当提供取消处理者。关于取消处理者的更多信息，请参阅[设置取消处理者](#设置取消处理者)。
+
+
+
 ### 暂停与恢复调度源
 
+可以使用`dispatch_suspend`和`dispatch_resume`方法临时暂停和回复调度源事件派发。这些方法增加和减少调度对象的暂停计数。因此，在事件恢复派发前，必须调用匹配方法`dispatch_resume`来平衡每次`dispatch_suspend`方法的调用。
+
+当暂停调度源时，发生的任何事件都会被累积，直到队列恢复。当队列恢复时，在派发之前事件被合并为一个事件，而不是派发所有事件。例如，如果监视一个文件名称的更改，事件的派发将只包括最后一个名字的改变。这种方式的合并事件，将阻止事件在队列中的建立和当恢复工作时淹没应用程序。
 
 
 
+参考：
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/GCDWorkQueues/GCDWorkQueues.html#//apple_ref/doc/uid/TP40008091-CH103-SW1](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/GCDWorkQueues/GCDWorkQueues.html#//apple_ref/doc/uid/TP40008091-CH103-SW1)

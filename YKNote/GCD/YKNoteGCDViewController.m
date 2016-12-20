@@ -238,5 +238,57 @@ void MyUpdateFileName(const char* fileName, int fd) {
     //relpace code
 }
 
+#pragma mark - Monitoring Signals
+
+void InstallSignalHandler() {
+    // Make sure the signal does not terminate the application.
+    signal(SIGHUP, SIG_IGN);
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t source = dispatch_source_create(DISPATCH_SOURCE_TYPE_SIGNAL, SIGHUP, 0, queue);
+    
+    if (source) {
+        dispatch_source_set_event_handler(source, ^{
+            MyProcessSIGHUP();
+        });
+        
+        // Start processing signals
+        dispatch_resume(source);
+    }
+}
+
+void MyProcessSIGHUP() {
+    //replace code
+}
+
+#pragma mark - Monitoring a Process
+
+void MonitorParentProcess() {
+    pid_t parentPID = getppid();
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t source = dispatch_source_create(DISPATCH_SOURCE_TYPE_PROC, parentPID, DISPATCH_PROC_EXIT, queue);
+    
+    if (source) {
+        dispatch_source_set_event_handler(source, ^{
+            MySetAppExitFlag();
+            dispatch_source_cancel(source);
+//            dispatch_release(source);
+        });
+        
+        dispatch_resume(source);
+    }
+}
+
+void MySetAppExitFlag() {
+    //replace code
+}
+
+#pragma mark - Canceling a Dispatch Source
+
+void RemoveDispatchSource(dispatch_source_t mySource) {
+    dispatch_source_cancel(mySource);
+//    dispatch_release(mySource); only ARC need
+}
 
 @end

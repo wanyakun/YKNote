@@ -20,4 +20,6 @@
  */
 + (BOOL)swizzleMethod:(SEL)originalSelector withMethod:(SEL)swizzledSelector error:(NSError **)error;
 
++ (BOOL)swizzleClassMethod:(SEL)originalSelector withClassMethod:(SEL)swizzledSelector error:(NSError **)error;
+
 @end

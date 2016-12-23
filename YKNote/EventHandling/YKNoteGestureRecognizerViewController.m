@@ -84,8 +84,6 @@
     }
 }
 
-
-
 #pragma mark - private method
 - (void)drawImageForGestureRecognizer:(UIGestureRecognizer *)recognizer atPoint:(CGPoint)centerPoint {
     

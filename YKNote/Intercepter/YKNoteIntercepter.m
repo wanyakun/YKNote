@@ -11,6 +11,31 @@
 #import "NSObject+Swizzle.h"
 
 #pragma mark Private Swizzle
+
+//#pragma mark - NSObject Method Swizzle
+//@interface NSObject (MethodSwizzle)
+//
+//+ (BOOL)yk_resolveInstanceMethod:(SEL)sel;
+//
+//@end
+//
+//@implementation NSObject (MethodSwizzle)
+//
+//void preventCrashMethodIMP(id self, SEL _cmd) {
+//    NSLog(@"%s", __PRETTY_FUNCTION__);
+//}
+//
+//+ (BOOL)yk_resolveInstanceMethod:(SEL)sel {
+//    NSLog(@"%s", __PRETTY_FUNCTION__);
+//    if ([self instancesRespondToSelector:sel] == NO) {
+//        class_addMethod([self class], sel, (IMP)preventCrashMethodIMP, "v@:");
+//        return YES;
+//    }
+//    return [self yk_resolveInstanceMethod:sel];
+//}
+//
+//@end
+
 #pragma mark - NSArray Method Swizzle
 @interface NSArray (Swizzle)
 
@@ -98,6 +123,8 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+//        //替换NSObject方法
+//        [objc_getClass("NSObject") swizzleClassMethod:@selector(resolveInstanceMethod:) withClassMethod:@selector(yk_resolveInstanceMethod:) error:nil];
         //替换NSArray方法
         [objc_getClass("__NSArrayI") swizzleMethod:@selector(objectAtIndex:) withMethod:@selector(yk_objectAtIndex:) error:nil];
         //替换NSMutableArray方法

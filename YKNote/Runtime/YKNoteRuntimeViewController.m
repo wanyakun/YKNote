@@ -193,7 +193,6 @@ void TestMetaClass(id self, SEL _cmd) {
         protocol = protocols[i];
         NSLog(@"protocol name: %s", protocol_getName(protocol));
     }
-    
     NSLog(@"YKNoteRuntimeObject is%@ respose to protocol %s", class_conformsToProtocol(cls, protocol) ? @"" : @" not", protocol_getName(protocol));
     NSLog(@"==========================================");
 

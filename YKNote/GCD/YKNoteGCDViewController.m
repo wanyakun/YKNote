@@ -7,8 +7,11 @@
 //
 
 #import "YKNoteGCDViewController.h"
+#import "YKNoteTimer.h"
 
 @interface YKNoteGCDViewController ()
+
+@property (nonatomic, strong) YKNoteTimer *yKNoteTimer;
 
 @end
 
@@ -22,7 +25,9 @@
     
 //    MyCreateTimer();
     
-    [self createTimer];
+//    [self createTimer];
+    
+    [self createYKNoteTimer];
     
 }
 
@@ -33,6 +38,14 @@
 
 - (void)dealloc {
     NSLog(@"%s", __PRETTY_FUNCTION__);
+    [self.yKNoteTimer invalidate];
+}
+
+#pragma mark - Create YKNoteTimer
+- (void)createYKNoteTimer {
+    self.yKNoteTimer = [YKNoteTimer scheduledTimerWithTimeInterval:1 block:^{
+        NSLog(@"YKNote action");
+    } repeats:NO];
 }
 
 

@@ -48,10 +48,10 @@
     NSLog(@"%s arg1:%ld, arg2:%@", __PRETTY_FUNCTION__, arg1, arg2);
 }
 
-//void dynamicMethodIMP(id self, SEL _cmd) {
-//    NSLog(@"%s", __PRETTY_FUNCTION__);
-//}
-//
+void dynamicMethodIMP(id self, SEL _cmd) {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
 //+ (BOOL)resolveInstanceMethod:(SEL)sel {
 //    NSLog(@"%s", __PRETTY_FUNCTION__);
 //    class_addMethod([self class], sel, (IMP)dynamicMethodIMP, "v@:");
@@ -63,9 +63,13 @@
 //    NSLog(@"%s", __PRETTY_FUNCTION__);
 //    return [super forwardingTargetForSelector:aSelector];
 //}
-//
+
 //- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
 //    NSLog(@"%s", __PRETTY_FUNCTION__);
+//    Method method = class_getInstanceMethod([self class], @selector(method2));
+//    NSMethodSignature *signature = [NSMethodSignature signatureWithObjCTypes:method_getTypeEncoding(method)];
+//    return signature;
+//
 //    return [super methodSignatureForSelector:aSelector];
 //}
 //

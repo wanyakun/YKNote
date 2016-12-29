@@ -21,6 +21,8 @@
     // Do any additional setup after loading the view.
     self.title = @"Runtime";
     self.view.backgroundColor = [UIColor whiteColor];
+    //Test copy
+    [self testCopy];
     //Test Object Class
     [self testObjectClass];
     //Test Method Invoke
@@ -44,6 +46,47 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
+#pragma mark - Test Copy MutableCopy
+- (void)testCopy {
+    //非集合对象
+    //immutable
+    NSString *immutableStr = @"123";
+    NSString *immutableStrCopy = [immutableStr copy];
+    NSString *immutableStrMutableCopy = [immutableStr mutableCopy];
+    NSLog(@"immutableStr:%p, immutableStrCopy:%p, immutableStrMutableCopy:%p", immutableStr, immutableStrCopy, immutableStrMutableCopy);
+    
+    //mutable
+    NSMutableString *mutableStr = [NSMutableString stringWithString:@"456"];
+    NSMutableString *mutableStrCopy = [mutableStr copy];
+    NSMutableString *mutableStrMutableCopy = [mutableStr mutableCopy];
+    NSLog(@"mutableStr:%p, mutableStrCopy:%p, mutableStrMutableCopy:%p", mutableStr, mutableStrCopy, mutableStrMutableCopy);
+
+    //集合对象
+    //immutable
+    NSArray *immutableArray = [NSArray arrayWithObjects:@"1", @"2", @"3", nil];
+    NSArray *immutableArrayCopy = [immutableArray copy];
+    NSArray *immutableArrayMutableCopy = [immutableArray mutableCopy];
+    NSLog(@"immutableArray:%p, immutableCopy:%p, immutableMutableCopy:%p", immutableArray, immutableArrayCopy, immutableArrayMutableCopy);
+    [self logContext:immutableArray];
+    [self logContext:immutableArrayCopy];
+    [self logContext:immutableArrayMutableCopy];
+    
+    //mutable
+    NSMutableArray *mutableArray = [NSMutableArray arrayWithObjects:@"4", @"5", @"6", nil];
+    NSMutableArray *mutableArrayCopy = [mutableArray copy];
+    NSMutableArray *mutableArrayMutableCopy = [mutableArray mutableCopy];
+    NSLog(@"mutableArray:%p, mutableArrayCopy:%p, mutableArrayMutableCopy:%p", mutableArray, mutableArrayCopy, mutableArrayMutableCopy);
+    [self logContext:mutableArray];
+    [self logContext:mutableArrayCopy];
+    [self logContext:mutableArrayMutableCopy];
+}
+
+- (void)logContext:(NSArray *)array {
+    NSLog(@"array:%p \n", array);
+    for (NSString *str in array) {
+        NSLog(@"string:%@, %p", str, str);
+    }
+}
 
 #pragma mark - Test Object Class
 - (void)testObjectClass {
@@ -62,6 +105,8 @@
     NSLog(@"obj4 class is %@", NSStringFromClass([obj4 class]));
     NSLog(@"obj5 class is %@", NSStringFromClass([obj5 class]));
     NSLog(@"obj6 class is %@", NSStringFromClass([obj6 class]));
+    
+//    [obj6 performSelector:@selector(method3)];
 }
 
 #pragma mark - Test Method Invoke
@@ -82,7 +127,7 @@ void TestMetaClass(id self, SEL _cmd) {
     
     Class currentClass = [self class];
     for (int i = 0; i < 4; i++) {
-        NSLog(@"Following the isa pointer %d times give %p", i, currentClass);
+        NSLog(@"Following the isa pointer %d times give %p, name:%s", i, currentClass, class_getName(currentClass));
         currentClass = object_getClass(currentClass);
     }
     
@@ -103,9 +148,13 @@ void TestMetaClass(id self, SEL _cmd) {
     [yKNoteError performSelector:@selector(testMetaClass)];
 }
 
+#pragma mark - Test object layout
+
 #pragma mark - Common method
 - (void)testCommonMethod {
     YKNoteRuntimeObject *object = [[YKNoteRuntimeObject alloc] init];
+    object.string = @"I am a string";
+    
     unsigned int outCount = 0;
     
     Class cls = object.class;
@@ -148,8 +197,18 @@ void TestMetaClass(id self, SEL _cmd) {
     objc_property_t *properties = class_copyPropertyList(cls, &outCount);
     for (int i = 0; i < outCount; i++) {
         objc_property_t property = properties[i];
-        NSString *attribute = [NSString stringWithCString:property_getAttributes(property) encoding:NSUTF8StringEncoding];
-        NSLog(@"property's name: %s, attribute: %@", property_getName(property), attribute);
+        NSString *attributeString = [NSString stringWithCString:property_getAttributes(property) encoding:NSUTF8StringEncoding];
+        NSLog(@"property's name: %s, attribute string: %@", property_getName(property), attributeString);
+        
+        unsigned int attCount = 0;
+        objc_property_attribute_t *attributes = property_copyAttributeList(property, &attCount);
+        for (int j = 0; j < attCount; j++) {
+            objc_property_attribute_t attribute = attributes[j];
+            const char *name = attribute.name;
+            const char *value = attribute.value;
+            NSLog(@"property's name: %s, attribute name: %s, attribute value:%s", property_getName(property), name, value);
+        }
+        free(attributes);
     }
     
     free(properties);

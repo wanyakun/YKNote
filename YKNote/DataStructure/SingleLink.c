@@ -70,7 +70,7 @@ Node* insert(SingleLink *link, int i, ElemType *data) {
     return node;
 }
 
-void traverse(SingleLink *link) {
+void reverse(SingleLink *link) {
     Node *head, *node, *tmp;
     //尾部指向表头
     Node *tail = link;

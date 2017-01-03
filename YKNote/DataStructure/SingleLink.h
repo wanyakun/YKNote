@@ -33,7 +33,7 @@ Node* get(SingleLink *link, int i);
 Node* insert(SingleLink *link, int i, ElemType *data);
 
 //链表翻转
-void traverse(SingleLink *link);
+void reverse(SingleLink *link);
 
 
 #endif /* SingleLink_h */

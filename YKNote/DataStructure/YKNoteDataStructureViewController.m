@@ -28,7 +28,7 @@
     insert(link, 3, 4);
     insert(link, 4, 5);
 
-    traverse(link);
+    reverse(link);
     
     while (link) {
         NSLog(@"%d", link->data);

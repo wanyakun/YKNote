@@ -29,6 +29,7 @@
                        @"GestureRecognizer",
                        @"Runtime",
                        @"Runloop",
+                       @"CoreData",
                        @"DataStructure"];
         _controllerArray = @[@"YKNoteBlockViewController",
                              @"YKNoteGCDViewController",
@@ -39,6 +40,7 @@
                              @"YKNoteGestureRecognizerViewController",
                              @"YKNoteRuntimeViewController",
                              @"YKNoteRunloopViewController",
+                             @"YKNoteCoreDataViewController",
                              @"YKNoteDataStructureViewController"];
     }
     return self;

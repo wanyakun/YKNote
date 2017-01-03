@@ -27,7 +27,9 @@
     
 //    [self createTimer];
     
-    [self createYKNoteTimer];
+//    [self createYKNoteTimer];
+    
+    [self testBarrier];
     
 }
 
@@ -39,6 +41,55 @@
 - (void)dealloc {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     [self.yKNoteTimer invalidate];
+}
+
+#pragma mark - Test dispatch_barrier_async
+- (void)testBarrier {
+    dispatch_queue_t queue = dispatch_queue_create("YKNote-TestBarrier", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_async(queue, ^{
+        NSLog(@"task1 begin");
+        sleep(2);
+        NSLog(@"task1 end");
+        NSLog(@"%p", [NSThread currentThread]);
+    });
+    dispatch_async(queue, ^{
+        NSLog(@"task2 bein");
+        sleep(2);
+        NSLog(@"task2 end");
+        NSLog(@"%p", [NSThread currentThread]);
+    });
+    dispatch_async(queue, ^{
+        NSLog(@"task3 begin");
+        sleep(2);
+        NSLog(@"task3 end");
+        NSLog(@"%p", [NSThread currentThread]);
+    });
+    
+    dispatch_barrier_async(queue, ^{
+        NSLog(@"barrier begin");
+        sleep(5);
+        NSLog(@"barrier end");
+        NSLog(@"%p", [NSThread currentThread]);
+    });
+    dispatch_async(queue, ^{
+        NSLog(@"task4 begin");
+        sleep(2);
+        NSLog(@"task4 end");
+        NSLog(@"%p", [NSThread currentThread]);
+    });
+    dispatch_async(queue, ^{
+        NSLog(@"task5 begin");
+        sleep(2);
+        NSLog(@"task5 end");
+        NSLog(@"%p", [NSThread currentThread]);
+    });
+    dispatch_async(queue, ^{
+        NSLog(@"task6 begin");
+        sleep(2);
+        NSLog(@"task6 end");
+        NSLog(@"%p", [NSThread currentThread]);
+    });
+
 }
 
 #pragma mark - Create YKNoteTimer

@@ -49,6 +49,7 @@
 		57B1AEAD1DCB02E90030E062 /* NSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AEAC1DCB02E90030E062 /* NSObject+Swizzle.m */; };
 		57B1AEB01DCB0E580030E062 /* YKNoteKVOObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AEAF1DCB0E580030E062 /* YKNoteKVOObject.m */; };
 		57F83EAE1DF7DA4F00649443 /* YKNote-DispatchQueues.md in Sources */ = {isa = PBXBuildFile; fileRef = 57F83EAD1DF7DA4F00649443 /* YKNote-DispatchQueues.md */; };
+		BBB63D9C1E10A79E00439505 /* YKNoteBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB63D9B1E10A79E00439505 /* YKNoteBlockViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,8 @@
 		57B1AEAE1DCB0E580030E062 /* YKNoteKVOObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteKVOObject.h; sourceTree = "<group>"; };
 		57B1AEAF1DCB0E580030E062 /* YKNoteKVOObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteKVOObject.m; sourceTree = "<group>"; };
 		57F83EAD1DF7DA4F00649443 /* YKNote-DispatchQueues.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "YKNote-DispatchQueues.md"; sourceTree = "<group>"; };
+		BBB63D9A1E10A79E00439505 /* YKNoteBlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteBlockViewController.h; sourceTree = "<group>"; };
+		BBB63D9B1E10A79E00439505 /* YKNoteBlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteBlockViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +285,8 @@
 				57B1AE961DCAE5C80030E062 /* YKNoteBlockDemo.m */,
 				57B1AE971DCAE5C80030E062 /* YKNoteBlockNoteObject.h */,
 				57B1AE981DCAE5C80030E062 /* YKNoteBlockNoteObject.m */,
+				BBB63D9A1E10A79E00439505 /* YKNoteBlockViewController.h */,
+				BBB63D9B1E10A79E00439505 /* YKNoteBlockViewController.m */,
 			);
 			path = Block;
 			sourceTree = "<group>";
@@ -474,6 +479,7 @@
 				578D0A941DEED74B00E65572 /* YKNote-OperationQueues.md in Sources */,
 				579A439F1DD847D900D63F0B /* YKNoteEventHandingView.m in Sources */,
 				57B1AEAD1DCB02E90030E062 /* NSObject+Swizzle.m in Sources */,
+				BBB63D9C1E10A79E00439505 /* YKNoteBlockViewController.m in Sources */,
 				57211CF51DD02723005730C0 /* UIView+LayoutMethods.m in Sources */,
 				578D0A901DE69EBB00E65572 /* YKNote-GestureRecognizers.md in Sources */,
 				57A1CCC21E07D7EF00ACA4C3 /* YKNoteGCDViewController.m in Sources */,

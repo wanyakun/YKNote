@@ -18,6 +18,8 @@
 @property (nonatomic, strong) YKNoteKVOObject *yKNoteKVOObject3;
 @property (nonatomic, strong) YKNoteKVOObject *yKNoteKVOObject4;
 
+@property (nonatomic, copy) NSString *text;
+
 @property (nonatomic, strong) UITextView *textView;
 
 @end
@@ -31,6 +33,16 @@
 
     [self.view addSubview:self.textView];
     [self.textView fill];
+    
+    _text = @"123";
+    [self addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
+    NSLog(@"before call willChangeValueForKey");
+    [self willChangeValueForKey:@"text"];
+    NSLog(@"after call willChangeValueForKey");
+    _text = @"456";
+    [self didChangeValueForKey:@"text"];
+    NSLog(@"after call didChangeValueForKey");
+
     
     self.yKNoteKVOObject.name = @"YKNoteKVOObject";
     self.yKNoteKVOObject2.name = @"YKNoteKVOObject2";
@@ -75,6 +87,7 @@
 }
 
 - (void)dealloc {
+    [self removeObserver:self forKeyPath:@"text"];
     [self removeObserver];
     self.yKNoteKVOObject = nil;
     self.yKNoteKVOObject2 = nil;

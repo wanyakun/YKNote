@@ -9,6 +9,7 @@
 #import "YKNoteRuntimeViewController.h"
 #import "YKNoteRuntimeObject.h"
 #import <objc/runtime.h>
+#import "NSObject+YKNoteRunBlockAtDealloc.h"
 
 @interface YKNoteRuntimeViewController ()
 
@@ -34,6 +35,11 @@
     //Test associat object
     [self setTapActonWithBlock:^{
         NSLog(@"Test associat object");
+    }];
+    
+    YKNoteRuntimeObject *weakObject = [[YKNoteRuntimeObject alloc] init];
+    [weakObject ykNoteRunAtDeallocWithBlock:^{
+        NSLog(@"weakObject 正在释放！");
     }];
 }
 

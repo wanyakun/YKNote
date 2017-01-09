@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5719037B1E2327E6008438BA /* YKNoteCoreGraphicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5719037A1E2327E6008438BA /* YKNoteCoreGraphicsViewController.m */; };
+		5719037E1E23281C008438BA /* YKNoteDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5719037D1E23281C008438BA /* YKNoteDrawView.m */; };
 		57211CF51DD02723005730C0 /* UIView+LayoutMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 57211CF41DD02723005730C0 /* UIView+LayoutMethods.m */; };
 		57211CFC1DD04F75005730C0 /* YKNoteKVOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57211CFB1DD04F75005730C0 /* YKNoteKVOViewController.m */; };
 		57211CFE1DD056BA005730C0 /* YKNote-KVO.md in Sources */ = {isa = PBXBuildFile; fileRef = 57211CFD1DD056BA005730C0 /* YKNote-KVO.md */; };
@@ -70,6 +72,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		571903791E2327E6008438BA /* YKNoteCoreGraphicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteCoreGraphicsViewController.h; sourceTree = "<group>"; };
+		5719037A1E2327E6008438BA /* YKNoteCoreGraphicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteCoreGraphicsViewController.m; sourceTree = "<group>"; };
+		5719037C1E23281C008438BA /* YKNoteDrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteDrawView.h; sourceTree = "<group>"; };
+		5719037D1E23281C008438BA /* YKNoteDrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteDrawView.m; sourceTree = "<group>"; };
 		57211CF31DD02723005730C0 /* UIView+LayoutMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LayoutMethods.h"; sourceTree = "<group>"; };
 		57211CF41DD02723005730C0 /* UIView+LayoutMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LayoutMethods.m"; sourceTree = "<group>"; };
 		57211CF91DD04C3C005730C0 /* YKNote.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YKNote.pch; sourceTree = "<group>"; };
@@ -182,6 +188,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		571903781E2327CA008438BA /* CoreGraphics */ = {
+			isa = PBXGroup;
+			children = (
+				571903791E2327E6008438BA /* YKNoteCoreGraphicsViewController.h */,
+				5719037A1E2327E6008438BA /* YKNoteCoreGraphicsViewController.m */,
+				5719037C1E23281C008438BA /* YKNoteDrawView.h */,
+				5719037D1E23281C008438BA /* YKNoteDrawView.m */,
+			);
+			path = CoreGraphics;
+			sourceTree = "<group>";
+		};
 		57211CF21DD0269F005730C0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +285,7 @@
 		57B1AE6F1DCAE5960030E062 /* YKNote */ = {
 			isa = PBXGroup;
 			children = (
+				571903781E2327CA008438BA /* CoreGraphics */,
 				578768311E1B764A00DF3D1E /* DataStructure */,
 				57C70D441E14C6BF00D410AF /* CoreData */,
 				57B1AE951DCAE5C80030E062 /* Block */,
@@ -520,6 +538,7 @@
 				578768371E1B764A00DF3D1E /* YKNoteDataStructureViewController.m in Sources */,
 				578D0A9D1DF6A38500E65572 /* YKNoteConcurrentOperation.m in Sources */,
 				5792E5481DDADA2E00A95A7F /* YKNoteMainViewController.m in Sources */,
+				5719037B1E2327E6008438BA /* YKNoteCoreGraphicsViewController.m in Sources */,
 				578D0A9A1DF68BF600E65572 /* YKNoteNonConcurrentOperation.m in Sources */,
 				578D0A941DEED74B00E65572 /* YKNote-OperationQueues.md in Sources */,
 				579A439F1DD847D900D63F0B /* YKNoteEventHandingView.m in Sources */,
@@ -557,6 +576,7 @@
 				578D0A971DEED78D00E65572 /* YKNoteOperationViewController.m in Sources */,
 				5792E55D1DDECF2500A95A7F /* YKNoteTapGestureRecognizer.m in Sources */,
 				57B1AE721DCAE5960030E062 /* main.m in Sources */,
+				5719037E1E23281C008438BA /* YKNoteDrawView.m in Sources */,
 				57B1AEA81DCAE5C80030E062 /* YKNoteIntercepter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

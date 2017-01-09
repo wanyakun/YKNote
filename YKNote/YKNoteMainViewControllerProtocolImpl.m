@@ -30,7 +30,8 @@
                        @"Runtime",
                        @"Runloop",
                        @"CoreData",
-                       @"DataStructure"];
+                       @"DataStructure",
+                       @"CoreGraphics"];
         _controllerArray = @[@"YKNoteBlockViewController",
                              @"YKNoteGCDViewController",
                              @"YKNoteOperationViewController",
@@ -41,7 +42,8 @@
                              @"YKNoteRuntimeViewController",
                              @"YKNoteRunloopViewController",
                              @"YKNoteCoreDataViewController",
-                             @"YKNoteDataStructureViewController"];
+                             @"YKNoteDataStructureViewController",
+                             @"YKNoteCoreGraphicsViewController"];
     }
     return self;
 }

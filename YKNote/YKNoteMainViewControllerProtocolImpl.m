@@ -20,7 +20,8 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        _dataArray = @[@"Block",
+        _dataArray = @[@"Foundation",
+                       @"Block",
                        @"GCD",
                        @"NSOperation",
                        @"KVC",
@@ -32,7 +33,8 @@
                        @"CoreData",
                        @"DataStructure",
                        @"CoreGraphics"];
-        _controllerArray = @[@"YKNoteBlockViewController",
+        _controllerArray = @[@"YKNoteFoundationViewController",
+                             @"YKNoteBlockViewController",
                              @"YKNoteGCDViewController",
                              @"YKNoteOperationViewController",
                              @"YKNoteKVCViewController",

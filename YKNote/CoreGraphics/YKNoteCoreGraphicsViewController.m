@@ -23,15 +23,6 @@
     self.title = @"CoreGraphics";
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.drawView];
-    
-    UIView *viewA = [[[UIApplication sharedApplication] delegate] window];
-    UIView *viewB = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 150, 200)];
-    UIView *viewC = [[UIView alloc] initWithFrame:CGRectMake(0, 64, 320, 500)];
-    CGPoint toViewPoint = [viewA convertPoint:viewB.frame.origin toView:viewC];
-    CGPoint fromViewPoint = [viewA convertPoint:viewB.frame.origin fromView:viewC];
-    NSLog(@"%@", NSStringFromCGPoint(toViewPoint));
-    NSLog(@"%@", NSStringFromCGPoint(fromViewPoint));
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {

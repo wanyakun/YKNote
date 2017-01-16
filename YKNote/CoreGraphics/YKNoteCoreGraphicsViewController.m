@@ -22,12 +22,9 @@
     // Do any additional setup after loading the view.
     self.title = @"CoreGraphics";
     self.view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.drawView];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [self.drawView fill];
-//    self.navigationController.navigationBar.hidden = YES;
+    //绘制图形
+    self.drawView.frame = CGRectMake(150, 150, 200, 200);
+    [self.view addSubview:self.drawView];    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -42,6 +42,12 @@
         }
     }
     
+    NSMutableString *mutString = [[NSMutableString alloc] initWithString:@"123"];
+    [mutString appendString:@"456"];
+    
+    NSString *appendingStr = [mutString stringByAppendingString:@"789"];
+    NSLog(@"mutString:%p, appendingStr:%p", mutString, appendingStr);
+    
     YKNotePersion *per = [[YKNotePersion alloc] init];
     self.persionA = per;
     self.persionB = [per copy];

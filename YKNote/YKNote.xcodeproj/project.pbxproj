@@ -47,7 +47,6 @@
 		57A1CCCB1E0A240800ACA4C3 /* YKNoteRuntimeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1CCCA1E0A240800ACA4C3 /* YKNoteRuntimeObject.m */; };
 		57B1AE721DCAE5960030E062 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AE711DCAE5960030E062 /* main.m */; };
 		57B1AE751DCAE5960030E062 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AE741DCAE5960030E062 /* AppDelegate.m */; };
-		57B1AE7D1DCAE5960030E062 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57B1AE7C1DCAE5960030E062 /* Assets.xcassets */; };
 		57B1AE801DCAE5960030E062 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57B1AE7E1DCAE5960030E062 /* LaunchScreen.storyboard */; };
 		57B1AE8B1DCAE5970030E062 /* YKNoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AE8A1DCAE5970030E062 /* YKNoteTests.m */; };
 		57B1AEA51DCAE5C80030E062 /* YKNoteBlockDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1AE961DCAE5C80030E062 /* YKNoteBlockDemo.m */; };
@@ -59,8 +58,15 @@
 		57C70D471E14C71000D410AF /* YKNoteCoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C70D461E14C71000D410AF /* YKNoteCoreDataViewController.m */; };
 		57C70D4A1E14C7FB00D410AF /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C70D491E14C7FB00D410AF /* CoreDataManager.m */; };
 		57C70D4D1E14D5B300D410AF /* SandBoxUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C70D4C1E14D5B300D410AF /* SandBoxUtils.m */; };
+		57EAB95D1E516483001DF5EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57EAB95C1E516483001DF5EE /* Assets.xcassets */; };
+		57EAB9631E51678B001DF5EE /* YKNetworkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EAB9621E51678B001DF5EE /* YKNetworkConfig.m */; };
+		57EABD4F1E55AF35001DF5EE /* Router.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57EABD4E1E55AF35001DF5EE /* Router.plist */; };
+		57EABD521E55B212001DF5EE /* YKNoteTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EABD511E55B212001DF5EE /* YKNoteTimerViewController.m */; };
+		57EABD551E56AFF0001DF5EE /* NSTimer+YKNoteBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EABD541E56AFF0001DF5EE /* NSTimer+YKNoteBlock.m */; };
+		57EABD581E56C2F5001DF5EE /* YKNoteTimerProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EABD571E56C2F5001DF5EE /* YKNoteTimerProxy.m */; };
 		57F83EAE1DF7DA4F00649443 /* YKNote-DispatchQueues.md in Sources */ = {isa = PBXBuildFile; fileRef = 57F83EAD1DF7DA4F00649443 /* YKNote-DispatchQueues.md */; };
 		BBB63D9C1E10A79E00439505 /* YKNoteBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB63D9B1E10A79E00439505 /* YKNoteBlockViewController.m */; };
+		BD301394A126BD6C4EF37E4D /* Pods_YKNote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABFAC2A001F6CC5D41796CD /* Pods_YKNote.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +80,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		189392060C09E0F433666B2D /* Pods-YKNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YKNote.release.xcconfig"; path = "../Pods/Target Support Files/Pods-YKNote/Pods-YKNote.release.xcconfig"; sourceTree = "<group>"; };
 		571903791E2327E6008438BA /* YKNoteCoreGraphicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteCoreGraphicsViewController.h; sourceTree = "<group>"; };
 		5719037A1E2327E6008438BA /* YKNoteCoreGraphicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteCoreGraphicsViewController.m; sourceTree = "<group>"; };
 		5719037C1E23281C008438BA /* YKNoteDrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteDrawView.h; sourceTree = "<group>"; };
@@ -148,7 +155,6 @@
 		57B1AE711DCAE5960030E062 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		57B1AE731DCAE5960030E062 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		57B1AE741DCAE5960030E062 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		57B1AE7C1DCAE5960030E062 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57B1AE7F1DCAE5960030E062 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57B1AE811DCAE5970030E062 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57B1AE861DCAE5970030E062 /* YKNoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YKNoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,9 +177,21 @@
 		57C70D491E14C7FB00D410AF /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
 		57C70D4B1E14D5B300D410AF /* SandBoxUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandBoxUtils.h; sourceTree = "<group>"; };
 		57C70D4C1E14D5B300D410AF /* SandBoxUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandBoxUtils.m; sourceTree = "<group>"; };
+		57EAB95C1E516483001DF5EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		57EAB9611E51678B001DF5EE /* YKNetworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNetworkConfig.h; sourceTree = "<group>"; };
+		57EAB9621E51678B001DF5EE /* YKNetworkConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNetworkConfig.m; sourceTree = "<group>"; };
+		57EABD4E1E55AF35001DF5EE /* Router.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Router.plist; sourceTree = "<group>"; };
+		57EABD501E55B212001DF5EE /* YKNoteTimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteTimerViewController.h; sourceTree = "<group>"; };
+		57EABD511E55B212001DF5EE /* YKNoteTimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteTimerViewController.m; sourceTree = "<group>"; };
+		57EABD531E56AFF0001DF5EE /* NSTimer+YKNoteBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+YKNoteBlock.h"; sourceTree = "<group>"; };
+		57EABD541E56AFF0001DF5EE /* NSTimer+YKNoteBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+YKNoteBlock.m"; sourceTree = "<group>"; };
+		57EABD561E56C2F5001DF5EE /* YKNoteTimerProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteTimerProxy.h; sourceTree = "<group>"; };
+		57EABD571E56C2F5001DF5EE /* YKNoteTimerProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteTimerProxy.m; sourceTree = "<group>"; };
 		57F83EAD1DF7DA4F00649443 /* YKNote-DispatchQueues.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "YKNote-DispatchQueues.md"; sourceTree = "<group>"; };
+		AABFAC2A001F6CC5D41796CD /* Pods_YKNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YKNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB63D9A1E10A79E00439505 /* YKNoteBlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteBlockViewController.h; sourceTree = "<group>"; };
 		BBB63D9B1E10A79E00439505 /* YKNoteBlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteBlockViewController.m; sourceTree = "<group>"; };
+		DC8770F069FA07CE39DCCFB9 /* Pods-YKNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YKNote.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-YKNote/Pods-YKNote.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +199,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD301394A126BD6C4EF37E4D /* Pods_YKNote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +213,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26989D1EFA551CF585791822 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AABFAC2A001F6CC5D41796CD /* Pods_YKNote.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		495D5EF73F43B39CC334E42C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DC8770F069FA07CE39DCCFB9 /* Pods-YKNote.debug.xcconfig */,
+				189392060C09E0F433666B2D /* Pods-YKNote.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		571903781E2327CA008438BA /* CoreGraphics */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +323,8 @@
 				57B1AE6F1DCAE5960030E062 /* YKNote */,
 				57B1AE891DCAE5970030E062 /* YKNoteTests */,
 				57B1AE6E1DCAE5960030E062 /* Products */,
+				495D5EF73F43B39CC334E42C /* Pods */,
+				26989D1EFA551CF585791822 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -302,6 +340,8 @@
 		57B1AE6F1DCAE5960030E062 /* YKNote */ = {
 			isa = PBXGroup;
 			children = (
+				57EABD4D1E55AEEC001DF5EE /* Timer */,
+				57EAB9551E516360001DF5EE /* Network */,
 				571903821E233EB3008438BA /* Foundation */,
 				571903781E2327CA008438BA /* CoreGraphics */,
 				578768311E1B764A00DF3D1E /* DataStructure */,
@@ -317,19 +357,9 @@
 				57B1AEA41DCAE5C80030E062 /* Runtime */,
 				57B1AE701DCAE5960030E062 /* Supporting Files */,
 				57211CF21DD0269F005730C0 /* Utils */,
-				57B1AE731DCAE5960030E062 /* AppDelegate.h */,
-				57B1AE741DCAE5960030E062 /* AppDelegate.m */,
-				5792E5401DD9AE6E00A95A7F /* YKNoteApplication.h */,
-				5792E5411DD9AE6E00A95A7F /* YKNoteApplication.m */,
-				5792E53D1DD9AD2E00A95A7F /* YKNoteWindow.h */,
-				5792E53E1DD9AD2E00A95A7F /* YKNoteWindow.m */,
-				5792E5461DDADA2E00A95A7F /* YKNoteMainViewController.h */,
-				5792E5471DDADA2E00A95A7F /* YKNoteMainViewController.m */,
-				5792E5491DDADBB200A95A7F /* YKNoteMainViewControllerProtocolImpl.h */,
-				5792E54A1DDADBB200A95A7F /* YKNoteMainViewControllerProtocolImpl.m */,
-				57B1AE811DCAE5970030E062 /* Info.plist */,
-				57B1AE7C1DCAE5960030E062 /* Assets.xcassets */,
-				57B1AE7E1DCAE5960030E062 /* LaunchScreen.storyboard */,
+				57EAB9561E516416001DF5EE /* AppDelegate */,
+				57EAB9571E516428001DF5EE /* Other */,
+				57EAB95B1E516483001DF5EE /* Resource */,
 			);
 			path = YKNote;
 			sourceTree = "<group>";
@@ -337,6 +367,7 @@
 		57B1AE701DCAE5960030E062 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				57B1AE811DCAE5970030E062 /* Info.plist */,
 				57B1AE711DCAE5960030E062 /* main.m */,
 				57211CF91DD04C3C005730C0 /* YKNote.pch */,
 			);
@@ -444,6 +475,62 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		57EAB9551E516360001DF5EE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				57EAB9611E51678B001DF5EE /* YKNetworkConfig.h */,
+				57EAB9621E51678B001DF5EE /* YKNetworkConfig.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		57EAB9561E516416001DF5EE /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				57B1AE731DCAE5960030E062 /* AppDelegate.h */,
+				57B1AE741DCAE5960030E062 /* AppDelegate.m */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		57EAB9571E516428001DF5EE /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				57B1AE7E1DCAE5960030E062 /* LaunchScreen.storyboard */,
+				5792E5401DD9AE6E00A95A7F /* YKNoteApplication.h */,
+				5792E5411DD9AE6E00A95A7F /* YKNoteApplication.m */,
+				5792E53D1DD9AD2E00A95A7F /* YKNoteWindow.h */,
+				5792E53E1DD9AD2E00A95A7F /* YKNoteWindow.m */,
+				5792E5461DDADA2E00A95A7F /* YKNoteMainViewController.h */,
+				5792E5471DDADA2E00A95A7F /* YKNoteMainViewController.m */,
+				5792E5491DDADBB200A95A7F /* YKNoteMainViewControllerProtocolImpl.h */,
+				5792E54A1DDADBB200A95A7F /* YKNoteMainViewControllerProtocolImpl.m */,
+				57EABD4E1E55AF35001DF5EE /* Router.plist */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		57EAB95B1E516483001DF5EE /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				57EAB95C1E516483001DF5EE /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		57EABD4D1E55AEEC001DF5EE /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				57EABD501E55B212001DF5EE /* YKNoteTimerViewController.h */,
+				57EABD511E55B212001DF5EE /* YKNoteTimerViewController.m */,
+				57EABD531E56AFF0001DF5EE /* NSTimer+YKNoteBlock.h */,
+				57EABD541E56AFF0001DF5EE /* NSTimer+YKNoteBlock.m */,
+				57EABD561E56C2F5001DF5EE /* YKNoteTimerProxy.h */,
+				57EABD571E56C2F5001DF5EE /* YKNoteTimerProxy.m */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -451,9 +538,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57B1AE8F1DCAE5970030E062 /* Build configuration list for PBXNativeTarget "YKNote" */;
 			buildPhases = (
+				9B6D84008D9E636E5812247C /* [CP] Check Pods Manifest.lock */,
 				57B1AE691DCAE5960030E062 /* Sources */,
 				57B1AE6A1DCAE5960030E062 /* Frameworks */,
 				57B1AE6B1DCAE5960030E062 /* Resources */,
+				B7506543C046C56D956E80A6 /* [CP] Embed Pods Frameworks */,
+				929076A93ED35002A085CB00 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -488,8 +578,9 @@
 		57B1AE651DCAE5960030E062 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = "";
 				LastUpgradeCheck = 0810;
-				ORGANIZATIONNAME = com.ucaiyuan;
+				ORGANIZATIONNAME = wanyakun.github.io;
 				TargetAttributes = {
 					57B1AE6C1DCAE5960030E062 = {
 						CreatedOnToolsVersion = 8.1;
@@ -529,8 +620,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				57B1AE801DCAE5960030E062 /* LaunchScreen.storyboard in Resources */,
+				57EAB95D1E516483001DF5EE /* Assets.xcassets in Resources */,
 				5792E5651DDEEF3C00A95A7F /* YKNoteGestureRecognizerViewController.xib in Resources */,
-				57B1AE7D1DCAE5960030E062 /* Assets.xcassets in Resources */,
+				57EABD4F1E55AF35001DF5EE /* Router.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,6 +634,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		929076A93ED35002A085CB00 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-YKNote/Pods-YKNote-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B6D84008D9E636E5812247C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B7506543C046C56D956E80A6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-YKNote/Pods-YKNote-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		57B1AE691DCAE5960030E062 /* Sources */ = {
@@ -558,15 +698,18 @@
 				5792E5481DDADA2E00A95A7F /* YKNoteMainViewController.m in Sources */,
 				5719037B1E2327E6008438BA /* YKNoteCoreGraphicsViewController.m in Sources */,
 				578D0A9A1DF68BF600E65572 /* YKNoteNonConcurrentOperation.m in Sources */,
+				57EABD551E56AFF0001DF5EE /* NSTimer+YKNoteBlock.m in Sources */,
 				578D0A941DEED74B00E65572 /* YKNote-OperationQueues.md in Sources */,
 				579A439F1DD847D900D63F0B /* YKNoteEventHandingView.m in Sources */,
 				57B1AEAD1DCB02E90030E062 /* NSObject+Swizzle.m in Sources */,
+				57EAB9631E51678B001DF5EE /* YKNetworkConfig.m in Sources */,
 				BBB63D9C1E10A79E00439505 /* YKNoteBlockViewController.m in Sources */,
 				571903851E233ED5008438BA /* YKNoteFoundationViewController.m in Sources */,
 				57211CF51DD02723005730C0 /* UIView+LayoutMethods.m in Sources */,
 				578D0A901DE69EBB00E65572 /* YKNote-GestureRecognizers.md in Sources */,
 				57A1CCC21E07D7EF00ACA4C3 /* YKNoteGCDViewController.m in Sources */,
 				57C70D4D1E14D5B300D410AF /* SandBoxUtils.m in Sources */,
+				57EABD521E55B212001DF5EE /* YKNoteTimerViewController.m in Sources */,
 				5792E5391DD55F1600A95A7F /* YKNoteKVCViewController.m in Sources */,
 				57B1AEA61DCAE5C80030E062 /* YKNoteBlockNoteObject.m in Sources */,
 				57211D021DD06FCF005730C0 /* YKNoteRuntimeUtils.m in Sources */,
@@ -597,6 +740,7 @@
 				5792E55D1DDECF2500A95A7F /* YKNoteTapGestureRecognizer.m in Sources */,
 				57B1AE721DCAE5960030E062 /* main.m in Sources */,
 				5719037E1E23281C008438BA /* YKNoteDrawView.m in Sources */,
+				57EABD581E56C2F5001DF5EE /* YKNoteTimerProxy.m in Sources */,
 				57B1AEA81DCAE5C80030E062 /* YKNoteIntercepter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -721,6 +865,7 @@
 		};
 		57B1AE901DCAE5970030E062 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC8770F069FA07CE39DCCFB9 /* Pods-YKNote.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = TC7ZKNQ9JS;
@@ -735,6 +880,7 @@
 		};
 		57B1AE911DCAE5970030E062 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 189392060C09E0F433666B2D /* Pods-YKNote.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = TC7ZKNQ9JS;

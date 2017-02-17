@@ -11,8 +11,7 @@
 
 @interface YKNoteMainViewControllerProtocolImpl ()
 
-@property (nonatomic, strong) NSArray *dataArray;
-@property (nonatomic, strong) NSArray *controllerArray;
+@property (nonatomic, strong) NSDictionary *routerDic;
 
 @end
 
@@ -20,32 +19,9 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        _dataArray = @[@"Foundation",
-                       @"Block",
-                       @"GCD",
-                       @"NSOperation",
-                       @"KVC",
-                       @"KVO",
-                       @"EventHandling",
-                       @"GestureRecognizer",
-                       @"Runtime",
-                       @"Runloop",
-                       @"CoreData",
-                       @"DataStructure",
-                       @"CoreGraphics"];
-        _controllerArray = @[@"YKNoteFoundationViewController",
-                             @"YKNoteBlockViewController",
-                             @"YKNoteGCDViewController",
-                             @"YKNoteOperationViewController",
-                             @"YKNoteKVCViewController",
-                             @"YKNoteKVOViewController",
-                             @"YKNoteEventHandingViewController",
-                             @"YKNoteGestureRecognizerViewController",
-                             @"YKNoteRuntimeViewController",
-                             @"YKNoteRunloopViewController",
-                             @"YKNoteCoreDataViewController",
-                             @"YKNoteDataStructureViewController",
-                             @"YKNoteCoreGraphicsViewController"];
+        
+        NSString *routerFilePath = [[NSBundle mainBundle] pathForResource:@"Router" ofType:@"plist"];
+        _routerDic = [[NSDictionary alloc] initWithContentsOfFile:routerFilePath];
     }
     return self;
 }
@@ -56,7 +32,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataArray.count;
+    return self.routerDic.allKeys.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -68,7 +44,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.clipsToBounds = YES;
     }
-    cell.textLabel.text = [self.dataArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = [self.routerDic.allKeys objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -89,13 +65,17 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *className = [self.controllerArray objectAtIndex:indexPath.row];
-    const char *clsName = [className cStringUsingEncoding:NSASCIIStringEncoding];
-    Class cls = objc_getClass(clsName);
-    if (cls) {
-        UIViewController *controller = [[cls alloc] init];
-        [self.controller.navigationController pushViewController:controller animated:YES];
+    NSString *key = [self.routerDic.allKeys objectAtIndex:indexPath.row];
+    NSString *className = [self.routerDic objectForKey:key];
+    if (className) {
+        const char *clsName = [className cStringUsingEncoding:NSASCIIStringEncoding];
+        Class cls = objc_getClass(clsName);
+        if (cls) {
+            UIViewController *controller = [[cls alloc] init];
+            [self.controller.navigationController pushViewController:controller animated:YES];
+        }
     }
+
     
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }

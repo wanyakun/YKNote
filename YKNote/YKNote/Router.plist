@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Foundation</key>
+	<string>YKNoteFoundationViewController</string>
+	<key>Block</key>
+	<string>YKNoteBlockViewController</string>
+	<key>GCD</key>
+	<string>YKNoteGCDViewController</string>
+	<key>NSOperation</key>
+	<string>YKNoteOperationViewController</string>
+	<key>KVC</key>
+	<string>YKNoteKVCViewController</string>
+	<key>KVO</key>
+	<string>YKNoteKVOViewController</string>
+	<key>EventHandling</key>
+	<string>YKNoteEventHandingViewController</string>
+	<key>GestureRecognizer</key>
+	<string>YKNoteGestureRecognizerViewController</string>
+	<key>Runtime</key>
+	<string>YKNoteRuntimeViewController</string>
+	<key>Runloop</key>
+	<string>YKNoteRunloopViewController</string>
+	<key>CoreData</key>
+	<string>YKNoteCoreDataViewController</string>
+	<key>DataStructure</key>
+	<string>YKNoteDataStructureViewController</string>
+	<key>CoreGraphics</key>
+	<string>YKNoteCoreGraphicsViewController</string>
+	<key>Timer</key>
+	<string>YKNoteTimerViewController</string>
+</dict>
+</plist>

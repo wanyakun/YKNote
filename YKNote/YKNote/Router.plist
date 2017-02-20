@@ -30,5 +30,7 @@
 	<string>YKNoteCoreGraphicsViewController</string>
 	<key>Timer</key>
 	<string>YKNoteTimerViewController</string>
+	<key>LALogin</key>
+	<string>YKNoteLoginViewController</string>
 </dict>
 </plist>

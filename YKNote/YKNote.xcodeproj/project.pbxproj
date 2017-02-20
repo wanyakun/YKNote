@@ -15,6 +15,9 @@
 		57211CFC1DD04F75005730C0 /* YKNoteKVOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57211CFB1DD04F75005730C0 /* YKNoteKVOViewController.m */; };
 		57211CFE1DD056BA005730C0 /* YKNote-KVO.md in Sources */ = {isa = PBXBuildFile; fileRef = 57211CFD1DD056BA005730C0 /* YKNote-KVO.md */; };
 		57211D021DD06FCF005730C0 /* YKNoteRuntimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 57211D011DD06FCF005730C0 /* YKNoteRuntimeUtils.m */; };
+		57337EA61E596338007AD4AF /* BubbleSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 57337EA51E596338007AD4AF /* BubbleSort.m */; };
+		57337EA91E596AD7007AD4AF /* BubbleSortTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57337EA81E596AD7007AD4AF /* BubbleSortTests.m */; };
+		57337EAB1E599B04007AD4AF /* FindButtonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57337EAA1E599B04007AD4AF /* FindButtonTests.m */; };
 		57422A521E0BFB8B00FF67CB /* YKNoteRuntimeObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 57422A511E0BFB8B00FF67CB /* YKNoteRuntimeObject+Swizzle.m */; };
 		57422A591E0CC7A900FF67CB /* YKNoteRunloopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57422A581E0CC7A900FF67CB /* YKNoteRunloopViewController.m */; };
 		57422A5C1E0D245800FF67CB /* YKNoteTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57422A5B1E0D245800FF67CB /* YKNoteTimer.m */; };
@@ -64,6 +67,8 @@
 		57EABD521E55B212001DF5EE /* YKNoteTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EABD511E55B212001DF5EE /* YKNoteTimerViewController.m */; };
 		57EABD551E56AFF0001DF5EE /* NSTimer+YKNoteBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EABD541E56AFF0001DF5EE /* NSTimer+YKNoteBlock.m */; };
 		57EABD581E56C2F5001DF5EE /* YKNoteTimerProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EABD571E56C2F5001DF5EE /* YKNoteTimerProxy.m */; };
+		57EABD601E57F41D001DF5EE /* YKNoteLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EABD5E1E57F41D001DF5EE /* YKNoteLoginViewController.m */; };
+		57EABD611E57F41D001DF5EE /* YKNoteLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57EABD5F1E57F41D001DF5EE /* YKNoteLoginViewController.xib */; };
 		57F83EAE1DF7DA4F00649443 /* YKNote-DispatchQueues.md in Sources */ = {isa = PBXBuildFile; fileRef = 57F83EAD1DF7DA4F00649443 /* YKNote-DispatchQueues.md */; };
 		BBB63D9C1E10A79E00439505 /* YKNoteBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB63D9B1E10A79E00439505 /* YKNoteBlockViewController.m */; };
 		BD301394A126BD6C4EF37E4D /* Pods_YKNote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABFAC2A001F6CC5D41796CD /* Pods_YKNote.framework */; };
@@ -97,6 +102,11 @@
 		57211CFD1DD056BA005730C0 /* YKNote-KVO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "YKNote-KVO.md"; sourceTree = "<group>"; };
 		57211D001DD06FCF005730C0 /* YKNoteRuntimeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteRuntimeUtils.h; sourceTree = "<group>"; };
 		57211D011DD06FCF005730C0 /* YKNoteRuntimeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteRuntimeUtils.m; sourceTree = "<group>"; };
+		57337EA21E581370007AD4AF /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		57337EA41E596338007AD4AF /* BubbleSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleSort.h; sourceTree = "<group>"; };
+		57337EA51E596338007AD4AF /* BubbleSort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubbleSort.m; sourceTree = "<group>"; };
+		57337EA81E596AD7007AD4AF /* BubbleSortTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubbleSortTests.m; sourceTree = "<group>"; };
+		57337EAA1E599B04007AD4AF /* FindButtonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindButtonTests.m; sourceTree = "<group>"; };
 		57422A501E0BFB8B00FF67CB /* YKNoteRuntimeObject+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YKNoteRuntimeObject+Swizzle.h"; sourceTree = "<group>"; };
 		57422A511E0BFB8B00FF67CB /* YKNoteRuntimeObject+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YKNoteRuntimeObject+Swizzle.m"; sourceTree = "<group>"; };
 		57422A571E0CC7A900FF67CB /* YKNoteRunloopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteRunloopViewController.h; sourceTree = "<group>"; };
@@ -187,6 +197,10 @@
 		57EABD541E56AFF0001DF5EE /* NSTimer+YKNoteBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+YKNoteBlock.m"; sourceTree = "<group>"; };
 		57EABD561E56C2F5001DF5EE /* YKNoteTimerProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteTimerProxy.h; sourceTree = "<group>"; };
 		57EABD571E56C2F5001DF5EE /* YKNoteTimerProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteTimerProxy.m; sourceTree = "<group>"; };
+		57EABD5D1E57F41D001DF5EE /* YKNoteLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteLoginViewController.h; sourceTree = "<group>"; };
+		57EABD5E1E57F41D001DF5EE /* YKNoteLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteLoginViewController.m; sourceTree = "<group>"; };
+		57EABD5F1E57F41D001DF5EE /* YKNoteLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YKNoteLoginViewController.xib; sourceTree = "<group>"; };
+		57EABD621E57FD8A001DF5EE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		57F83EAD1DF7DA4F00649443 /* YKNote-DispatchQueues.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "YKNote-DispatchQueues.md"; sourceTree = "<group>"; };
 		AABFAC2A001F6CC5D41796CD /* Pods_YKNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YKNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB63D9A1E10A79E00439505 /* YKNoteBlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteBlockViewController.h; sourceTree = "<group>"; };
@@ -216,6 +230,8 @@
 		26989D1EFA551CF585791822 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				57337EA21E581370007AD4AF /* CoreText.framework */,
+				57EABD621E57FD8A001DF5EE /* UIKit.framework */,
 				AABFAC2A001F6CC5D41796CD /* Pods_YKNote.framework */,
 			);
 			name = Frameworks;
@@ -277,6 +293,14 @@
 			path = KVC;
 			sourceTree = "<group>";
 		};
+		57337EA71E596A9E007AD4AF /* DataStructure */ = {
+			isa = PBXGroup;
+			children = (
+				57337EA81E596AD7007AD4AF /* BubbleSortTests.m */,
+			);
+			path = DataStructure;
+			sourceTree = "<group>";
+		};
 		57422A561E0CC77400FF67CB /* RunLoop */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +317,8 @@
 				578768331E1B764A00DF3D1E /* SingleLink.h */,
 				578768341E1B764A00DF3D1E /* YKNoteDataStructureViewController.h */,
 				578768351E1B764A00DF3D1E /* YKNoteDataStructureViewController.m */,
+				57337EA41E596338007AD4AF /* BubbleSort.h */,
+				57337EA51E596338007AD4AF /* BubbleSort.m */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -340,6 +366,7 @@
 		57B1AE6F1DCAE5960030E062 /* YKNote */ = {
 			isa = PBXGroup;
 			children = (
+				57EABD591E571571001DF5EE /* LALogin */,
 				57EABD4D1E55AEEC001DF5EE /* Timer */,
 				57EAB9551E516360001DF5EE /* Network */,
 				571903821E233EB3008438BA /* Foundation */,
@@ -377,7 +404,9 @@
 		57B1AE891DCAE5970030E062 /* YKNoteTests */ = {
 			isa = PBXGroup;
 			children = (
+				57337EA71E596A9E007AD4AF /* DataStructure */,
 				57B1AE8A1DCAE5970030E062 /* YKNoteTests.m */,
+				57337EAA1E599B04007AD4AF /* FindButtonTests.m */,
 				57B1AE8C1DCAE5970030E062 /* Info.plist */,
 			);
 			path = YKNoteTests;
@@ -531,6 +560,16 @@
 			path = Timer;
 			sourceTree = "<group>";
 		};
+		57EABD591E571571001DF5EE /* LALogin */ = {
+			isa = PBXGroup;
+			children = (
+				57EABD5D1E57F41D001DF5EE /* YKNoteLoginViewController.h */,
+				57EABD5E1E57F41D001DF5EE /* YKNoteLoginViewController.m */,
+				57EABD5F1E57F41D001DF5EE /* YKNoteLoginViewController.xib */,
+			);
+			path = LALogin;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -579,7 +618,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = "";
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = wanyakun.github.io;
 				TargetAttributes = {
 					57B1AE6C1DCAE5960030E062 = {
@@ -620,6 +659,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57B1AE801DCAE5960030E062 /* LaunchScreen.storyboard in Resources */,
+				57EABD611E57F41D001DF5EE /* YKNoteLoginViewController.xib in Resources */,
 				57EAB95D1E516483001DF5EE /* Assets.xcassets in Resources */,
 				5792E5651DDEEF3C00A95A7F /* YKNoteGestureRecognizerViewController.xib in Resources */,
 				57EABD4F1E55AF35001DF5EE /* Router.plist in Resources */,
@@ -725,11 +765,13 @@
 				57A1CCCB1E0A240800ACA4C3 /* YKNoteRuntimeObject.m in Sources */,
 				578464CC1E03C9DF00663C11 /* YKNote-DispatchSources.md in Sources */,
 				57F83EAE1DF7DA4F00649443 /* YKNote-DispatchQueues.md in Sources */,
+				57EABD601E57F41D001DF5EE /* YKNoteLoginViewController.m in Sources */,
 				57211CFC1DD04F75005730C0 /* YKNoteKVOViewController.m in Sources */,
 				5787683A1E1F5FAF00DF3D1E /* YKNoteRuntimeBlockExecutor.m in Sources */,
 				57B1AEA91DCAE5C80030E062 /* YKNoteIntercepterDemoViewController.m in Sources */,
 				57C70D471E14C71000D410AF /* YKNoteCoreDataViewController.m in Sources */,
 				5792E5641DDEEF3C00A95A7F /* YKNoteGestureRecognizerViewController.m in Sources */,
+				57337EA61E596338007AD4AF /* BubbleSort.m in Sources */,
 				57B1AE751DCAE5960030E062 /* AppDelegate.m in Sources */,
 				57B1AEA51DCAE5C80030E062 /* YKNoteBlockDemo.m in Sources */,
 				5792E53F1DD9AD2E00A95A7F /* YKNoteWindow.m in Sources */,
@@ -750,6 +792,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				57B1AE8B1DCAE5970030E062 /* YKNoteTests.m in Sources */,
+				57337EAB1E599B04007AD4AF /* FindButtonTests.m in Sources */,
+				57337EA91E596AD7007AD4AF /* BubbleSortTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,6 +837,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -840,6 +885,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -868,6 +914,8 @@
 			baseConfigurationReference = DC8770F069FA07CE39DCCFB9 /* Pods-YKNote.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = TC7ZKNQ9JS;
 				GCC_PREFIX_HEADER = YKNote/YKNote.pch;
 				INFOPLIST_FILE = YKNote/Info.plist;
@@ -883,6 +931,8 @@
 			baseConfigurationReference = 189392060C09E0F433666B2D /* Pods-YKNote.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = TC7ZKNQ9JS;
 				GCC_PREFIX_HEADER = YKNote/YKNote.pch;
 				INFOPLIST_FILE = YKNote/Info.plist;

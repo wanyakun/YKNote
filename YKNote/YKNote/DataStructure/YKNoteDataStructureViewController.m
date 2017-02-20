@@ -21,19 +21,20 @@
     self.title = @"DataStructure";
     self.view.backgroundColor = [UIColor whiteColor];
     
-    SingleLink *link = initLink();
-    insert(link, 0, 1);
-    insert(link, 1, 2);
-    insert(link, 2, 3);
-    insert(link, 3, 4);
-    insert(link, 4, 5);
-
-    reverse(link);
     
-    while (link) {
-        NSLog(@"%d", link->data);
-        link = link->next;
-    }
+//    SingleLink *link = initLink();
+//    insert(link, 0, 1);
+//    insert(link, 1, 2);
+//    insert(link, 2, 3);
+//    insert(link, 3, 4);
+//    insert(link, 4, 5);
+//
+//    reverse(link);
+//    
+//    while (link) {
+//        NSLog(@"%d", link->data);
+//        link = link->next;
+//    }
 }
 
 - (void)didReceiveMemoryWarning {

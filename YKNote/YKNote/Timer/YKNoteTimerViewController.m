@@ -40,7 +40,7 @@
 //    }];
     
     YKNoteTimerProxy *proxy = [YKNoteTimerProxy timerProxyWithTarget:self];
-    _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:proxy selector:@selector(timerHandler) userInfo:nil repeats:YES];    
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:proxy selector:@selector(timerHandler) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning {

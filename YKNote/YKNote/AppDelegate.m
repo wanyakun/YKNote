@@ -39,7 +39,7 @@
     //创建NavigationController
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
     //创建Window
-    self.window = [[YKNoteWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];

@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"NSOperation";
+    self.title = @"GCD";
     self.view.backgroundColor = [UIColor whiteColor];
     
 //    MyCreateTimer();

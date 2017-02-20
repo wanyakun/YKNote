@@ -28,6 +28,7 @@
     // Do any additional setup after loading the view.
     self.title = @"EventHandling";
     self.view.backgroundColor = [UIColor whiteColor];
+    
     //View
     [self.yKNoteEventHandingView setFrame:CGRectMake(50, 100, 200, 200)];
     [self.view addSubview:self.yKNoteEventHandingView];

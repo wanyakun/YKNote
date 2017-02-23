@@ -108,7 +108,7 @@
 
 + (void)load {
     [super load];
-    [YKNoteIntercepter sharedInstance];
+//    [YKNoteIntercepter sharedInstance];
 }
 
 + (instancetype)sharedInstance {

@@ -18,6 +18,7 @@
 		57337EA61E596338007AD4AF /* BubbleSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 57337EA51E596338007AD4AF /* BubbleSort.m */; };
 		57337EA91E596AD7007AD4AF /* BubbleSortTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57337EA81E596AD7007AD4AF /* BubbleSortTests.m */; };
 		57337EAB1E599B04007AD4AF /* FindButtonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57337EAA1E599B04007AD4AF /* FindButtonTests.m */; };
+		57337EB01E5ED834007AD4AF /* QuickSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 57337EAF1E5ED834007AD4AF /* QuickSort.m */; };
 		57422A521E0BFB8B00FF67CB /* YKNoteRuntimeObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 57422A511E0BFB8B00FF67CB /* YKNoteRuntimeObject+Swizzle.m */; };
 		57422A591E0CC7A900FF67CB /* YKNoteRunloopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57422A581E0CC7A900FF67CB /* YKNoteRunloopViewController.m */; };
 		57422A5C1E0D245800FF67CB /* YKNoteTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57422A5B1E0D245800FF67CB /* YKNoteTimer.m */; };
@@ -107,6 +108,8 @@
 		57337EA51E596338007AD4AF /* BubbleSort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubbleSort.m; sourceTree = "<group>"; };
 		57337EA81E596AD7007AD4AF /* BubbleSortTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubbleSortTests.m; sourceTree = "<group>"; };
 		57337EAA1E599B04007AD4AF /* FindButtonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindButtonTests.m; sourceTree = "<group>"; };
+		57337EAE1E5ED834007AD4AF /* QuickSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickSort.h; sourceTree = "<group>"; };
+		57337EAF1E5ED834007AD4AF /* QuickSort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickSort.m; sourceTree = "<group>"; };
 		57422A501E0BFB8B00FF67CB /* YKNoteRuntimeObject+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YKNoteRuntimeObject+Swizzle.h"; sourceTree = "<group>"; };
 		57422A511E0BFB8B00FF67CB /* YKNoteRuntimeObject+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YKNoteRuntimeObject+Swizzle.m"; sourceTree = "<group>"; };
 		57422A571E0CC7A900FF67CB /* YKNoteRunloopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteRunloopViewController.h; sourceTree = "<group>"; };
@@ -319,6 +322,8 @@
 				578768351E1B764A00DF3D1E /* YKNoteDataStructureViewController.m */,
 				57337EA41E596338007AD4AF /* BubbleSort.h */,
 				57337EA51E596338007AD4AF /* BubbleSort.m */,
+				57337EAE1E5ED834007AD4AF /* QuickSort.h */,
+				57337EAF1E5ED834007AD4AF /* QuickSort.m */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -783,6 +788,7 @@
 				57B1AE721DCAE5960030E062 /* main.m in Sources */,
 				5719037E1E23281C008438BA /* YKNoteDrawView.m in Sources */,
 				57EABD581E56C2F5001DF5EE /* YKNoteTimerProxy.m in Sources */,
+				57337EB01E5ED834007AD4AF /* QuickSort.m in Sources */,
 				57B1AEA81DCAE5C80030E062 /* YKNoteIntercepter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

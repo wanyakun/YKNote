@@ -80,4 +80,16 @@
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
+//实现下拉显示NavigationBar，上拉隐藏NavigationBar
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    
+    if (velocity.y > 0) {
+        //向上
+        [self.controller.navigationController setNavigationBarHidden:YES animated:YES];
+    } else {
+        //向下
+        [self.controller.navigationController setNavigationBarHidden:NO animated:YES];
+    }
+}
+
 @end

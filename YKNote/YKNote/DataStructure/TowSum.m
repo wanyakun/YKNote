@@ -11,21 +11,19 @@
 @implementation TowSum
 
 + (NSArray *)towSum:(NSArray<NSNumber *> *)nums ofTarget:(NSInteger)target {
+    //number is key, and the value is it index in the map table;
     NSMapTable *mapTable = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsStrongMemory valueOptions:NSPointerFunctionsWeakMemory];
     NSMutableArray *resut = [NSMutableArray arrayWithCapacity:2];
     for (NSInteger i = 0; i < nums.count; i++) {
         NSInteger numberToFind = target - [nums[i] integerValue];
-        NSEnumerator *enumerator = mapTable.objectEnumerator;
-        NSNumber *next = nil;
-        while (next = [enumerator nextObject]) {
-            if ([next integerValue] == numberToFind) {
-                [resut addObject:nums[i]];
-                [resut addObject:next];
-                
-                return [resut copy];
-            }
+        NSNumber *number = [mapTable objectForKey:[NSNumber numberWithInteger:numberToFind]];
+        if (number) {
+            [resut addObject:number];
+            [resut addObject:[NSNumber numberWithInteger:i]];
+
+            return [resut copy];
         }
-        [mapTable setObject:nums[i] forKey:[NSNumber numberWithInteger:i]];
+        [mapTable setObject:[NSNumber numberWithInteger:i] forKey:nums[i]];
     }
     
     return [resut copy];

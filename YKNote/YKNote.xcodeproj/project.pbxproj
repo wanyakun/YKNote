@@ -23,6 +23,10 @@
 		57337EB71E613394007AD4AF /* YKNoteUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57337EB61E613394007AD4AF /* YKNoteUITableViewCell.m */; };
 		57337EBA1E642FD7007AD4AF /* TowSum.m in Sources */ = {isa = PBXBuildFile; fileRef = 57337EB91E642FD7007AD4AF /* TowSum.m */; };
 		57337EBC1E64339F007AD4AF /* TowSumTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57337EBB1E64339F007AD4AF /* TowSumTests.m */; };
+		573931881E6566DA00BE72B5 /* IPV4ToInteger.m in Sources */ = {isa = PBXBuildFile; fileRef = 573931871E6566DA00BE72B5 /* IPV4ToInteger.m */; };
+		5739318A1E658D3300BE72B5 /* IPV4ToIntegerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 573931891E658D3300BE72B5 /* IPV4ToIntegerTests.m */; };
+		574172FF24613F8800547EC5 /* StringReverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 574172FE24613F8800547EC5 /* StringReverse.m */; };
+		574173012461430400547EC5 /* StringReverseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 574173002461430400547EC5 /* StringReverseTests.m */; };
 		57422A521E0BFB8B00FF67CB /* YKNoteRuntimeObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 57422A511E0BFB8B00FF67CB /* YKNoteRuntimeObject+Swizzle.m */; };
 		57422A591E0CC7A900FF67CB /* YKNoteRunloopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57422A581E0CC7A900FF67CB /* YKNoteRunloopViewController.m */; };
 		57422A5C1E0D245800FF67CB /* YKNoteTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57422A5B1E0D245800FF67CB /* YKNoteTimer.m */; };
@@ -121,6 +125,12 @@
 		57337EB81E642FD7007AD4AF /* TowSum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowSum.h; sourceTree = "<group>"; };
 		57337EB91E642FD7007AD4AF /* TowSum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TowSum.m; sourceTree = "<group>"; };
 		57337EBB1E64339F007AD4AF /* TowSumTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TowSumTests.m; sourceTree = "<group>"; };
+		573931861E6566DA00BE72B5 /* IPV4ToInteger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPV4ToInteger.h; sourceTree = "<group>"; };
+		573931871E6566DA00BE72B5 /* IPV4ToInteger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPV4ToInteger.m; sourceTree = "<group>"; };
+		573931891E658D3300BE72B5 /* IPV4ToIntegerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPV4ToIntegerTests.m; sourceTree = "<group>"; };
+		574172FD24613F8800547EC5 /* StringReverse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringReverse.h; sourceTree = "<group>"; };
+		574172FE24613F8800547EC5 /* StringReverse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StringReverse.m; sourceTree = "<group>"; };
+		574173002461430400547EC5 /* StringReverseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StringReverseTests.m; sourceTree = "<group>"; };
 		57422A501E0BFB8B00FF67CB /* YKNoteRuntimeObject+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YKNoteRuntimeObject+Swizzle.h"; sourceTree = "<group>"; };
 		57422A511E0BFB8B00FF67CB /* YKNoteRuntimeObject+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YKNoteRuntimeObject+Swizzle.m"; sourceTree = "<group>"; };
 		57422A571E0CC7A900FF67CB /* YKNoteRunloopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteRunloopViewController.h; sourceTree = "<group>"; };
@@ -312,6 +322,8 @@
 			children = (
 				57337EA81E596AD7007AD4AF /* BubbleSortTests.m */,
 				57337EBB1E64339F007AD4AF /* TowSumTests.m */,
+				573931891E658D3300BE72B5 /* IPV4ToIntegerTests.m */,
+				574173002461430400547EC5 /* StringReverseTests.m */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -349,6 +361,10 @@
 				57337EAF1E5ED834007AD4AF /* QuickSort.m */,
 				57337EB81E642FD7007AD4AF /* TowSum.h */,
 				57337EB91E642FD7007AD4AF /* TowSum.m */,
+				573931861E6566DA00BE72B5 /* IPV4ToInteger.h */,
+				573931871E6566DA00BE72B5 /* IPV4ToInteger.m */,
+				574172FD24613F8800547EC5 /* StringReverse.h */,
+				574172FE24613F8800547EC5 /* StringReverse.m */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -670,6 +686,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -766,6 +783,7 @@
 				5792E54B1DDADBB200A95A7F /* YKNoteMainViewControllerProtocolImpl.m in Sources */,
 				578768371E1B764A00DF3D1E /* YKNoteDataStructureViewController.m in Sources */,
 				578D0A9D1DF6A38500E65572 /* YKNoteConcurrentOperation.m in Sources */,
+				573931881E6566DA00BE72B5 /* IPV4ToInteger.m in Sources */,
 				5792E5481DDADA2E00A95A7F /* YKNoteMainViewController.m in Sources */,
 				5719037B1E2327E6008438BA /* YKNoteCoreGraphicsViewController.m in Sources */,
 				578D0A9A1DF68BF600E65572 /* YKNoteNonConcurrentOperation.m in Sources */,
@@ -809,6 +827,7 @@
 				57B1AE751DCAE5960030E062 /* AppDelegate.m in Sources */,
 				57B1AEA51DCAE5C80030E062 /* YKNoteBlockDemo.m in Sources */,
 				5792E53F1DD9AD2E00A95A7F /* YKNoteWindow.m in Sources */,
+				574172FF24613F8800547EC5 /* StringReverse.m in Sources */,
 				5787683D1E1F60C500DF3D1E /* NSObject+YKNoteRunBlockAtDealloc.m in Sources */,
 				57B1AEB01DCB0E580030E062 /* YKNoteKVOObject.m in Sources */,
 				57A1CCC81E0A232200ACA4C3 /* YKNoteRuntimeViewController.m in Sources */,
@@ -826,10 +845,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5739318A1E658D3300BE72B5 /* IPV4ToIntegerTests.m in Sources */,
 				57B1AE8B1DCAE5970030E062 /* YKNoteTests.m in Sources */,
 				57337EAB1E599B04007AD4AF /* FindButtonTests.m in Sources */,
 				57337EBC1E64339F007AD4AF /* TowSumTests.m in Sources */,
 				57337EA91E596AD7007AD4AF /* BubbleSortTests.m in Sources */,
+				574173012461430400547EC5 /* StringReverseTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
+#include <string.h>
 #include "SingleLink.h"
 
 static Node *headerNode = NULL;
@@ -107,5 +109,21 @@ void reverse(SingleLink *link) {
     //将原链表的头结点添加到反转后的节点的头部
     tail->next = head;
     head = tail;
+}
+
+unsigned int ip2int(char* ipStr){
+    unsigned int ipInt = 0;
+    int tokenInt = 0;
+    char * token;
+    token = strtok(ipStr, ".");
+    int i = 3;
+    while(token != NULL){
+        //      tokenInt = strtol(token, NULL, 10); //strtol comes from stdlib.h
+        tokenInt = atoi(token);
+        ipInt += tokenInt * pow(256, i);
+        token = strtok(NULL, ".");
+        i--;
+    }
+    return ipInt;
 }
 

@@ -35,5 +35,7 @@ Node* insert(SingleLink *link, int i, ElemType *data);
 //链表翻转
 void reverse(SingleLink *link);
 
+unsigned int ip2int(char* ipStr);
+
 
 #endif /* SingleLink_h */

@@ -6,10 +6,10 @@ platform :ios, '8.0'
 inhibit_all_warnings!
 use_frameworks!
 
-xcodeproj 'YKNote/YKNote.xcodeproj'
+project 'YKNote/YKNote.xcodeproj'
 
 target :YKNote do
-    xcodeproj 'YKNote/YKNote.xcodeproj'
+    project 'YKNote/YKNote.xcodeproj'
     
     #网络请求类库
     pod 'AFNetworking'

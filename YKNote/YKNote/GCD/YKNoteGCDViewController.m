@@ -29,8 +29,11 @@
     
 //    [self createYKNoteTimer];
     
-    [self testBarrier];
-    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(50, 150, 100, 50)];
+    button.backgroundColor = UIColor.blueColor;
+    [button setTitle:@"测试Barrier" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(testBarrier) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,28 +49,29 @@
 #pragma mark - Test dispatch_barrier_async
 - (void)testBarrier {
     dispatch_queue_t queue = dispatch_queue_create("YKNote-TestBarrier", DISPATCH_QUEUE_CONCURRENT);
-    dispatch_async(queue, ^{
+    void(^blk)(void) =^{
         NSLog(@"task1 begin");
         sleep(2);
         NSLog(@"task1 end");
         NSLog(@"%p", [NSThread currentThread]);
-    });
+    };
+    dispatch_async(queue, blk);
     dispatch_async(queue, ^{
         NSLog(@"task2 bein");
-        sleep(2);
+        sleep(5);
         NSLog(@"task2 end");
         NSLog(@"%p", [NSThread currentThread]);
     });
     dispatch_async(queue, ^{
         NSLog(@"task3 begin");
-        sleep(2);
+        sleep(7);
         NSLog(@"task3 end");
         NSLog(@"%p", [NSThread currentThread]);
     });
     
     dispatch_barrier_async(queue, ^{
         NSLog(@"barrier begin");
-        sleep(5);
+        sleep(1);
         NSLog(@"barrier end");
         NSLog(@"%p", [NSThread currentThread]);
     });
@@ -79,17 +83,89 @@
     });
     dispatch_async(queue, ^{
         NSLog(@"task5 begin");
-        sleep(2);
+        sleep(5);
         NSLog(@"task5 end");
         NSLog(@"%p", [NSThread currentThread]);
     });
     dispatch_async(queue, ^{
         NSLog(@"task6 begin");
-        sleep(2);
+        sleep(7);
         NSLog(@"task6 end");
         NSLog(@"%p", [NSThread currentThread]);
     });
 
+}
+
++ (void)testBarrierSync {
+    dispatch_queue_t concurrentQueue = dispatch_queue_create("test", DISPATCH_QUEUE_CONCURRENT);
+    for (NSInteger i = 0; i < 10; i++) {
+        dispatch_sync(concurrentQueue, ^{
+            NSLog(@"%zd",i);
+        });
+    }
+    dispatch_barrier_sync(concurrentQueue, ^{
+        NSLog(@"barrier");
+    });
+    NSLog(@"barrier after");
+    for (NSInteger i = 10; i < 20; i++) {
+        dispatch_sync(concurrentQueue, ^{
+            NSLog(@"%zd",i);
+        });
+    }
+}
+
++ (void)testBarrierAsync {
+    dispatch_queue_t concurrentQueue = dispatch_queue_create("test", DISPATCH_QUEUE_CONCURRENT);
+    for (NSInteger i = 0; i < 10; i++) {
+        dispatch_sync(concurrentQueue, ^{
+            NSLog(@"%zd",i);
+        });
+    }
+    dispatch_barrier_async(concurrentQueue, ^{
+        NSLog(@"barrier");
+    });
+    NSLog(@"barrier after");
+    for (NSInteger i = 10; i < 20; i++) {
+        dispatch_sync(concurrentQueue, ^{
+            NSLog(@"%zd",i);
+        });
+    }
+}
+
++ (void)testAsyncBarrierSync {
+    dispatch_queue_t concurrentQueue = dispatch_queue_create("test", DISPATCH_QUEUE_CONCURRENT);
+    for (NSInteger i = 0; i < 10; i++) {
+        dispatch_async(concurrentQueue, ^{
+            NSLog(@"%zd",i);
+        });
+    }
+    dispatch_barrier_sync(concurrentQueue, ^{
+        NSLog(@"barrier");
+    });
+    NSLog(@"barrier after");
+    for (NSInteger i = 10; i < 20; i++) {
+        dispatch_async(concurrentQueue, ^{
+            NSLog(@"%zd",i);
+        });
+    }
+}
+
++ (void)testAsyncBarrierAsync {
+    dispatch_queue_t concurrentQueue = dispatch_queue_create("test", DISPATCH_QUEUE_CONCURRENT);
+    for (NSInteger i = 0; i < 10; i++) {
+        dispatch_async(concurrentQueue, ^{
+            NSLog(@"%zd",i);
+        });
+    }
+    dispatch_barrier_async(concurrentQueue, ^{
+        NSLog(@"barrier");
+    });
+    NSLog(@"barrier after");
+    for (NSInteger i = 10; i < 20; i++) {
+        dispatch_async(concurrentQueue, ^{
+            NSLog(@"%zd",i);
+        });
+    }
 }
 
 #pragma mark - Create YKNoteTimer

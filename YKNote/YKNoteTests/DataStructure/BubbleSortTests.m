@@ -7,7 +7,6 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "BubbleSort.h"
 
 @interface BubbleSortTests : XCTestCase
 
@@ -41,14 +40,14 @@
 }
 
 - (void)testBubbleSortWithArray {
-    NSMutableArray *array = [NSMutableArray arrayWithObjects:@2, @6, @5, @1, @17, @82, @4, @9, nil];
-    [BubbleSort bubbleSortWithArray:array];
-    NSLog(@"%@", array);
+//    NSMutableArray *array = [NSMutableArray arrayWithObjects:@2, @6, @5, @1, @17, @82, @4, @9, nil];
+//    [BubbleSort bubbleSortWithArray:array];
+//    NSLog(@"%@", array);
 }
 
 - (void)testBubbleSort {
-    NSArray *result = [BubbleSort bubbleSort:self.array];
-    NSLog(@"%@", result);
+//    NSArray *result = [BubbleSort bubbleSort:self.array];
+//    NSLog(@"%@", result);
 }
 
 @end

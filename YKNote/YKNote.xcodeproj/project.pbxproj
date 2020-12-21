@@ -42,6 +42,12 @@
 		578D0A971DEED78D00E65572 /* YKNoteOperationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578D0A961DEED78D00E65572 /* YKNoteOperationViewController.m */; };
 		578D0A9A1DF68BF600E65572 /* YKNoteNonConcurrentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 578D0A991DF68BF600E65572 /* YKNoteNonConcurrentOperation.m */; };
 		578D0A9D1DF6A38500E65572 /* YKNoteConcurrentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 578D0A9C1DF6A38500E65572 /* YKNoteConcurrentOperation.m */; };
+		578DA6C32462509E00EFAEAE /* OrderArrayCombine.m in Sources */ = {isa = PBXBuildFile; fileRef = 578DA6C22462509E00EFAEAE /* OrderArrayCombine.m */; };
+		578DA6C52462521700EFAEAE /* OrderArrayCombineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 578DA6C42462521700EFAEAE /* OrderArrayCombineTests.m */; };
+		578DA6C82462BAD400EFAEAE /* FindCommonSuperViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 578DA6C72462BAD400EFAEAE /* FindCommonSuperViews.m */; };
+		578DA6CA2462BB1B00EFAEAE /* FindCommonSuperViewsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 578DA6C92462BB1B00EFAEAE /* FindCommonSuperViewsTests.m */; };
+		578DA6CD2463975900EFAEAE /* Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 578DA6CC2463975900EFAEAE /* Sort.m */; };
+		578DA6CF2463A00500EFAEAE /* SortTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 578DA6CE2463A00500EFAEAE /* SortTests.m */; };
 		5792E5361DD46E3300A95A7F /* YKNoteKVCObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5792E5351DD46E3300A95A7F /* YKNoteKVCObject.m */; };
 		5792E5391DD55F1600A95A7F /* YKNoteKVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5792E5381DD55F1600A95A7F /* YKNoteKVCViewController.m */; };
 		5792E53F1DD9AD2E00A95A7F /* YKNoteWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5792E53E1DD9AD2E00A95A7F /* YKNoteWindow.m */; };
@@ -70,6 +76,7 @@
 		57C70D471E14C71000D410AF /* YKNoteCoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C70D461E14C71000D410AF /* YKNoteCoreDataViewController.m */; };
 		57C70D4A1E14C7FB00D410AF /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C70D491E14C7FB00D410AF /* CoreDataManager.m */; };
 		57C70D4D1E14D5B300D410AF /* SandBoxUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C70D4C1E14D5B300D410AF /* SandBoxUtils.m */; };
+		57D70CC324B7232A00B0FD07 /* YKNoteGCDViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D70CC224B7232A00B0FD07 /* YKNoteGCDViewControllerTests.m */; };
 		57EAB95D1E516483001DF5EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57EAB95C1E516483001DF5EE /* Assets.xcassets */; };
 		57EAB9631E51678B001DF5EE /* YKNetworkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EAB9621E51678B001DF5EE /* YKNetworkConfig.m */; };
 		57EABD4F1E55AF35001DF5EE /* Router.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57EABD4E1E55AF35001DF5EE /* Router.plist */; };
@@ -156,6 +163,15 @@
 		578D0A991DF68BF600E65572 /* YKNoteNonConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteNonConcurrentOperation.m; sourceTree = "<group>"; };
 		578D0A9B1DF6A38500E65572 /* YKNoteConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteConcurrentOperation.h; sourceTree = "<group>"; };
 		578D0A9C1DF6A38500E65572 /* YKNoteConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteConcurrentOperation.m; sourceTree = "<group>"; };
+		578DA6C12462509E00EFAEAE /* OrderArrayCombine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderArrayCombine.h; sourceTree = "<group>"; };
+		578DA6C22462509E00EFAEAE /* OrderArrayCombine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderArrayCombine.m; sourceTree = "<group>"; };
+		578DA6C42462521700EFAEAE /* OrderArrayCombineTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderArrayCombineTests.m; sourceTree = "<group>"; };
+		578DA6C62462BAD400EFAEAE /* FindCommonSuperViews.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindCommonSuperViews.h; sourceTree = "<group>"; };
+		578DA6C72462BAD400EFAEAE /* FindCommonSuperViews.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindCommonSuperViews.m; sourceTree = "<group>"; };
+		578DA6C92462BB1B00EFAEAE /* FindCommonSuperViewsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindCommonSuperViewsTests.m; sourceTree = "<group>"; };
+		578DA6CB2463975900EFAEAE /* Sort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sort.h; sourceTree = "<group>"; };
+		578DA6CC2463975900EFAEAE /* Sort.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sort.m; sourceTree = "<group>"; };
+		578DA6CE2463A00500EFAEAE /* SortTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortTests.m; sourceTree = "<group>"; };
 		5792E5341DD46E3300A95A7F /* YKNoteKVCObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteKVCObject.h; sourceTree = "<group>"; };
 		5792E5351DD46E3300A95A7F /* YKNoteKVCObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNoteKVCObject.m; sourceTree = "<group>"; };
 		5792E5371DD55F1600A95A7F /* YKNoteKVCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNoteKVCViewController.h; sourceTree = "<group>"; };
@@ -211,6 +227,7 @@
 		57C70D491E14C7FB00D410AF /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
 		57C70D4B1E14D5B300D410AF /* SandBoxUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandBoxUtils.h; sourceTree = "<group>"; };
 		57C70D4C1E14D5B300D410AF /* SandBoxUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandBoxUtils.m; sourceTree = "<group>"; };
+		57D70CC224B7232A00B0FD07 /* YKNoteGCDViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YKNoteGCDViewControllerTests.m; sourceTree = "<group>"; };
 		57EAB95C1E516483001DF5EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57EAB9611E51678B001DF5EE /* YKNetworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNetworkConfig.h; sourceTree = "<group>"; };
 		57EAB9621E51678B001DF5EE /* YKNetworkConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNetworkConfig.m; sourceTree = "<group>"; };
@@ -324,6 +341,9 @@
 				57337EBB1E64339F007AD4AF /* TowSumTests.m */,
 				573931891E658D3300BE72B5 /* IPV4ToIntegerTests.m */,
 				574173002461430400547EC5 /* StringReverseTests.m */,
+				578DA6C42462521700EFAEAE /* OrderArrayCombineTests.m */,
+				578DA6C92462BB1B00EFAEAE /* FindCommonSuperViewsTests.m */,
+				578DA6CE2463A00500EFAEAE /* SortTests.m */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -365,6 +385,12 @@
 				573931871E6566DA00BE72B5 /* IPV4ToInteger.m */,
 				574172FD24613F8800547EC5 /* StringReverse.h */,
 				574172FE24613F8800547EC5 /* StringReverse.m */,
+				578DA6C12462509E00EFAEAE /* OrderArrayCombine.h */,
+				578DA6C22462509E00EFAEAE /* OrderArrayCombine.m */,
+				578DA6C62462BAD400EFAEAE /* FindCommonSuperViews.h */,
+				578DA6C72462BAD400EFAEAE /* FindCommonSuperViews.m */,
+				578DA6CB2463975900EFAEAE /* Sort.h */,
+				578DA6CC2463975900EFAEAE /* Sort.m */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -451,6 +477,7 @@
 		57B1AE891DCAE5970030E062 /* YKNoteTests */ = {
 			isa = PBXGroup;
 			children = (
+				57D70CC124B722DE00B0FD07 /* GCD */,
 				57337EA71E596A9E007AD4AF /* DataStructure */,
 				57B1AE8A1DCAE5970030E062 /* YKNoteTests.m */,
 				57337EAA1E599B04007AD4AF /* FindButtonTests.m */,
@@ -549,6 +576,14 @@
 				57C70D461E14C71000D410AF /* YKNoteCoreDataViewController.m */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		57D70CC124B722DE00B0FD07 /* GCD */ = {
+			isa = PBXGroup;
+			children = (
+				57D70CC224B7232A00B0FD07 /* YKNoteGCDViewControllerTests.m */,
+			);
+			path = GCD;
 			sourceTree = "<group>";
 		};
 		57EAB9551E516360001DF5EE /* Network */ = {
@@ -669,8 +704,8 @@
 				TargetAttributes = {
 					57B1AE6C1DCAE5960030E062 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = TC7ZKNQ9JS;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 4V78YDRYZW;
+						ProvisioningStyle = Manual;
 					};
 					57B1AE851DCAE5970030E062 = {
 						CreatedOnToolsVersion = 8.1;
@@ -766,6 +801,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				578DA6CD2463975900EFAEAE /* Sort.m in Sources */,
+				578DA6C32462509E00EFAEAE /* OrderArrayCombine.m in Sources */,
 				5792E5421DD9AE6E00A95A7F /* YKNoteApplication.m in Sources */,
 				576A17BE1DD31C2500980C94 /* YKNote-KVC.md in Sources */,
 				57C70D4A1E14C7FB00D410AF /* CoreDataManager.m in Sources */,
@@ -821,6 +858,7 @@
 				5787683D1E1F60C500DF3D1E /* NSObject+YKNoteRunBlockAtDealloc.m in Sources */,
 				57B1AEB01DCB0E580030E062 /* YKNoteKVOObject.m in Sources */,
 				57A1CCC81E0A232200ACA4C3 /* YKNoteRuntimeViewController.m in Sources */,
+				578DA6C82462BAD400EFAEAE /* FindCommonSuperViews.m in Sources */,
 				578D0A971DEED78D00E65572 /* YKNoteOperationViewController.m in Sources */,
 				5792E55D1DDECF2500A95A7F /* YKNoteTapGestureRecognizer.m in Sources */,
 				57B1AE721DCAE5960030E062 /* main.m in Sources */,
@@ -835,12 +873,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				578DA6CF2463A00500EFAEAE /* SortTests.m in Sources */,
+				578DA6CA2462BB1B00EFAEAE /* FindCommonSuperViewsTests.m in Sources */,
 				5739318A1E658D3300BE72B5 /* IPV4ToIntegerTests.m in Sources */,
+				578DA6C52462521700EFAEAE /* OrderArrayCombineTests.m in Sources */,
 				57B1AE8B1DCAE5970030E062 /* YKNoteTests.m in Sources */,
 				57337EAB1E599B04007AD4AF /* FindButtonTests.m in Sources */,
 				57337EBC1E64339F007AD4AF /* TowSumTests.m in Sources */,
 				57337EA91E596AD7007AD4AF /* BubbleSortTests.m in Sources */,
 				574173012461430400547EC5 /* StringReverseTests.m in Sources */,
+				57D70CC324B7232A00B0FD07 /* YKNoteGCDViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -963,13 +1005,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = TC7ZKNQ9JS;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 4V78YDRYZW;
 				GCC_PREFIX_HEADER = YKNote/YKNote.pch;
 				INFOPLIST_FILE = YKNote/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ucaiyuan.YKNote;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aioser.YKNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development *";
 			};
 			name = Debug;
 		};
@@ -980,13 +1024,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = TC7ZKNQ9JS;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 4V78YDRYZW;
 				GCC_PREFIX_HEADER = YKNote/YKNote.pch;
 				INFOPLIST_FILE = YKNote/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ucaiyuan.YKNote;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aioser.YKNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development *";
 			};
 			name = Release;
 		};

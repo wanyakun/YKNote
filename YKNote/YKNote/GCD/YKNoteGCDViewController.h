@@ -10,4 +10,9 @@
 
 @interface YKNoteGCDViewController : UIViewController
 
++ (void)testBarrierSync;
++ (void)testBarrierAsync;
++ (void)testAsyncBarrierSync;
++ (void)testAsyncBarrierAsync;
+
 @end

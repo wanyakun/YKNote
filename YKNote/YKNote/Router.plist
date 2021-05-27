@@ -34,5 +34,7 @@
 	<string>YKNoteLoginViewController</string>
 	<key>UI</key>
 	<string>YKNoteUIViewController</string>
+	<key>Notification</key>
+	<string>YKNoteNotificationViewController</string>
 </dict>
 </plist>

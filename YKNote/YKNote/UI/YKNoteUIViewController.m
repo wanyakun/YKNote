@@ -8,6 +8,7 @@
 
 #import "YKNoteUIViewController.h"
 #import "YKNoteUITableViewCell.h"
+#import "UIImage+ImageEffects.h"
 
 @interface YKNoteUIViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -65,6 +66,16 @@
 //    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
 //    
 //    [self.tableView addConstraints:@[top, left, right, bottom]];
+    
+    UIImageView *imageView0 = [[UIImageView alloc] initWithFrame:CGRectMake(50, 400, 151, 75)];
+
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(50, 230, 151, 75)];
+    UIImage *image = [UIImage imageNamed:@"tap"];
+    UIImage *blurImage = [image applyBlurWithRadius:30 tintColor:[UIColor colorWithWhite:1.0 alpha:0.3] saturationDeltaFactor:1.8 maskImage:nil];
+    imageView.image = blurImage;
+    imageView0.image = image;
+    [self.view addSubview:imageView0];
+    [self.view addSubview:imageView];
 }
 
 - (void)didReceiveMemoryWarning {

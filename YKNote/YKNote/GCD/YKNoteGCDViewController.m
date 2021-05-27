@@ -34,6 +34,12 @@
     [button setTitle:@"测试Barrier" forState:UIControlStateNormal];
     [button addTarget:self action:@selector(testBarrier) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
+    
+    UIButton *button1 = [[UIButton alloc] initWithFrame:CGRectMake(50, 260, 150, 50)];
+    button1.backgroundColor = UIColor.blueColor;
+    [button1 setTitle:@"测试3线程并发" forState:UIControlStateNormal];
+    [button1 addTarget:self action:@selector(testGCDCoucurrentCount) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button1];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,6 +50,30 @@
 - (void)dealloc {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     [self.yKNoteTimer invalidate];
+}
+
+#pragma mark - 测试GCD设置并发数
+// 1. 使用信号量控制并发个数，串行队列辅助执行并发任务。
+// 2. 参考YYDispatchQueuePool 通过创建指定个数的串行队列来限制并发个数。
+- (void)testGCDCoucurrentCount {
+    dispatch_queue_t cQueue = dispatch_queue_create("YKNote-TestGCDCouncurrentCount-CQueue", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_queue_t sQueue = dispatch_queue_create("YKNote-TestGCDCouncurrentCount-SQueue", DISPATCH_QUEUE_SERIAL);
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(3);
+    // 假设有一百个任务
+    for(NSInteger i = 0; i < 100; i++) {
+        // 异步放入串行队列
+        dispatch_async(sQueue, ^{
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            dispatch_async(cQueue, ^{
+                // 执行任务
+                NSLog(@"thread-info:%@开始执行任务%d", [NSThread currentThread], (int)i);
+                sleep(1);
+                NSLog(@"thread-info:%@结束执行任务%d", [NSThread currentThread], (int)i);
+                // 发送信号
+                dispatch_semaphore_signal(semaphore);
+            });
+        });
+    }
 }
 
 #pragma mark - Test dispatch_barrier_async
